@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
-  USERNAME = open('lib/assets/.username').read
-  PASSWORD = open('lib/assets/.password').read
+  USERNAME = open('lib/assets/.username').first.chomp
+  PASSWORD = open('lib/assets/.password').first.chomp
 def show
 
 end
@@ -14,7 +14,10 @@ def scoreboard
 msf = MySportsFeeds.new(version="1.2", true)
 msf.authenticate(USERNAME, PASSWORD)
 @games = msf.msf_get_data(params[:league], '2016-2017-regular', 'scoreboard', 'json', 'fordate' => params[:date])['scoreboard']['gameScore']
-
 end
+def boxscore
 
+
+  
+end
 end
