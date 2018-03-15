@@ -1,20 +1,24 @@
-<h1>hello</h1>
+<% g = @games %>
+<h1>Boxscore</h1>
+<div>Away</div>
+<br/>
+<div>City: <%= g['game']['awayTeam']['City'] %></div>
+<div>Team: <%= g['game']['awayTeam']['Name'] %></div>
+<div>Abb:<%= g['game']['awayTeam']['Abbreviation'] %></div>
+<div>PTS: <%= g['quarterSummary']['quarterTotals']['awayScore'] %></div>
+<div>Win: <%= g['awayTeam']['awayTeamStats']['Wins']['#text'] %></div>
+
+<br/>
+<div>Home</div>
+<br/>
+<div>City: <%= g['game']['homeTeam']['City'] %></div>
+<div>Team: <%= g['game']['homeTeam']['Name'] %></div>
+<div>Abb: <%= g['game']['homeTeam']['Abbreviation'] %></div>
+<div>PTS: <%= g['quarterSummary']['quarterTotals']['homeScore'] %></div>
+<div>Win: <%= g['homeTeam']['homeTeamStats']['Wins']['#text'] %></div>
 
 
-<%= @games %>
 
-
-# <%# @games.each do |h,v|%>
-	<%# homeTeam = v['gamelogs'][0]['game']['homeTeam']['Abbreviation']%>
-	<%# homePTS = v['gamelogs'][0]['stats']['Pts']['#text']%>
-
-	<%# awayTeam = v['gamelogs'][0]['game']['awayTeam']['Abbreviation']%>
-	<%# awayPTS = v['gamelogs'][0]['stats']['PtsAgainst']['#text']%>
+	
 		
 		
-
-	<br/>
-	<div><%#= homeTeam %> : <%#=homePTS%></div>
-	<div><%#=awayTeam%> : <%#=awayPTS%></div>
-	<br/>
-	<%#end%>

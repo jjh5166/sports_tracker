@@ -13,6 +13,6 @@ class GamesController < ApplicationController
 	end
 
 	def boxscore
-		@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'game_boxscore', 'json', 'gameid' => params[:gameid])
+		@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'game_boxscore', 'json', 'gameid' => params[:gameid])['gameboxscore']
 	end
 end
