@@ -1,0 +1,117 @@
+<!-- Page variables -->
+<% g = @games %>
+<% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
+<% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
+<% quarterScore = g['quarterSummary']['quarter']%>
+<% teamCity = g['game']%>
+<% teamName = g['game']%>
+<% abb = g['game']%>
+<% pts = g['quarterSummary']['quarterTotals']%> 
+<% @awayQuarterTotals = []%>
+<% @homeQuarterTotals = []%>
+
+<h1>Boxscore</h1>
+
+
+<!-- Loop that stores the QTR totals for the away team -->
+<div>Away QTR Score</div>
+
+<%= abb['awayTeam']['Abbreviation']%> -
+<% quarterScore.each do |q|%>
+	<%= q['awayScore'] %>
+
+<% end %>
+<!-- Prints the away team total score -->
+<%= pts['awayScore'] %>
+
+
+<br/>
+
+<!-- Loop that stores the QTR totals for the home team -->
+<div>Home QTR Score</div>
+
+<%= abb['homeTeam']['Abbreviation']%> -
+<% quarterScore.each do |q|%>
+	<%= q['homeScore'] %>
+
+<% end %>
+
+<!-- Prints the home team total score -->
+<%= pts['homeScore'] %>
+
+<hr>
+<!-- Team info -->
+<div> Away Team </div>
+<br/>
+<div>City: <%= teamCity['awayTeam']['City'] %></div>
+<div>Team: <%= teamName['awayTeam']['Name'] %></div>
+<div>Abb:<%= abb['awayTeam']['Abbreviation'] %></div>
+<div>PTS: <%= pts['awayScore'] %></div>
+
+<hr>
+
+	<br/>
+	<!-- Loop that shows the away players and their game stats -->
+	<% awayPlayers.each do |a|%>
+	<!-- All the variables used in this loop -->
+		<% firstName = a['player']['FirstName']%>
+		<% lastName = a['player']['LastName']%>
+		<% position = a['player']['Position']%>
+		<% fg2PtMade = a['stats']['Fg2PtMade']['#text'].to_i%>
+		<% fg2PtAtt = a['stats']['Fg2PtAtt']['#text'].to_i%>
+		<% fg3PtMade = a['stats']['Fg3PtMade']['#text'].to_i%>
+		<% fg3PtAtt = a['stats']['Fg3PtAtt']['#text'].to_i%>
+		<% ftMade = a['stats']['FtMade']['#text'].to_i%>
+		<% ftAtt = a['stats']['FtAtt']['#text'].to_i%>
+		<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+		<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
+		<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
+
+		<div>
+			<div><%= firstName%> <%= lastName%> <%= position%></div>
+			<div>FG: <%=fgMade %> - <%= fgAtt%></div>
+			<div>2pt: <%= fg2PtMade%> - <%= fg2PtAtt%></div> 
+			<div> 3pt: <%= fg3PtMade%> - <%= fg3PtAtt%></div> 
+			<div>FT: <%= ftMade%> - <%= ftAtt%></div>
+			<div>PTS: <%= points%></div>
+		</div>
+		<hr>
+	<% end %>
+<hr>
+
+<!-- Team info -->		
+<div> Home Team </div>
+<br/>
+<div>City: <%= g['game']['homeTeam']['City'] %></div>
+<div>Team: <%= g['game']['homeTeam']['Name'] %></div>
+<div>Abb: <%= g['game']['homeTeam']['Abbreviation'] %></div>
+<div>PTS: <%= g['quarterSummary']['quarterTotals']['homeScore'] %></div>
+
+<hr>
+	<br/>
+	<!-- Loop that shows the home players and their game stats -->
+		<% homePlayers.each do |h|%>
+		<!-- All the variables used in this loop -->
+			<% firstName = h['player']['FirstName']%>
+			<% lastName = h['player']['LastName']%>
+			<% position = h['player']['Position']%>
+			<% fg2PtMade = h['stats']['Fg2PtMade']['#text'].to_i%>
+			<% fg2PtAtt = h['stats']['Fg2PtAtt']['#text'].to_i%>
+			<% fg3PtMade = h['stats']['Fg3PtMade']['#text'].to_i%>
+			<% fg3PtAtt = h['stats']['Fg3PtAtt']['#text'].to_i%>
+			<% ftMade = h['stats']['FtMade']['#text'].to_i%>
+			<% ftAtt = h['stats']['FtAtt']['#text'].to_i%>
+			<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+			<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
+			<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
+	
+		<div>
+			<div><%= firstName%> <%= lastName%> <%= position%></div>
+			<div>FG: <%=fgMade %> - <%= fgAtt%></div>
+			<div>2pt: <%= fg2PtMade%> - <%= fg2PtAtt%></div> 
+			<div> 3pt: <%= fg3PtMade%> - <%= fg3PtAtt%></div> 
+			<div>FT: <%= ftMade%> - <%= ftAtt%></div>
+			<div>PTS: <%= points%></div>
+		</div>
+		<hr>
+	<% end %>

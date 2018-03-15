@@ -1,4 +1,5 @@
 <!-- Renders the partial files from their corresponding files -->
+
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
 <% elsif params[:league] == "nfl" %>
@@ -8,3 +9,4 @@
 <% elsif params[:league] == "mlb" %>
 	<%= render :file => "/games/boxScorePartials/_mlb-boxscore.html.erb" %>
 <% end %>
+
