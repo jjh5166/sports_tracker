@@ -9,11 +9,65 @@
 			<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
 
 			<a class=font href='/<%= params[:league] %>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
-		<% cal = (g['game']['date']) %>
-		<%= cal %>
-		<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
-		vs.
-		<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+				<!-- Rendering the date for the game -->
+				<p>
+					<% gameid %>
+					<% year = gameid  [0..3] %>
+					<% month = gameid [4..5] %>
+					<% day = gameid [6..7] %>	
+					
+					<!-- If statement to render month instead of string representing onth as a number -->
+					<% if month == '01' %>
+						<%= "Jan." %>
+					<% elsif month == '02' %>
+						<%= "Feb." %>
+					<% elsif month == '03' %>
+						<%= "Mar." %>
+					<% elsif month == '04' %>
+						<%= "Apr." %>
+					<% elsif month == '05' %>
+						<%= "May" %>
+					<% elsif month == '06' %>
+						<%= "Jun." %>
+					<% elsif month == '07' %>
+						<%= "Jul." %>
+					<% elsif month == '08' %>
+						<%= "Aug." %>
+					<% elsif month == '09' %>
+						<%= "Sep." %>
+					<% elsif month == '10' %>
+						<%= "Oct." %>
+					<% elsif month == '11' %>
+						<%= "Nov." %>
+					<% elsif month == '12' %>
+						<%= "Dec." %>
+					<% end %>
+
+					<%= day %>
+					<%= year %>
 			</a>
+
+			
+		<!-- Showing away vs home team -->
+			<p class=team>
+				<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
+			</p>
+			<p class='where'>
+				at
+			</p>
+			<p class=team>
+				<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+			</p>
+		</p>
+		<!-- using points scored to determine Win or Loss -->
+			<% if  g['stats']['Pts']['#text'] > g['stats']['PtsAgainst']['#text'] %>
+				<p class=w>
+					<%= "W" %>
+				</p>
+			<% else %> 
+				<p class=l>	
+					<%= "L"%>
+				</p>
+			<% end %>
 		</div>
 <%end%>
