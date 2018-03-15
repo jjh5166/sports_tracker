@@ -1,0 +1,14 @@
+<h1>Team's Schdule</h1>
+
+<% @games.each do |g| %>
+		<div>
+			<a href='/nba/teamgamelogs/<%= g['game']['id'] %>'>
+		<% cal = (g['game']['date']) %>
+		<%= cal %>
+		<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
+		vs.
+		<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+			</a>
+		</div>
+	<hr>
+<%end%>
