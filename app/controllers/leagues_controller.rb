@@ -1,10 +1,13 @@
 class LeaguesController < ApplicationController
+
   def index
 
   end
+
   def show
 
   end
+
   def season
     @divisions = $msf.msf_get_data(params[:league], '2016-2017-regular', 'division_team_standings', 'json')["divisionteamstandings"]["division"]
     @atlantic = @divisions.detect {|d| d["@name"] == "Eastern/Atlantic"}
@@ -16,7 +19,10 @@ class LeaguesController < ApplicationController
 
 
   end
-  def teamseason
 
+  def teamseason
+  	# gamelog
+  	@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'team_gamelogs', 'json', 'team' => params[:Abbreviation])['teamgamelogs']['gamelogs']
   end
+
 end
