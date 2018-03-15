@@ -1,8 +1,14 @@
-<h1>Team's Schdule</h1>
+<h1>Team's Schedule</h1>
 
 <% @games.each do |g| %>
-		<div>
-			<a href='/nba/teamgamelogs/<%= g['game']['id'] %>'>
+		<div class=box>
+
+
+			<% gameid = (g['game']['date']).tr("-","") %>
+			<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
+			<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
+
+			<a class=font href='/nba/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
 		<% cal = (g['game']['date']) %>
 		<%= cal %>
 		<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
@@ -10,5 +16,4 @@
 		<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
 			</a>
 		</div>
-	<hr>
 <%end%>

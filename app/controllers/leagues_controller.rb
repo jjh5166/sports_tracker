@@ -1,6 +1,4 @@
 class LeaguesController < ApplicationController
-    USERNAME = open('lib/assets/.username').first.chomp
-  	PASSWORD = open('lib/assets/.password').first.chomp
 
   def index
 
@@ -11,14 +9,20 @@ class LeaguesController < ApplicationController
   end
 
   def season
+    @divisions = $msf.msf_get_data(params[:league], '2016-2017-regular', 'division_team_standings', 'json')["divisionteamstandings"]["division"]
+    @atlantic = @divisions.detect {|d| d["@name"] == "Eastern/Atlantic"}
+    @central = @divisions.detect {|d| d["@name"] == "Eastern/Central"}
+    @southeast = @divisions.detect {|d| d["@name"] == "Eastern/Southeast"}
+    @northwest = @divisions.detect {|d| d["@name"] == "Western/Northwest"}
+    @pacific = @divisions.detect {|d| d["@name"] == "Western/Pacific"}
+    @southwest = @divisions.detect {|d| d["@name"] == "Western/Southwest"}
+
 
   end
 
   def teamseason
   	# gamelog
-  	msf = MySportsFeeds.new(version="1.2", true)
-	msf.authenticate('aciukurescu', 'NYCDAtest')
-  	@games = msf.msf_get_data('nba', '2016-2017-regular', 'team_gamelogs', 'json', 'team' => params[:Abbreviation])['teamgamelogs']['gamelogs']
+  	@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'team_gamelogs', 'json', 'team' => params[:Abbreviation])['teamgamelogs']['gamelogs']
   end
 
 end

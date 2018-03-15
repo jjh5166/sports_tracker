@@ -4,8 +4,10 @@ root to: 'games#season'
 
 get '/:league/scoreboard/:date', to: 'games#scoreboard'
 
-get '/:league/teamgamelogs/:abbreviation/:id', to: 'games#boxscore' 
+get '/:league/:season/', to: 'leagues#season'
 
+
+get '/:league/boxscore/:gameid', to: 'games#boxscore' 
 
 get '/:league/teamgamelogs/:Abbreviation', to: "leagues#teamseason"
 

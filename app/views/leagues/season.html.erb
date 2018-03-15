@@ -1,0 +1,8 @@
+<h1><%=params[:league]%>  <%=params[:season]%></h1>
+
+<%@divisions.each do |d|%>
+<div class="divisionbox">
+<%=d["@name"]%>
+
+</div>
+<%end%>
