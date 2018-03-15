@@ -11,7 +11,7 @@
 <header>
   
 
-  <nav>
+  <div class="navbar">
   <ul>
     <li><%= link_to "Home", root_path, :class => current_class?(root_path) %></li>
     <li>
@@ -27,7 +27,7 @@
     <li><%= link_to 'NHL', root_path  %></li>
     <li><%= link_to 'MLB', root_path  %></li>
   </ul>
-</nav>
+</div>
 </header>
   
     <%= yield %>

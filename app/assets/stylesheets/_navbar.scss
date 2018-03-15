@@ -1,7 +1,7 @@
-.layout-body {
-    margin: 0 auto;
-    background-color: $main-background;
-}
+// .layout-body {
+//     margin: 0 auto;
+//     background-color: $main-background;
+// }
 // .navbar {
 //     background-color: $nav-color;
 //     overflow: hidden;
@@ -32,72 +32,93 @@
 //     color: white;
 // }
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .active {
     background-color: $nav-active;
 }
 
-nav {
-    float: left;
+.navbar {
+    // float: left;
     background-color: $nav-color;
-    position: sticky;
-    top: 0;
+    width: 100%;
+    height: 44px;
+    margin: 0 auto;
+    padding: 0px;
+    // border: 2px solid red;
+    
+}
+// Contols the drop down menu style.
+.navbar ul {
+    // padding: 2vh 5vh;
+    margin: 0;
+    
 }
 
-nav ul {
-    text-align: center;
-}
-
-nav ul li {
+.navbar ul li {
+    // height: 50px;
+    margin-left: 0px;
     float: left;
-    display: block;
+    display: inline-block;
     text-align: center;
-    z-index: 100;
+    // z-index: 100;
+    // border: 2px solid blue;
 }
 
-nav ul li:hover {
+.navbar ul li:hover {
     background: $nav-hover;
     color: black;
 }
 
-nav ul li a {
+.navbar ul li a {
     display: block;
     color: white;
-    text-align: center;
+    // text-align: center;
     padding: 2vh 5vh;
     text-decoration: none;
     font-size: 2.5vh;
     // float: left;
 }
 
-nav ul li ul {
+.navbar ul li ul {
     position: absolute;
-    width: 5vw;
-    background: $nav-hover;
+    width: 9.7vw;
+    // padding: 2vh 5vw;
+    // width: 100%;
+    // background: $nav-hover;
+    background: grey;
+    // border: 2px solid red;
 }
 
-nav ul li ul li {
+
+.navbar ul li ul li {
     width: 5vw;
 }
 
-nav ul li ul li a {
-    display: block;
+.navbar ul li ul li a {
+    // display: block;
     // float: left;
     color: white;
-    text-align: center;
-    padding: 2vh 3vh;
+    // text-align: center;
+    // padding: 2vh 3vh;
     text-decoration: none;
     font-size: 2.5vh;
+    // border: 2px solid purple;
 }
 
-nav ul li ul li:hover a {
+.navbar ul li ul li:hover a {
     background: $nav-hover;
     color: black;
 }
 
-nav ul li ul.fallback {
+.navbar ul li ul.fallback {
     display: none;
 }
 
-nav ul li:hover ul.fallback {
+.navbar ul li:hover ul.fallback {
     display: block;
 }
+
