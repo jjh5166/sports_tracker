@@ -1,0 +1,103 @@
+.layout-body {
+    margin: 0 auto;
+    background-color: $main-background;
+}
+// .navbar {
+//     background-color: $nav-color;
+//     overflow: hidden;
+//     position: sticky;
+//     top: 0;
+//     z-index: 100;
+//     font-family: MyFont;
+// }
+
+// // .navbar ul li {
+// //     float: left;
+// //     display: inline;
+// // }
+
+// .navbar a {
+//     float: left;
+//     display: block;
+//     color: white;
+//     text-align: center;
+//     padding: 2vh 5vh;
+//     text-decoration: none;
+//     font-size: 2.5vh;
+//     font-family: MyFont;
+// }
+
+// .navbar a:hover {
+//     background-color: $nav-hover;
+//     color: white;
+// }
+
+.active {
+    background-color: $nav-active;
+}
+
+nav {
+    float: left;
+    background-color: $nav-color;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    float: left;
+    display: block;
+    text-align: center;
+    z-index: 100;
+}
+
+nav ul li:hover {
+    background: $nav-hover;
+    color: black;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 2vh 5vh;
+    text-decoration: none;
+    font-size: 2.5vh;
+    // float: left;
+}
+
+nav ul li ul {
+    position: absolute;
+    width: 5vw;
+    background: $nav-hover;
+}
+
+nav ul li ul li {
+    width: 5vw;
+}
+
+nav ul li ul li a {
+    display: block;
+    // float: left;
+    color: white;
+    text-align: center;
+    padding: 2vh 3vh;
+    text-decoration: none;
+    font-size: 2.5vh;
+}
+
+nav ul li ul li:hover a {
+    background: $nav-hover;
+    color: black;
+}
+
+nav ul li ul.fallback {
+    display: none;
+}
+
+nav ul li:hover ul.fallback {
+    display: block;
+}
