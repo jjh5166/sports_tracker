@@ -19,7 +19,7 @@ class LeaguesController < ApplicationController
   	# gamelog
   	msf = MySportsFeeds.new(version="1.2", true)
 	msf.authenticate('aciukurescu', 'NYCDAtest')
-  	@games = msf.msf_get_data('nba', '2016-2017-regular', 'team_gamelogs', 'json', 'team' => params[:Abbreviation])
+  	@games = msf.msf_get_data('nba', '2016-2017-regular', 'team_gamelogs', 'json', 'team' => params[:Abbreviation])['teamgamelogs']['gamelogs']
   end
 
 end

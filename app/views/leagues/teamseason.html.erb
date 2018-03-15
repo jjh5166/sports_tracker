@@ -1,3 +1,12 @@
 <h1>testign</h1>
 
-<%= @games %>
+<% @games.each do |g| %>
+		<div>
+			<a href='/nba/teamgamelogs/<%= g['game']['id'] %>'>
+		<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
+		vs.
+		<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+			</a>
+		</div>
+	<hr>
+<%end%>
