@@ -1,24 +1,78 @@
 <% g = @games %>
+<% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
+<% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
+
+
+
 <h1>Boxscore</h1>
-<div>Away</div>
+
+<div> Away Team </div>
 <br/>
 <div>City: <%= g['game']['awayTeam']['City'] %></div>
 <div>Team: <%= g['game']['awayTeam']['Name'] %></div>
 <div>Abb:<%= g['game']['awayTeam']['Abbreviation'] %></div>
 <div>PTS: <%= g['quarterSummary']['quarterTotals']['awayScore'] %></div>
-<div>Win: <%= g['awayTeam']['awayTeamStats']['Wins']['#text'] %></div>
 
-<br/>
-<div>Home</div>
+<hr>
+
+	<br/>
+	<% awayPlayers.each do |a|%>
+		<% firstName= a['player']['FirstName']%>
+		<% lastName= a['player']['LastName']%>
+		<% position= a['player']['Position']%>
+		<% fg2PtMade = a['stats']['Fg2PtMade']['#text'].to_i%>
+		<% fg2PtAtt = a['stats']['Fg2PtAtt']['#text'].to_i%>
+		<% fg3PtMade = a['stats']['Fg3PtMade']['#text'].to_i%>
+		<% fg3PtAtt = a['stats']['Fg3PtAtt']['#text'].to_i%>
+		<% ftMade = a['stats']['FtMade']['#text'].to_i%>
+		<% ftAtt = a['stats']['FtAtt']['#text'].to_i%>
+		<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+		<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
+		<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
+
+		<div>
+			<div><%= firstName%> <%= lastName%> <%= position%></div>
+			<div>FG: <%=fgMade %> - <%= fgAtt%></div>
+			<div>2pt: <%= fg2PtMade%> - <%= fg2PtAtt%></div> 
+			<div> 3pt: <%= fg3PtMade%> - <%= fg3PtAtt%></div> 
+			<div>FT: <%= ftMade%> - <%= ftAtt%></div>
+			<div>PTS: <%= points%></div>
+		</div>
+		<hr>
+	<% end %>
+<hr>
+
+		
+<div> Home Team </div>
 <br/>
 <div>City: <%= g['game']['homeTeam']['City'] %></div>
 <div>Team: <%= g['game']['homeTeam']['Name'] %></div>
 <div>Abb: <%= g['game']['homeTeam']['Abbreviation'] %></div>
 <div>PTS: <%= g['quarterSummary']['quarterTotals']['homeScore'] %></div>
-<div>Win: <%= g['homeTeam']['homeTeamStats']['Wins']['#text'] %></div>
 
-
-
+<hr>
+	<br/>
+		<% homePlayers.each do |a|%>
+			<% firstName= a['player']['FirstName']%>
+			<% lastName= a['player']['LastName']%>
+			<% position= a['player']['Position']%>
+			<% fg2PtMade = a['stats']['Fg2PtMade']['#text'].to_i%>
+			<% fg2PtAtt = a['stats']['Fg2PtAtt']['#text'].to_i%>
+			<% fg3PtMade = a['stats']['Fg3PtMade']['#text'].to_i%>
+			<% fg3PtAtt = a['stats']['Fg3PtAtt']['#text'].to_i%>
+			<% ftMade = a['stats']['FtMade']['#text'].to_i%>
+			<% ftAtt = a['stats']['FtAtt']['#text'].to_i%>
+			<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+			<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
+			<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
 	
-		
-		
+		<div>
+			<div><%= firstName%> <%= lastName%> <%= position%></div>
+			<div>FG: <%=fgMade %> - <%= fgAtt%></div>
+			<div>2pt: <%= fg2PtMade%> - <%= fg2PtAtt%></div> 
+			<div> 3pt: <%= fg3PtMade%> - <%= fg3PtAtt%></div> 
+			<div>FT: <%= ftMade%> - <%= ftAtt%></div>
+			<div>PTS: <%= points%></div>
+		</div>
+		<hr>
+	<% end %>
