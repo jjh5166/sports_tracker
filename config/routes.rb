@@ -8,4 +8,7 @@ get '/:league/boxscore/:gameid', to: 'games#boxscore'
 
 get '/:league/teamgamelogs/:Abbreviation', to: "leagues#teamseason"
 
+
+
+
 end
