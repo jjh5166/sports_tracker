@@ -59,8 +59,10 @@
 				<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
 			</p>
 		</p>
+
+
 		<!-- using points scored to determine Win or Loss -->
-			<% if  g['stats']['Pts']['#text'] > g['stats']['PtsAgainst']['#text'] %>
+			<% if  (g['stats']['Pts']['#text']).to_i > (g['stats']['PtsAgainst']['#text']).to_i %>
 				<p class=w>
 					<%= "W" %>
 				</p>
