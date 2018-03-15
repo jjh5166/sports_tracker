@@ -1,5 +1,4 @@
 <!-- Page variables -->
-
 <% g = @games %>
 <% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
 <% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
@@ -13,30 +12,35 @@
 
 <h1>Boxscore</h1>
 
+
+<!-- Loop that stores the QTR totals for the away team -->
 <div>Away QTR Score</div>
 
 <%= abb['awayTeam']['Abbreviation']%> -
 <% quarterScore.each do |q|%>
 	<%= q['awayScore'] %>
-	<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
-<% end %>
 
-<%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%>
+<% end %>
+<!-- Prints the away team total score -->
+<%= pts['awayScore'] %>
 
 
 <br/>
+
+<!-- Loop that stores the QTR totals for the home team -->
 <div>Home QTR Score</div>
 
 <%= abb['homeTeam']['Abbreviation']%> -
 <% quarterScore.each do |q|%>
 	<%= q['homeScore'] %>
-	<% @homeQuarterTotals.push(q['homeScore'].to_i) %>
+
 <% end %>
 
-<%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%>
+<!-- Prints the home team total score -->
+<%= pts['homeScore'] %>
 
 <hr>
-
+<!-- Team info -->
 <div> Away Team </div>
 <br/>
 <div>City: <%= teamCity['awayTeam']['City'] %></div>
@@ -47,7 +51,9 @@
 <hr>
 
 	<br/>
+	<!-- Loop that shows the away players and their game stats -->
 	<% awayPlayers.each do |a|%>
+	<!-- All the variables used in this loop -->
 		<% firstName = a['player']['FirstName']%>
 		<% lastName = a['player']['LastName']%>
 		<% position = a['player']['Position']%>
@@ -73,7 +79,7 @@
 	<% end %>
 <hr>
 
-		
+<!-- Team info -->		
 <div> Home Team </div>
 <br/>
 <div>City: <%= g['game']['homeTeam']['City'] %></div>
@@ -83,7 +89,9 @@
 
 <hr>
 	<br/>
+	<!-- Loop that shows the home players and their game stats -->
 		<% homePlayers.each do |h|%>
+		<!-- All the variables used in this loop -->
 			<% firstName = h['player']['FirstName']%>
 			<% lastName = h['player']['LastName']%>
 			<% position = h['player']['Position']%>
