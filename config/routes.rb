@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 root to: 'games#season'
 
 get '/:league/scoreboard/:date', to: 'games#scoreboard'
+get '/:league/:season/', to: 'leagues#season'
 end
