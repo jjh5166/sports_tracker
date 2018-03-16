@@ -1,0 +1,35 @@
+// Homepage
+.wrapper {
+    width: 80%;
+    margin-left: 20vw;
+    margin-top: 10vh; // position: relative;
+}
+
+.button {
+    // background-color: #4CAF50;
+    float: left;
+    border: none;
+    color: white;
+    padding: 5vh 5vh;
+    text-align: center;
+    text-decoration: none;
+    font-size: 5vh; // position: relative
+    // display: block;
+    outline: 1px;
+}
+
+.button1 {
+    background-color: blue;
+}
+
+.button2 {
+    background-color: green;
+}
+
+.button3 {
+    background-color: pink;
+}
+
+.button4 {
+    background-color: orange;
+}
