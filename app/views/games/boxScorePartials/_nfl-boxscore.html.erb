@@ -48,19 +48,19 @@
 
 <%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%>
 
+ <h1> test </h1>
+
+
+ 	<% awayPlayers.find {|x| x[:stats][:PassAttempts][:'#text'] > 0} %>
+ 	<%= x %>
+ 	<% end %>
 
 
 
-
-
-
-
-
-
-
-
-
-
+	
+<%# @awayPlayers .select{|p| ['stats']["passattempt"]["#text"] >0} %>
+<%#= p %>
+<%# end %>
 
 
 
