@@ -6,7 +6,7 @@
 <tr><th><%=d["@name"].sub(/^.*\//,'')%></th></tr>
 <%d["teamentry"].each do |t|%>
 <tr>
-<td><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'<%=t["team"]["City"]%></a><%= t["team"]["Name"]%></td>
+<td><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
 <td><%=t["stats"]["Wins"]['#text']%></td>
 <td><%=t["stats"]["Losses"]['#text']%></td>
 <td><%=t["stats"]["WinPct"]['#text']%></td></tr>
