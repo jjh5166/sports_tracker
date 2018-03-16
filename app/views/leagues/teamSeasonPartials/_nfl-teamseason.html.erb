@@ -1,73 +1,68 @@
+<%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %> Schedule 
+<br>
+<%= @games[0]['game']['date'][0..3] %> Season
+
 <% @games.each do |g| %>
-		<div class=box>
-
-
-			<% gameid = (g['game']['date']).tr("-","") %>
-			<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
-			<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
-
-			<a class=font href='/<%= params[:league] %>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
-				<!-- Rendering the date for the game -->
-				<p>
-					<% gameid %>
-					<% year = gameid  [0..3] %>
-					<% month = gameid [4..5] %>
-					<% day = gameid [6..7] %>	
-					
-					<!-- If statement to render month instead of string representing onth as a number -->
-					<% if month == '01' %>
-						<%= "Jan." %>
-					<% elsif month == '02' %>
-						<%= "Feb." %>
-					<% elsif month == '03' %>
-						<%= "Mar." %>
-					<% elsif month == '04' %>
-						<%= "Apr." %>
-					<% elsif month == '05' %>
-						<%= "May" %>
-					<% elsif month == '06' %>
-						<%= "Jun." %>
-					<% elsif month == '07' %>
-						<%= "Jul." %>
-					<% elsif month == '08' %>
-						<%= "Aug." %>
-					<% elsif month == '09' %>
-						<%= "Sep." %>
-					<% elsif month == '10' %>
-						<%= "Oct." %>
-					<% elsif month == '11' %>
-						<%= "Nov." %>
-					<% elsif month == '12' %>
-						<%= "Dec." %>
-					<% end %>
-
-					<%= day %>
-					<%= year %>
-			</a>
-
-			
+	<div class=box>
+		<% gameid = (g['game']['date']).tr("-","") %>
+		<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
+		<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
+		<a class=font href='/<%= params[:league] %>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
+			<!-- Rendering the date for the game -->
+			<p>
+				<% gameid %>
+				<% year = gameid  [0..3] %>
+				<% month = gameid [4..5] %>
+				<% day = gameid [6..7] %>	
+				<!-- If statement to render month instead of string representing onth as a number -->
+				<% if month == '01' %>
+					<%= "Jan." %>
+				<% elsif month == '02' %>
+					<%= "Feb." %>
+				<% elsif month == '03' %>
+					<%= "Mar." %>
+				<% elsif month == '04' %>
+					<%= "Apr." %>
+				<% elsif month == '05' %>
+					<%= "May" %>
+				<% elsif month == '06' %>
+					<%= "Jun." %>
+				<% elsif month == '07' %>
+					<%= "Jul." %>
+				<% elsif month == '08' %>
+					<%= "Aug." %>
+				<% elsif month == '09' %>
+					<%= "Sep." %>
+				<% elsif month == '10' %>
+					<%= "Oct." %>
+				<% elsif month == '11' %>
+					<%= "Nov." %>
+				<% elsif month == '12' %>
+					<%= "Dec." %>
+				<% end %>
+				<%= day %>,
+				<%= year %>
+			</p>	
+		</a>
 		<!-- Showing away vs home team -->
-			<p class=team>
-				<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
-			</p>
-			<p class='where'>
-				at
-			</p>
-			<p class=team>
-				<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
-			</p>
+		<p class=team>
+			<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
 		</p>
-
-
+		<p class='where'>
+			at
+		</p>
+		<p class=team>
+			<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+		</p>
 		<!-- using points scored to determine Win or Loss -->
-			<% if  (g['stats']['PointsFor']['#text']).to_i > (g['stats']['PointsAgainst']['#text']).to_i %>
-				<p class=w>
-					<%= "W " %><%= (g['stats']['PointsFor']['#text']) %> - <%=(g['stats']['PointsAgainst']['#text']) %>
-				</p>
-			<% else %> 
-				<p class=l>	
-					<%= "L "%><%=(g['stats']['PointsAgainst']['#text']) %> - <%= (g['stats']['PointsFor']['#text']) %>
-				</p>
-			<% end %>
-		</div>
-<%end%>
+		<% if  (g['stats']['PointsFor']['#text']).to_i > (g['stats']['PointsAgainst']['#text']).to_i %>
+			<p class=w>
+				<%= "W " %><%= (g['stats']['PointsFor']['#text']) %> - <%=(g['stats']['PointsAgainst']['#text']) %>
+			</p>
+		<% else %> 
+			<p class=l>	
+				<%= "L "%><%=(g['stats']['PointsAgainst']['#text']) %> - <%= (g['stats']['PointsFor']['#text']) %>
+			</p>
+		<% end %>
+	</div>
+<% end %>
