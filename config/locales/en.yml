@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+
+#Changing the devise login for username or email
+en:
+  activerecord:
+    attributes:
+      user:  
+        login: "Username or email"
