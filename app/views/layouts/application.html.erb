@@ -15,14 +15,14 @@
     <% if !user_signed_in? %>
       <%= link_to "Home", root_path %>
     <% end %>
-      <%= link_to 'NBA', leagues_season_path(:league => "nba", :season => "2016-2017") %>
-      <%= link_to 'NFL', leagues_season_path(:league => "nfl", :season => "2016-2017")  %>
-      <%= link_to 'NHL', leagues_season_path(:league => "nhl", :season => "2016-2017")  %>
-      <%= link_to 'MLB', leagues_season_path(:league => "mlb", :season => "2016-2017")  %>
+      <%= link_to 'MLB', leagues_season_path(:league => "mlb", :season => "2017-regular")  %>  
+      <%= link_to 'NBA', leagues_season_path(:league => "nba", :season => "2016-2017-regular") %>
+      <%= link_to 'NFL', leagues_season_path(:league => "nfl", :season => "2017-regular")  %>
+      <%= link_to 'NHL', leagues_season_path(:league => "nhl", :season => "2016-2017-regular")  %>
 
     <% if !user_signed_in? %>
-    <a id="log_in" onclick="login()">Login</a>
-    <a id="sign_up" onclick="signup()">Sign Up</a>
+    <a class="pointer" id="log_in" onclick="login()">Login</a>
+    <a class="pointer" id="sign_up" onclick="signup()">Sign Up</a>
     <% else %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     <% end %>

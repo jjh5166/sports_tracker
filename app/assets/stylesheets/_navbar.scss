@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .layout-body {
     margin: 0 auto;
     background-color: $main-background;
@@ -27,11 +32,10 @@
     color: white;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-}
-
 .active {
     background-color: $nav-active;
+}
+
+.pointer{
+    cursor: pointer;
 }
