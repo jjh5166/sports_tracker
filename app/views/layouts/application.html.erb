@@ -12,14 +12,21 @@
 
 
   <div class="navbar">
-  <ul>
     <% if !user_signed_in? %>
-    <li><%= link_to "Home", root_path, :class => current_class?(root_path) %></li>
-    <li> <a id="log_in" onclick="login()">Login</a></li>
-    <li> <a id="sign_up" onclick="signup()">Sign Up</a></li>
-    <% else %>
-    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <%= link_to "Home", root_path %>
     <% end %>
+      <%= link_to 'MLB', leagues_season_path(:league => "mlb", :season => "2017-regular")  %>
+      <%= link_to 'NBA', leagues_season_path(:league => "nba", :season => "2016-2017-regular") %>
+      <%= link_to 'NFL', leagues_season_path(:league => "nfl", :season => "2017-regular")  %>
+      <%= link_to 'NHL', leagues_season_path(:league => "nhl", :season => "2016-2017-regular")  %>
+
+    <% if !user_signed_in? %>
+    <a class="pointer" id="log_in" onclick="login()">Login</a>
+    <a class="pointer" id="sign_up" onclick="signup()">Sign Up</a>
+    <% else %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <% end %>
+
     <li>
       <%= link_to 'NBA', leagues_season_path(:league => "nba", :season => "2016-2017") %>
       <ul class="fallback">
@@ -36,6 +43,7 @@
 
 
   </ul>
+
 </div>
 </header>
     <p class="notice"><%= notice %></p>
@@ -49,8 +57,8 @@
             <div class="signin-box">
               <h1 class="modal-titles">Login</h1>
               <%= form_for(:user, :url => session_path(:user)) do |f| %>
-                <div class="centerer">Email</div>
-                <div> <%= f.email_field :email,autofocus: true, autocomplete: "email", placeholder: "Email"  %></div>
+                <div class="centerer">Username or Email</div>
+                <div> <%= f.text_field :login, autofocus: true, autocomplete: "email", placeholder: "Username or Email"  %></div>
                 <div>Password</div>
                 <div> <%= f.password_field :password, autocomplete: "off", placeholder: "Password"  %></div>
                 <div><%= f.check_box :remember_me%>
@@ -72,8 +80,8 @@
                 <%= form_for(:user, :url => registration_path(:user)) do |f| %>
 
                   <div class="field">
-                  <%=f.label :name %> <br/>
-                  <%= f.text_field :name, autofocus: true %></div>
+                  <%=f.label :username %> <br/>
+                  <%= f.text_field :username, autofocus: true %></div>
 
                   <div class="field">
                   <%= f.label :email %><br />
@@ -131,7 +139,6 @@ let modalOverlay2 = document.getElementById('modal-overlay2');
 
     modalOverlay2.style.display = 'none';
   }
-
 
 
 </script>

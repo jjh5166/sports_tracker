@@ -1,16 +1,22 @@
 <div class="division_grid">
 	<%@divisions.each do |d|%>
 		<table class="division_box">
-			<tr><th><%=d["@name"].sub(/^.*\//,'')%></th></tr>
+			<tr><th><%=d["@name"].sub(/^.*\//,'')%></th>
+				<th>Wins</th>
+				<th>Losses</th>
+				<th>OT Losses</th>
+				<th>PTS</th>
+			</tr>
 			<%d["teamentry"].each do |t|%>
 				<tr>
-					<td><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
-					<td><%=t["stats"]["stats"]["Wins"]["#text"]%></td>
-					<td><%=t["stats"]["stats"]["Losses"]["#text"]%></td>
-					<td><%=t["stats"]["stats"]["OvertimeLosses"]["#text"]%></td>
-					<td><%=t["stats"]["stats"]["Points"]["#text"]%></td>
+					<td ><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
+					<td class="teamStats"><%=t["stats"]["stats"]["Wins"]["#text"]%></td>
+					<td class="teamStats"><%=t["stats"]["stats"]["Losses"]["#text"]%></td>
+					<td class="teamStats"><%=t["stats"]["stats"]["OvertimeLosses"]["#text"]%></td>
+					<td class="teamStats"><%=t["stats"]["stats"]["Points"]["#text"]%></td>
 				</tr>
 			<%end%>
 		</table>
 	<%end%>
 </div>
+
