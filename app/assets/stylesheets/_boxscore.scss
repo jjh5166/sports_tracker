@@ -1,0 +1,51 @@
+#bodyBoxscore{
+	background-color: lightgrey;
+}
+
+#awayPlayersTable {
+	width: 98%;
+	margin: 10px 1%;
+}
+#homePlayersTable {
+	width: 98%;
+	margin: 10px 1%;
+}
+
+#statsBox {
+	margin: 0 auto;
+	border: 1px solid black;
+	padding: 20px;
+	width: 90%;
+	background-color: white;
+}
+.headliner {
+	margin: 0 auto;
+	border: 1px solid black;
+	padding: 20px;
+	width: 90%;
+	background-color: white;
+}
+
+.player {
+// text-align: center;
+width: 200px;
+}
+
+.playerStats {
+// text-align: center;
+width: 50px;
+}
+
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+table, th, td {
+	text-align: left;
+	padding: 10px;
+	border-collapse: collapse;
+    // border: 1px solid black;
+}
+table, tr, td {
+	// width: 300px;
+}
