@@ -1,0 +1,24 @@
+.season_title{
+  position: relative;
+  text-align: center;
+
+}
+.division_grid{
+  position: absolute;
+  display: inline-block;
+  margin: auto;
+  right: 0;
+  left: 0;
+  outline: 2px solid purple;
+  width: 90%;
+  height: 90%;
+  column-count: 2;
+}
+.division_box{
+  position: relative;
+  outline: 2px solid orange;
+  width: 100%;
+  height: 33%;
+  float: left;
+
+}
