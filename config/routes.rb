@@ -9,7 +9,7 @@ get '/:league/:season/', to: 'leagues#season'
 
 get '/:league/boxscore/:gameid', to: 'games#boxscore' 
 
-get '/:league/teamgamelogs/:Abbreviation', to: "leagues#teamseason"
+get '/:league/schedule/:Abbreviation', to: "leagues#teamseason"
 
 
 

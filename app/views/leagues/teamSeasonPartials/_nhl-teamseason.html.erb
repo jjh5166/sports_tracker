@@ -62,11 +62,11 @@
 		<!-- using points scored to determine Win or Loss -->
 			<% if  (g['stats']['GoalsFor']['#text']).to_i > (g['stats']['GoalsAgainst']['#text']).to_i %>
 				<p class=w>
-					<%= "W" %>
+					<%= "W " %><%= (g['stats']['GoalsFor']['#text']) %> - <%= (g['stats']['GoalsAgainst']['#text']) %>
 				</p>
 			<% else %> 
 				<p class=l>	
-					<%= "L"%>
+					<%= "L "%><%= (g['stats']['GoalsAgainst']['#text']) %> - <%= (g['stats']['GoalsFor']['#text']) %>
 				</p>
 			<% end %>
 		</div>

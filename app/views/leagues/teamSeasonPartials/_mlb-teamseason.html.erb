@@ -13,8 +13,9 @@
 					<% year = gameid  [0..3] %>
 					<% month = gameid [4..5] %>
 					<% day = gameid [6..7] %>	
+
 					
-					<!-- If statement to render month instead of string representing onth as a number -->
+					<!-- If statement to render month instead of string representing month as a number -->
 					<% if month == '01' %>
 						<%= "Jan." %>
 					<% elsif month == '02' %>
@@ -40,13 +41,13 @@
 					<% elsif month == '12' %>
 						<%= "Dec." %>
 					<% end %>
-
-					<%= day %>
+					<%= day %>,
 					<%= year %>
-			</a>
+				</p>	
+			
 
 			
-		<!-- Showing away vs home team -->
+			<!-- Showing away at home team -->
 			<p class=team>
 				<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
 			</p>
@@ -56,18 +57,21 @@
 			<p class=team>
 				<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
 			</p>
-		</p>
+		
 
 
-		<!-- using points scored to determine Win or Loss -->
+
+			<!-- using points scored to determine Win or Loss -->
 			<% if  (g['stats']['RunsFor']['#text']).to_i > (g['stats']['RunsAgainst']['#text']).to_i %>
 				<p class=w>
-					<%= "W" %>
+					<%= "W " %><%= (g['stats']['RunsFor']['#text']) %>-<%= (g['stats']['RunsAgainst']['#text'])%>
+					<%#= g['stats']['RunsFor']['#text']).to_i %><%#= g['stats']['RunsAgainst']['#text']).to_i %>
 				</p>
 			<% else %> 
 				<p class=l>	
-					<%= "L"%>
+					<%= "L "%><%= (g['stats']['RunsAgainst']['#text'])%> - <%= (g['stats']['RunsFor']['#text']) %>
 				</p>
 			<% end %>
+			</a>
 		</div>
 <%end%>
