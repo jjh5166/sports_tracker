@@ -1,16 +1,8 @@
 <h1 class="season_title"><%=params[:league].upcase%>  <%=params[:season].sub(/-(?!.*-).*$/,'')%></h1>
+	
+	<% if params[:league] != "nhl" %>
+		<%= render :file => "/leagues/divisionStandingsPartials/_notnhl-standings.html.erb" %>
+	<% elsif params[:league] == "nhl" %>
+		<%= render :file => "/leagues/divisionStandingsPartials/_nhl-standings.html.erb" %>
+	<% end %>
 
-<div class="division_grid">
-<%@divisions.each do |d|%>
-<table class="division_box">
-<tr><th><%=d["@name"].sub(/^.*\//,'')%></th></tr>
-<%d["teamentry"].each do |t|%>
-<tr>
-<td><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
-<td><%=t["stats"]["Wins"]['#text']%></td>
-<td><%=t["stats"]["Losses"]['#text']%></td>
-<td><%=t["stats"]["WinPct"]['#text']%></td></tr>
-<%end%>
-</table>
-<%end%>
-</div>
