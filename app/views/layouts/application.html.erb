@@ -26,10 +26,13 @@
     <li><%= link_to 'NFL', root_path  %></li>
     <li><%= link_to 'NHL', root_path  %></li>
     <li><%= link_to 'MLB', root_path  %></li>
+    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
   </ul>
 </div>
 </header>
-  
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

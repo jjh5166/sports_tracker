@@ -56,17 +56,17 @@
 		<% firstName = a['player']['FirstName']%>
 		<% lastName = a['player']['LastName']%>
 		<% position = a['player']['Position']%>
-		<% goals = a['stats']['Goals']['#text'].to_i%>
-		<% assist = a['stats']['Assist']['#text'].to_i%>
-		<% points = a['stats']['Points']['#text'].to_i%>
-		<% shots = a['stats']['Shots']['#text'].to_i%>
+		<%# goals = a['stats']['Goals']['#text'].to_i%>
+		<%# assist = a['stats']['Assist']['#text'].to_i%>
+		<%# points = a['stats']['Points']['#text'].to_i%>
+		<%# shots = a['stats']['Shots']['#text'].to_i%>
 
 		<div>
 			<div><%= firstName%> <%= lastName%> <%= position%></div>
-			<div>Goals: <%= goals%></div>
-			<div>Assists: <%= assist%></div> 
-			<div>Points: <%= points%></div> 
-			<div>Shots: <%= shots%></div>
+			<div>Goals: <%#= goals%></div>
+			<div>Assists: <%#= assist%></div> 
+			<div>Points: <%#= points%></div> 
+			<div>Shots: <%#= shots%></div>
 
 		</div>
 		<hr>
@@ -89,17 +89,17 @@
 			<% firstName = h['player']['FirstName']%>
 			<% lastName = h['player']['LastName']%>
 			<% position = h['player']['Position']%>
-			<% goals = h['stats']['Goals']['#text'].to_i%>
-			<% assist = h['stats']['Assist']['#text'].to_i%>
-			<% points = h['stats']['Points']['#text'].to_i%>
-			<% shots = h['stats']['Shots']['#text'].to_i%>
+			<%# goals = h['stats']['Goals']['#text'].to_i%>
+			<%# assist = h['stats']['Assist']['#text'].to_i%>
+			<%# points = h['stats']['Points']['#text'].to_i%>
+			<%# shots = h['stats']['Shots']['#text'].to_i%>
 	
 		<div>
 			<div><%= firstName%> <%= lastName%> <%= position%></div>
-			<div>Goals: <%= goals%></div>
-			<div>Assists: <%= assist%></div> 
-			<div> Points: <%= points%></div> 
-			<div>Shots: <%= shots%></div>
+			<div>Goals: <%#= goals%></div>
+			<div>Assists: <%#= assist%></div> 
+			<div> Points: <%#= points%></div> 
+			<div>Shots: <%#= shots%></div>
 
 		</div>
 		<hr>
