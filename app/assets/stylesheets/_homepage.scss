@@ -9,17 +9,21 @@
     // background-color: #4CAF50;
     float: left;
     border: none;
-    color: white;
     padding: 5vh 5vh;
     text-align: center;
     text-decoration: none;
-    font-size: 5vh; // position: relative
-    // display: block;
-    outline: 1px;
+    font-size: 5vh;
+    
+}
+
+.button a {
+    text-decoration: none;
+    color: white;
 }
 
 .button1 {
     background-color: blue;
+    color: white;
 }
 
 .button2 {
