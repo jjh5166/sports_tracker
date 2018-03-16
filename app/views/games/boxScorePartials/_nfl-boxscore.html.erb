@@ -1,1 +1,66 @@
 <h1>Testing</h1>
+<!-- Page variables -->
+
+<% g = @games %>
+<% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
+<% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
+<% quarterScore = g['quarterSummary']['quarter']%>
+<% teamCity = g['game']%>
+<% teamName = g['game']%>
+<% abb = g['game']%>
+<% pts = g['quarterSummary']['quarterTotals']%> 
+<% @awayQuarterTotals = []%>
+<% @homeQuarterTotals = []%>
+
+<hr>
+
+<div class='matchupDisplay'>
+	<%= teamCity['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %> at	<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+		
+</div>
+
+<div class='totalScore'>
+	<%= pts['awayScore'] %>	<%= pts['homeScore'] %>
+</div>
+
+<hr>
+
+<h1>Boxscore</h1>
+
+<!-- <div>Away QTR Score</div> -->
+
+<%= abb['awayTeam']['Abbreviation']%> -
+<% quarterScore.each do |q|%>
+	<%= q['awayScore'] %>
+	<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
+<% end %>
+
+<%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%>
+
+<br/>
+<!-- <div>Home QTR Score</div> -->
+
+<%= abb['homeTeam']['Abbreviation']%> -
+<% quarterScore.each do |q|%>
+	<%= q['homeScore'] %>
+	<% @homeQuarterTotals.push(q['homeScore'].to_i) %>
+<% end %>
+
+<%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
