@@ -1,0 +1,19 @@
+class PicturesController < ApplicationController
+  def new
+    @pic = Picture.new
+    # @userid = current_user.id
+  end
+
+  def create
+    @pic = Picture.new(pic_params)
+    if @pic.save
+      flash[:notice] = 'Picture Saved'
+    else
+      flash[:notice] = 'Could not save picture'
+    end
+  end
+private
+  def pic_params
+    params.require(:picture).permit(:description, :game_id, :user_id, :image_file_name)
+  end
+end

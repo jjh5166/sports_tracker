@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Apitestapp</title>
+    <title>Sports Tracker</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,7 +9,7 @@
   </head>
 <body class="layout-body">
 <header>
-  
+
 
   <div class="navbar">
   <ul>
@@ -28,13 +28,13 @@
         <li><%= link_to '2016 - 2017', root_path  %></li>
       </ul>
     </li>
-    
+
     <li><%= link_to 'NFL', root_path  %></li>
     <li><%= link_to 'NHL', root_path  %></li>
     <li><%= link_to 'MLB', root_path  %></li>
 
-    
-    
+
+
   </ul>
 </div>
 </header>
@@ -70,7 +70,7 @@
             <div class="signin-box">
               <h1 class="modal-titles">Sign Up</h1>
                 <%= form_for(:user, :url => registration_path(:user)) do |f| %>
-              
+
                   <div class="field">
                   <%=f.label :name %> <br/>
                   <%= f.text_field :name, autofocus: true %></div>
@@ -114,7 +114,7 @@ let close2 = document.getElementById('close2');
 let modalOverlay = document.getElementById('modal-overlay');
 
 let modalOverlay2 = document.getElementById('modal-overlay2');
-  
+
   function login(){
     modalOverlay.style.display = 'block';
 }
