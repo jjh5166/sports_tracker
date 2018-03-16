@@ -27,13 +27,11 @@
 }
 
 .player {
-// text-align: center;
 width: 200px;
 }
 
 .playerStats {
-// text-align: center;
-width: 50px;
+width: 200px;
 }
 
 tr:nth-child(even) {
@@ -45,7 +43,4 @@ table, th, td {
 	padding: 10px;
 	border-collapse: collapse;
     // border: 1px solid black;
-}
-table, tr, td {
-	// width: 300px;
 }
