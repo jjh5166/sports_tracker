@@ -16,8 +16,6 @@ class LeaguesController < ApplicationController
     @northwest = @divisions.detect {|d| d["@name"] == "Western/Northwest"}
     @pacific = @divisions.detect {|d| d["@name"] == "Western/Pacific"}
     @southwest = @divisions.detect {|d| d["@name"] == "Western/Southwest"}
-
-
   end
 
   def teamseason
