@@ -1,20 +1,12 @@
-<h1>hello</h1>
+<!-- Renders the partial files from their corresponding files -->
 
+<% if params[:league] == "nba" %>
+	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
+<% elsif params[:league] == "nfl" %>
+	<%= render :file => "/games/boxScorePartials/_nfl-boxscore.html.erb" %>
+<% elsif params[:league] == "nhl" %>
+	<%= render :file => "/games/boxScorePartials/_nhl-boxscore.html.erb" %>
+<% elsif params[:league] == "mlb" %>
+	<%= render :file => "/games/boxScorePartials/_mlb-boxscore.html.erb" %>
+<% end %>
 
-<%= @games %>
-
-
-# <%# @games.each do |h,v|%>
-	<%# homeTeam = v['gamelogs'][0]['game']['homeTeam']['Abbreviation']%>
-	<%# homePTS = v['gamelogs'][0]['stats']['Pts']['#text']%>
-
-	<%# awayTeam = v['gamelogs'][0]['game']['awayTeam']['Abbreviation']%>
-	<%# awayPTS = v['gamelogs'][0]['stats']['PtsAgainst']['#text']%>
-		
-		
-
-	<br/>
-	<div><%#= homeTeam %> : <%#=homePTS%></div>
-	<div><%#=awayTeam%> : <%#=awayPTS%></div>
-	<br/>
-	<%#end%>
