@@ -1,19 +1,9 @@
-<h1>Team's Schedule</h1>
-
-<% @games.each do |g| %>
-		<div class=box>
-
-
-			<% gameid = (g['game']['date']).tr("-","") %>
-			<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
-			<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
-
-			<a class=font href='/<%= params[:league] %>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
-		<% cal = (g['game']['date']) %>
-		<%= cal %>
-		<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
-		vs.
-		<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
-			</a>
-		</div>
-<%end%>
+<% if params[:league] == "nba" %>
+	<%= render :file => "/leagues/teamSeasonPartials/_nba-teamseason.html.erb" %>
+<% elsif params[:league] == "nfl" %>
+	<%= render :file => "/leagues/teamSeasonPartials/_nfl-teamseason.html.erb" %>
+<% elsif params[:league] == "mlb" %>
+	<%= render :file => "/leagues/teamSeasonPartials/_mlb-teamseason.html.erb" %>
+	<% elsif params[:league] == "nhl" %>
+	<%= render :file => "/leagues/teamSeasonPartials/_nhl-teamseason.html.erb" %>
+<% end %>
