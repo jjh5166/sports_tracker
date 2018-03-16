@@ -15,7 +15,7 @@
   <ul>
     <li><%= link_to "Home", root_path, :class => current_class?(root_path) %></li>
     <li>
-      <%= link_to 'NBA', root_path  %>
+      <%= link_to 'NBA', leagues_season_path(:league => "nba", :season => "2016-2017") %>
       <ul class="fallback">
         <li><%= link_to '2014 - 2015', root_path  %></li>
         <li><%= link_to '2015 - 2016', root_path  %></li>
