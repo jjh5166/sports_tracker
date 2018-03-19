@@ -1,0 +1,18 @@
+<h1>Edit Picture</h1>
+
+
+<%= form_for @pic do |f| %>
+
+<%= f.text_area :description %>
+<%= f.file_field :image%>
+<%= f.submit %>
+<%end%>
+
+
+
+
+
+
+
+
+<%= link_to 'Delete Picture', picture_path, method: :delete %>
