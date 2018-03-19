@@ -4,7 +4,9 @@ class PicturesController < ApplicationController
     @userid = current_user.id
     @gameid = params[:gameid]
   end
-
+  def show
+    @pic = Picture.find_by_id(params[:id])
+  end
   def create
     pic = Picture.new(pic_params)
     redirection = nil
