@@ -1,3 +1,11 @@
+ <head>
+ <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="background">
 
 <div class="wrapper">
 	<div class="button button4"><%= link_to 'MLB', leagues_season_path(:league => "mlb", :season => "2017-regular") %></div>
@@ -6,3 +14,4 @@
 	<div class="button button3"><%= link_to 'NHL', leagues_season_path(:league => "nhl", :season => "2016-2017-regular") %></div>
 	
 </div>
+</body>

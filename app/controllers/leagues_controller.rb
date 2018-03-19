@@ -1,7 +1,7 @@
 class LeaguesController < ApplicationController
 
   def index
-
+    render :layout => false
   end
 
   def show
