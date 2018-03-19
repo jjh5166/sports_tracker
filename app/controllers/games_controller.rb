@@ -14,5 +14,6 @@ class GamesController < ApplicationController
 
 	def boxscore
 		@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'game_boxscore', 'json', 'gameid' => params[:gameid])['gameboxscore']
+		@pics = Picture.where(game_id: params[:gameid])
 	end
 end
