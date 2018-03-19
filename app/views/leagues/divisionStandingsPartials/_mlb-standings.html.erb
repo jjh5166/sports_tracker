@@ -13,7 +13,11 @@
 
 	<%@divisions.each do |d|%>
 		<table class="division_box">
-			<tr><th><%=d["@name"].sub(/^.*\//,'')%></th></tr>
+			<tr>
+				<th>
+					<%=d["@name"].sub(/^.*\//,'')%>	
+				</th>
+			</tr>
 			<%d["teamentry"].each do |t|%>
 				<tr>
 					<td><a href='/<%= params[:league] %>/<%=params[:season]%>/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
