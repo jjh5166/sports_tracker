@@ -23,3 +23,5 @@
 .byebug_history
 *.username
 *.password
+/public/system/pictures/*
+/results/*
