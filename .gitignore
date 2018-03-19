@@ -24,3 +24,4 @@
 *.username
 *.password
 /results/*
+/public/system/pictures/*
