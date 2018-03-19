@@ -7,7 +7,7 @@
 		<% gameid = (g['game']['date']).tr("-","") %>
 		<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
 		<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
-		<a class=font href='/<%= params[:league] %>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
+		<a class=font href='/<%= params[:league] %>/<%=params[:season]%>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
 			<!-- Rendering the date for the game -->
 			<p>
 				<% gameid %>

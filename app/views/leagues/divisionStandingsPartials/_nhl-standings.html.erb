@@ -9,7 +9,7 @@
 			</tr>
 			<%d["teamentry"].each do |t|%>
 				<tr>
-					<td ><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
+					<td ><a href='/<%= params[:league] %>/<%=params[:season]%>/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
 					<td class="teamStats"><%=t["stats"]["stats"]["Wins"]["#text"]%></td>
 					<td class="teamStats"><%=t["stats"]["stats"]["Losses"]["#text"]%></td>
 					<td class="teamStats"><%=t["stats"]["stats"]["OvertimeLosses"]["#text"]%></td>
