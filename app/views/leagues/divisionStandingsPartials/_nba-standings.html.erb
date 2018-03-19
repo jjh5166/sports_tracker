@@ -12,7 +12,13 @@
 
 
 	<%@divisions.each do |d|%>
-			<table class="division_box">
+		<table class="division_box">
+			<tr>
+				<th>
+					<%=d["@name"].sub(/^.*\//,'')%>
+				</th>
+			</tr>
+				<%d["teamentry"].each do |t|%>
 				<tr>
 					<th><%=d["@name"].sub(/^.*\//,'')%></th>
 					<th>Wins</th>
@@ -28,5 +34,6 @@
 					</tr>
 					<%end%>
 			</table>
+
 	<%end%>
 
