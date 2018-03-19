@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
 
     @comment = Comment.new(comment_params)
       if @comment.save
-        flash[:message] = 'Comment Saved'
+        flash[:notice] = 'Comment Saved'
         redirect_to '/'
       else
-        flash[:message] = 'Comment Not Saved'
+        flash[:notice] = 'Comment Not Saved'
       end
   end
   def edit
@@ -20,16 +20,16 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find_by_id(params[:id])
     if @comment.update(comment_params)
-      flash[:message] = 'Comment updated'
+      flash[:notice] = 'Comment updated'
       redirect_to blogs_path
     else
-      flash[:message] = 'try again'
+      flash[:notice] = 'Comment was not Saved'
       redirect_to edit_blog_comment_path
     end
   end
   def destroy
   end
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :blog_id)
+    params.require(:comment).permit(:content, :user_id, :picture_id)
   end
 end

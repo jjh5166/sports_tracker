@@ -21,11 +21,28 @@ class PicturesController < ApplicationController
       end
       flash[:notice] = 'Picture Saved'
       redirect_to path
-      # redirect_to :back
     else
       flash[:notice] = 'Could not save picture'
       redirect_to new_picture_path
     end
+  end
+  def edit
+    @pic = Picture.find_by_id(params[:id])
+  end
+  def update
+    @pic = Picture.find(params[:id])
+    if @pic.update(pic_params)
+      flash[:notice] = "Picture updated successfully"
+      redirect_to user_profile_path(current_user.username)
+    else
+      flash[:notice] = 'Edits did not save'
+      redirect_to edit_picture_path
+    end
+  end
+  def destroy
+    pic = Picture.find_by_id(params[:id])
+    pic.destroy
+    redirect_to user_profile_path(current_user.username)
   end
 private
   def pic_params

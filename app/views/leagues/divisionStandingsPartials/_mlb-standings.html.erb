@@ -13,17 +13,19 @@
 
 	<%@divisions.each do |d|%>
 		<table class="division_box">
+
 			<tr>
-				<th>
-					<%=d["@name"].sub(/^.*\//,'')%>	
-				</th>
+        <th><%=d["@name"].sub(/^.*\//,'')%></th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>PCT</th>
 			</tr>
 			<%d["teamentry"].each do |t|%>
 				<tr>
 					<td><a href='/<%= params[:league] %>/<%=params[:season]%>/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
-					<td><%=t["stats"]["Wins"]["#text"]%></td>
-					<td><%=t["stats"]["Losses"]["#text"]%></td>
-					<td><%=t["stats"]["WinPct"]["#text"]%></td>
+					<td class="teamStats"><%=t["stats"]["Wins"]["#text"]%></td>
+					<td class="teamStats"><%=t["stats"]["Losses"]["#text"]%></td>
+					<td class="teamStats"><%=t["stats"]["WinPct"]["#text"]%></td>
 				</tr>
 			<%end%>
 		</table>

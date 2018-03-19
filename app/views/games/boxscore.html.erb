@@ -1,9 +1,8 @@
 <!-- Renders the partial files from their corresponding files -->
 <% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
 <%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
-<%=link_to 'test',boxscore_path(league: params[:league],:gameid => params[:gameid])%>
 <% @pics.each do |p|%>
-<%= image_tag p.image.url(:med)%>
+	<%=image_tag p.image.url(:med), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}')", :class => "pic_image",:id => p.id%>
 <%end%>
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
@@ -14,3 +13,40 @@
 <% elsif params[:league] == "mlb" %>
 	<%= render :file => "/games/boxScorePartials/_mlb-boxscore.html.erb" %>
 <% end %>
+
+
+<div id="modal-overlay-pic">
+    <div class="modal_pic">
+      <button class="close3" onclick="Close_pic()">X</button>
+
+					<img id="pic_show">
+					<br>
+					<p id="pic_des"></p>
+					<div class="comment_box">
+
+					</div>
+      </div>
+
+    </div>
+<script>
+
+let modalOverlayPic = document.getElementById('modal-overlay-pic');
+let pic_show = document.getElementById('pic_show');
+let pic_des = document.getElementById('pic_des');
+let pic_selected = false;
+
+
+  function display_pic(pic_id, pic_desc){
+    modalOverlayPic.style.display = 'block';
+		pic_selected = pic_id;
+		pic_selected_des = pic_desc;
+		pic_show.src = pic_selected;
+		pic_des.innerHTML = pic_selected_des;
+}
+
+  function Close_pic() {
+
+    modalOverlayPic.style.display = 'none';
+  }
+
+</script>
