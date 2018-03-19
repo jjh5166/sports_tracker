@@ -1,0 +1,13 @@
+<h3>Create Picture</h3>
+<div class="InputBox">
+  <h2>New Picture:</h2>
+
+<%= form_for @pic do |f| %>
+<%= f.hidden_field :user_id, :value => @userid, :required => true %>
+<%= f.hidden_field :game_id, :value => @gameid, :required => true %>
+<%= hidden_field_tag :url, params[:url].to_s %>
+<div class="form_field"><%= f.text_area :description %></div>
+<div class="form_field"><%= f.file_field :image%></div>
+<%= f.submit %>
+<% end %>
+</div>
