@@ -8,7 +8,7 @@
 <% teamCity = g['game']%>
 <% teamName = g['game']%>
 <% abb = g['game']%>
-<% pts = g['quarterSummary']['quarterTotals']%> 
+<% pts = g['quarterSummary']['quarterTotals']%>
 <% @awayQuarterTotals = []%>
 <% @homeQuarterTotals = []%>
 
@@ -16,7 +16,7 @@
 
 <div class='matchupDisplay'>
 	<%= teamCity['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %> at	<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
-		
+
 </div>
 
 <div class='totalScore'>
@@ -51,16 +51,13 @@
  <h1> test </h1>
 
 
- 	<% awayPlayers.find {|x| x[:stats][:PassAttempts][:'#text'] > 0} %>
- 	<%= x %>
- 	<% end %>
+ 	<%# awayPlayers.find {|x| x[:stats][:PassAttempts][:'#text'] > 0} %>
+ 	<%#= x %>
+ 	<%# end %>
 
 
 
-	
+
 <%# @awayPlayers .select{|p| ['stats']["passattempt"]["#text"] >0} %>
 <%#= p %>
 <%# end %>
-
-
-
