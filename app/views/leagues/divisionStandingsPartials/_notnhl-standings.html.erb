@@ -1,3 +1,11 @@
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Select a Season</button>
+  <div id="myDropdown" class="dropdown-content">
+    <%= link_to '2017 Regular Season', leagues_season_path(params[:league], '2017-regular')%>
+    <%= link_to '2016 Regular Season', leagues_season_path(params[:league], '2016-regular')%>
+  </div>
+</div>
+
 <div class="division_grid">
 	<%@divisions.each do |d|%>
 		<table class="division_box">

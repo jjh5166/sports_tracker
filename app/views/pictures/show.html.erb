@@ -1,0 +1,7 @@
+<h1>Picture show page</h1>
+
+<%=image_tag @pic.image.url(:large)%>
+<%= @pic.description%>
+
+
+<%= link_to 'Edit Picture', edit_picture_path %>

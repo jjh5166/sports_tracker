@@ -1,6 +1,6 @@
 class Picture < ApplicationRecord
   belongs_to :user
-  # has_many :comments, :dependent => :delete_all need to add picture_id to comments
+  has_many :comments, :dependent => :delete_all
   validates :game_id, presence: true
   validates :user_id, presence: true
   validates :description, presence: true

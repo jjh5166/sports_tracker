@@ -1,8 +1,12 @@
 <h1 class="season_title"><%=params[:league].upcase%>  <%=params[:season].sub(/-(?!.*-).*$/,'')%></h1>
 	
-	<% if params[:league] != "nhl" %>
-		<%= render :file => "/leagues/divisionStandingsPartials/_notnhl-standings.html.erb" %>
+	<% if params[:league] == "nba" %>
+		<%= render :file => "/leagues/divisionStandingsPartials/_nba-standings.html.erb" %>
 	<% elsif params[:league] == "nhl" %>
 		<%= render :file => "/leagues/divisionStandingsPartials/_nhl-standings.html.erb" %>
+	<% elsif params[:league] == "nfl" %>
+		<%= render :file => "/leagues/divisionStandingsPartials/_nfl-standings.html.erb" %>
+	<% elsif params[:league] == "mlb" %>
+		<%= render :file => "/leagues/divisionStandingsPartials/_mlb-standings.html.erb" %>
 	<% end %>
 
