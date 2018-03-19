@@ -16,24 +16,18 @@
 			<tr>
 				<th>
 					<%=d["@name"].sub(/^.*\//,'')%>
-				</th>
-			</tr>
-				<%d["teamentry"].each do |t|%>
-				<tr>
-					<th><%=d["@name"].sub(/^.*\//,'')%></th>
 					<th>Wins</th>
 					<th>Losses</th>
 					<th>PCT</th>
-				</tr>
-					<%d["teamentry"].each do |t|%>
+				</th>
+			</tr>
+				<%d["teamentry"].each do |t|%>
 					<tr>
 						<td><a href='/<%= params[:league] %>/<%=params[:season]%>/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
 						<td class="teamStats"><%=t["stats"]["Wins"]["#text"]%></td>
 						<td class="teamStats"><%=t["stats"]["Losses"]["#text"]%></td>
 						<td class="teamStats"><%=t["stats"]["WinPct"]["#text"]%></td>
 					</tr>
-					<%end%>
+				<%end%>
 			</table>
-
 	<%end%>
-
