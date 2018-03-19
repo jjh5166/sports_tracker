@@ -1,26 +1,42 @@
+
 .season_title{
   position: relative;
   text-align: center;
 }
-// .division_grid{
-//   margin:auto;
-//   outline: 1px solid grey;
-//   width: 95%;
-//   height: 99%;
-// }
-.division_box{
+
+.division_box {
   outline: 2px solid grey;
-  width: 100%;
+  height: 95%;
+  width: 95%;
+  margin: 10px auto;
 }
 
 .teamStats {
-width: 200px;
+width: 20%;
+text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+table, th, td {
+  font-family: $font-stack;
+  // text-decoration: none;
+  text-align: left;
+  padding: 10px;
+  border-collapse: collapse;
+    // border: 1px solid black;
+}
+
+td a {
+  text-decoration: none;
 }
 
 // season selector
 .dropbtn {
-  background-color: lightblue;
-  color: white;
+  background-color: lightgrey;
+  color: black;
   padding: 16px;
   font-size: 16px;
   border-radius: 25px;
@@ -28,22 +44,24 @@ width: 200px;
 }
 
 .dropbtn:hover, .dropbtn:focus {
-  background-color: blue;
+  background-color: slategrey;
+  color: white;
 }
 
 .selector {
   // position: relative;
   // display: inline-block;
   float: right;
+  margin-bottom: 40px;
 }
 
 .selector-content {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: lightgrey;
   min-width: 160px;
   z-index: 1;
-  right: 0;
+  right: 5px;
 }
 
 .selector-content a {
@@ -54,7 +72,7 @@ width: 200px;
 }
 
 .selector-content a:hover {
-  background-color: lightblue;
+  background-color: lightcoral;
 }
 
 // click on to display on dropdown-content
