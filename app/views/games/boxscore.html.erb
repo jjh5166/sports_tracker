@@ -1,10 +1,10 @@
 <!-- Renders the partial files from their corresponding files -->
 <% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
 <%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
-<%=link_to 'test',boxscore_path(league: params[:league],:gameid => params[:gameid])%>
 <% @pics.each do |p|%>
-<%= image_tag p.image.url(:med)%>
-<%end%>
+<%= link_to picture_path(p.id) do %>
+	<%image_tag p.image.url(:med)%>
+<%end%><%end%>
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
 <% elsif params[:league] == "nfl" %>

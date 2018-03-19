@@ -1,0 +1,10 @@
+<h1> <%=@user.username%>'s Profile Page</h1>
+
+
+<div class="user_pics">
+  <%@pics.each do |p|%>
+  <%= link_to picture_path(p.id) do %>
+  	<%image_tag p.image.url(:med)%>
+  <%end%>
+  <%end%>
+</div>
