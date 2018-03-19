@@ -7,7 +7,8 @@
 		<% gameid = (g['game']['date']).tr("-","") %>
 		<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
 		<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
-		<a class=font href='/<%= params[:league] %>/<%=params[:season]%>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
+		<% total = ((gameid)+ '-' +(gameawayt)+ '-' +(gamehomet)) %>
+	
 			<!-- Rendering the date for the game -->
 			<p>
 				<% gameid %>
@@ -57,11 +58,13 @@
 		<!-- using points scored to determine Win or Loss -->
 		<% if  (g['stats']['PointsFor']['#text']).to_i > (g['stats']['PointsAgainst']['#text']).to_i %>
 			<p class=w>
-				<%= "W " %><%= (g['stats']['PointsFor']['#text']) %> - <%=(g['stats']['PointsAgainst']['#text']) %>
+				<% link_to scorestring =  "W " + (g['stats']['PointsFor']['#text']) + '-'  +(g['stats']['PointsAgainst']['#text']) %>
+				<%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%>
 			</p>
 		<% else %> 
 			<p class=l>	
-				<%= "L "%><%=(g['stats']['PointsAgainst']['#text']) %> - <%= (g['stats']['PointsFor']['#text']) %>
+				<% scorestring =  "L " + (g['stats']['PointsAgainst']['#text'])+ '-' + (g['stats']['PointsFor']['#text']) %>
+				<%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%>
 			</p>
 		<% end %>
 	</div>

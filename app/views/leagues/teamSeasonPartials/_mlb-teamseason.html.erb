@@ -60,7 +60,7 @@
 		</p>
 		<!-- using points scored to determine Win or Loss -->
 		<% if  (g['stats']['RunsFor']['#text']).to_i > (g['stats']['RunsAgainst']['#text']).to_i %>
-			<p class=w >
+			<p class=w  >
 				<% link_to scorestring =  "W " + (g['stats']['RunsFor']['#text']) + '-'  +(g['stats']['RunsAgainst']['#text']) %>
 				<%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%>
 			</p>
