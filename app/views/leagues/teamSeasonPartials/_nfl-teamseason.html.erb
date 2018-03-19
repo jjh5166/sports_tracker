@@ -1,6 +1,17 @@
 <%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %> Schedule 
 <br>
 <%= @games[0]['game']['date'][0..3] %> Season
+<br>
+<!-- Drop down to select the season -->
+<div class="selector">
+	<button onclick="myFunction()" class="dropbtn">Select a Season</button>
+	<div class="selector-content" id="dropdwn">
+		<%= link_to '2017 Regular Season', leagues_teamseason_path(params[:league], '2017-regular')%>
+		<%= link_to '2016 Regular Season', leagues_teamseason_path(params[:league], '2016-regular')%>
+		<%= link_to '2015 Regular Season', leagues_teamseason_path(params[:league], '2015-regular')%>
+		<%= link_to '2014 Regular Season', leagues_teamseason_path(params[:league], '2014-regular')%>
+	</div>
+</div>
 
 <% @games.each do |g| %>
 	<div class=box>

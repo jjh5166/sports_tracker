@@ -1,6 +1,23 @@
 <%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %> Schedule 
 <br>
 <%= @games[0]['game']['date'][0..3] %> Season
+<br>
+<!-- Drop down to select the season -->
+<div class="selector">
+	<button onclick="myFunction()" class="dropbtn">Select a Season</button>
+	<div class="selector-content" id="dropdwn">
+		<%= link_to '2016-2017 Regular Season', leagues_teamseason_path(params[:league], '2016-2017-regular')%>
+		<%= link_to '2015-2016 Regular Season', leagues_teamseason_path(params[:league], '2015-2016-regular')%>
+		<%= link_to '2014-2015 Regular Season', leagues_teamseason_path(params[:league], '2014-2015-regular')%>
+		<%= link_to '2013-2014 Regular Season', leagues_teamseason_path(params[:league], '2013-2014-regular')%>
+		<%= link_to '2012-2013 Regular Season', leagues_teamseason_path(params[:league], '2012-2013-regular')%>
+		<%= link_to '2011-2012 Regular Season', leagues_teamseason_path(params[:league], '2011-2012-regular')%>
+		<%= link_to '2010-2011 Regular Season', leagues_teamseason_path(params[:league], '2010-2011-regular')%>
+		<%= link_to '2009-2010 Regular Season', leagues_teamseason_path(params[:league], '2009-2010-regular')%>
+		<%= link_to '2008-2009 Regular Season', leagues_teamseason_path(params[:league], '2008-2009-regular')%>
+		<%= link_to '2007-2008 Regular Season', leagues_teamseason_path(params[:league], '2007-2008-regular')%>
+	</div>
+</div>
 
 <% @games.each do |g| %>
 	<div class=box>
