@@ -1,3 +1,1 @@
 <%=render 'newform'%>
-
-<%= render partial: 'comments/piccomments', locals: {:pic_comments => Comment.where(picture_id: params[:picture_id])}%>

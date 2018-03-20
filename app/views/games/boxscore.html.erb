@@ -5,7 +5,7 @@
 	<% @pics.first(8).each do |p|%>
 		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json})",  :class => "pic_image",:id => p.id%>
 	<% end %>
-
+<%#=@comments%>
 	<% if current_user %>
 			<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
 		<% else %>
@@ -32,10 +32,9 @@
 					<img id="pic_show">
 					<br>
 					<p id="pic_des"></p>
+					<br><br>
 					<a id="comment_link" href=" ">Add Comment</a>
-					<div id="comment_box">
-						
-					</div>
+					<div id="comment_box"></div>
 	</div>
 </div>
 
@@ -45,7 +44,7 @@
 	let pic_show = document.getElementById('pic_show');
 	let pic_des = document.getElementById('pic_des');
 	let comment_link = document.getElementById("comment_link")
-	let comments = document.getElementById('comment_box')
+	let comments_box = document.getElementById('comment_box')
 
 
 	function display_pic(pic_url, pic_desc, pic_id, pic_comments){
@@ -56,13 +55,26 @@
 		pic_des.innerHTML = pic_selected_des;
 		let clink = "/pictures/"+ pic_id +"/comments/new"
 		comment_link.setAttribute("href",clink);
-			// console.log(pic_comments[0]);
-		for (var i=0; i<pic_comments.length; i++){
-			let textnode = document.createTextNode(pic_comments[i])
-			comments.appendChild(textnode)
+		display_comments(pic_comments);
+		// for (var i=0; i<pic_comments.length; i++){
+		// 	let cmm = document.createElement("p");
+		// 	let brk = document.createElement("br");
+		// 	let textnode = document.createTextNode(pic_comments[0][i]+ ": " + pic_comments[1][i]);
+		// 	cmm.appendChild(textnode);
+		// 	comments.appendChild(cmm);
+		// 	comments.appendChild(brk);
+		// }
+	}
+	function display_comments(comments){
+		for (var i=0; i<comments.length; i++){
+			let cmm = document.createElement("p");
+			let brk = document.createElement("br");
+			let textnode = document.createTextNode(comments[0][i]+ ": " + comments[1][i]);
+			cmm.appendChild(textnode);
+			comments_box.appendChild(cmm);
+			comments_box.appendChild(brk);
 		}
 	}
-
 	function Close_pic() {
 	    modalOverlayPic.style.display = 'none';
 		while (comments.firstChild) {
