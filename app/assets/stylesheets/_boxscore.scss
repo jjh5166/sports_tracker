@@ -67,7 +67,8 @@ table, th, td {
 #awayTeam{
 	position: absolute;
 	top: 130px;
-	left: 250px;
+	// left: 250px;
+	left: 15%;
 	width: 200px;
 	display: inline-block;
 }
@@ -88,7 +89,8 @@ table, th, td {
 #homeTeam {
 	position: absolute;
 	top: 130px;
-	right: 250px;
+	// right: 250px;
+	right: 15%;
 	width: 200px;
 	display: inline-block;
 }

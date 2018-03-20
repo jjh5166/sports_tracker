@@ -26,22 +26,33 @@
 </div>
 
 <div class="quarterScore">
-<%= abb['awayTeam']['Abbreviation']%> -
-<% quarterScore.each do |q|%>
-	<%= q['awayScore'] %>
-	<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
-<% end %>
-<%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%>
+	<table>
+		<tr>
+			<th></th>
+			<th>1st</th>
+			<th>2nd</th>
+			<th>3rd</th>
+			<th>4th</th>
+			<th>Total</th>
+		</tr>
+<tr>
+	<td><%= abb['awayTeam']['Abbreviation']%></td>
+		<% quarterScore.each do |q|%>
+			<td><%= q['awayScore'] %></td>
+			<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
+		<% end %>
+	<td><%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%></td>
+</tr>
 
-<br/>
-
-<%= abb['homeTeam']['Abbreviation']%> -
-<% quarterScore.each do |q|%>
-	<%= q['homeScore'] %>
-	<% @homeQuarterTotals.push(q['homeScore'].to_i) %>
-<% end %>
-
-<%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%>
+<tr>
+	<td><%= abb['homeTeam']['Abbreviation']%></td>
+		<% quarterScore.each do |q|%>
+			<td><%= q['homeScore'] %></td>
+			<% @homeQuarterTotals.push(q['homeScore'].to_i) %>
+		<% end %>
+	<td><%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%></td>
+</tr>
+</table>
 </div>
 
 <div class="homeScore">
@@ -50,7 +61,7 @@
 
 
 <div id="homeTeam">
-<div> </div>
+
 <div class="teamCity"><%= g['game']['homeTeam']['City'] %></div>
 <div class="teamName"><%= g['game']['homeTeam']['Name'] %></div>
 <div class="homeAway"> Home </div>
