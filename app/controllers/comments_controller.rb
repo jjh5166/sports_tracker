@@ -3,15 +3,16 @@ class CommentsController < ApplicationController
 
     @comment = Comment.new
     @userid = current_user.id
+    @comments = Comment.where(picture_id: params[:picture_id])
   end
   def create
-
     @comment = Comment.new(comment_params)
       if @comment.save
         flash[:notice] = 'Comment Saved'
         redirect_to '/'
       else
         flash[:notice] = 'Comment Not Saved'
+        redirect_to new_picture_comment_path
       end
   end
   def edit
