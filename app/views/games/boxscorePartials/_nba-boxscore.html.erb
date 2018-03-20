@@ -4,6 +4,7 @@
 <% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
 <% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
 <% quarterScore = g['quarterSummary']['quarter']%>
+<% quarterTotal = g['quarterSummary']['quarterTotals']%>
 <% teamCity = g['game']%>
 <% teamName = g['game']%>
 <% abb = g['game']%>
@@ -41,7 +42,7 @@
 			<td><%= q['awayScore'] %></td>
 			<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
 		<% end %>
-	<td><%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%></td>
+	<td><%= quarterTotal['awayScore']%></td>
 </tr>
 
 <tr>
@@ -50,7 +51,7 @@
 			<td><%= q['homeScore'] %></td>
 			<% @homeQuarterTotals.push(q['homeScore'].to_i) %>
 		<% end %>
-	<td><%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%></td>
+	<td><%= quarterTotal['homeScore']%></td>
 </tr>
 </table>
 </div>
