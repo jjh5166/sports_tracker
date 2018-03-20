@@ -1,3 +1,5 @@
+
+
 <h1 class="season_title">
 	<%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %>
 	<br>
@@ -19,6 +21,7 @@
 		<th>Date</th>
 		<th>Game</th>
 		<th>Result</th>
+		<!-- <th>Hi Scorer</th> -->
 	</tr>
 	<% @games.each do |g| %>
 		<% gameid = (g['game']['date']).tr("-","") %>
@@ -33,7 +36,7 @@
 				<!-- If statement to render month instead of string representing onth as a number -->
 				
 		<tr>
-			<td>
+			<td class="font">
 				<% if month == '01' %>
 					<%= "Jan." %>
 					<% elsif month == '02' %>
@@ -63,19 +66,42 @@
 				<%= year %>	
 			</td>	
 					<!-- Showing away vs home team -->
-			<td>
-				<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
-				<%= "at" %>
-				<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+
+
+			<td class="font">
+				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
+					<p class="where">@</p> <%= g['game']['homeTeam']['Name'] %>
+				<% else %>
+					<p class="where">vs.</p> <%= g['game']['awayTeam']['Name'] %>
+				<% end %>
 			</td>
+<!--
+			<td class="font">
+				<%#= g['game']['awayTeam']['City'] %> <%#= g['game']['awayTeam']['Name'] %>
+				<%#= "at" %>
+				<%#= g['game']['homeTeam']['City'] %> <%#= g['game']['homeTeam']['Name'] %>
+			</td>
+
+		-->
 					<!-- using points scored to determine Win or Loss -->
 			<% if  (g['stats']['Pts']['#text']).to_i > (g['stats']['PtsAgainst']['#text']).to_i %>
 				<% scorestring =  "W " + (g['stats']['Pts']['#text']) + '-'  +(g['stats']['PtsAgainst']['#text']) %>
 				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%></td>
 			<% else %> 
 				<% scorestring =  "L " + (g['stats']['PtsAgainst']['#text'])+ '-' + (g['stats']['Pts']['#text']) %>
-				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%></td>	
+				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total),class: "l"%></td>	
 			<% end %>
+
+			<!-- Hi Scorer column -->
+			<%# @stats.each do |s| %>
+				<%# fg2PtMade = s['awayTeam']['awayPlayers']['playerEntry']['stats']['Fg2PtMade']['#text'].to_i%>
+				<%# fg3PtMade = a['awayTeam']['awayPlayers']['playerEntry']['stats']['Fg3PtMade']['#text'].to_i%>
+				<%# ftMade = a['awayTeam']['awayPlayers']['playerEntry']['stats']['FtMade']['#text'].to_i%>
+				<%# points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+			<%#= points %>
+			<%# end %>
+
+			<!-- <td></td> -->
 		</tr>
 	<%end%>
 </table>
