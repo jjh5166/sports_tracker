@@ -8,13 +8,25 @@
 <% teamName = g['game']%>
 <% abb = g['game']%>
 <% pts = g['quarterSummary']['quarterTotals']%> 
-<% @awayQuarterTotals = []%>
-<% @homeQuarterTotals = []%>
 
 <body id="bodyBoxscore">
-	<table class="headliner wholeBox">
-		<tr class="header">
-			<th> <!-- left blank on purpose --> </th>
+
+
+<div class="headliner">
+<div id="awayTeam">
+
+<div class="teamCity"><%= teamCity['awayTeam']['City'] %></div>
+<div class="teamName"><%= teamName['awayTeam']['Name'] %></div>
+<div class="homeAway"> Away </div>
+</div>
+<div class="awayScore">
+	<%= pts['awayScore'] %> 
+</div>
+
+<div class="quarterScore">
+	<table>
+		<tr>
+			<th></th>
 			<th>1st</th>
 			<th>2nd</th>
 			<th>3rd</th>
@@ -22,24 +34,36 @@
 			<th>Total</th>
 		</tr>
 
-		<tr class="awayTotals">
-			<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
-			<td><%= quarterScore[0]['awayScore'] %></td>
-			<td><%= quarterScore[1]['awayScore'] %></td>
-			<td><%= quarterScore[2]['awayScore'] %></td>
-			<td><%= quarterScore[3]['awayScore'] %></td>
-			<td><%= quarterTotal['awayScore'] %></td>
-		</tr>
+<tr>
+	<td><%= abb['awayTeam']['Abbreviation']%></td>
+		<% quarterScore.each do |q|%>
+			<td><%= q['awayScore'] %></td>
+		<% end %>
+	<td><%= quarterTotal['awayScore']%></td>
+</tr>
 
-		<tr class="homeTotals">
-			<td><%= teamCity['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
-			<td><%= quarterScore[0]['homeScore'] %></td>
-			<td><%= quarterScore[1]['homeScore'] %></td>
-			<td><%= quarterScore[2]['homeScore'] %></td>
-			<td><%= quarterScore[3]['homeScore'] %></td>
-			<td><%= quarterTotal['homeScore'] %></td>
-		</tr>
-	</table>
+<tr>
+	<td><%= abb['homeTeam']['Abbreviation']%></td>
+		<% quarterScore.each do |q|%>
+			<td><%= q['homeScore'] %></td>
+		<% end %>
+	<td><%= quarterTotal['homeScore']%></td>
+</tr>
+</table>
+</div>
+
+<div class="homeScore">
+	<%= g['quarterSummary']['quarterTotals']['homeScore'] %> 
+</div>
+
+
+<div id="homeTeam">
+
+<div class="teamCity"><%= g['game']['homeTeam']['City'] %></div>
+<div class="teamName"><%= g['game']['homeTeam']['Name'] %></div>
+<div class="homeAway"> Home </div>
+</div>
+</div>
 	
 	<div id="statsBox">
 		<div class="font">
