@@ -7,9 +7,9 @@
 <% teamCity = g['game']%>
 <% teamName = g['game']%>
 <% abb = g['game']%>
-<% pts = g['periodSummary']['periodTotals']%> 
 
 
+<body id="bodyBoxscore">
 	<table class="headliner wholeBox">
 		<tr class="header">
 			<th> <!-- left blank on purpose --> </th>
@@ -36,46 +36,65 @@
 		</tr>
 	</table>
 
-	<!-- Loop that shows the away players and their game stats -->
-	<% awayPlayers.each do |a|%>
-	<!-- All the variables used in this loop -->
-		<% firstName = a['player']['FirstName']%>
-		<% lastName = a['player']['LastName']%>
-		<% position = a['player']['Position']%>
-		<%# goals = a['stats']['Goals']['#text'].to_i%>
-		<%# assist = a['stats']['Assist']['#text'].to_i%>
-		<%# points = a['stats']['Points']['#text'].to_i%>
-		<%# shots = a['stats']['Shots']['#text'].to_i%>
-
-		<div>
-			<div><%= firstName%> <%= lastName%> <%= position%></div>
-			<div>Goals: <%#= goals%></div>
-			<div>Assists: <%#= assist%></div> 
-			<div>Points: <%#= points%></div> 
-			<div>Shots: <%#= shots%></div>
+	<div id="statsBox">
+		<div class="font">
+			<%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %>
 		</div>
-		<hr>
-	<% end %>
-<hr>
 
-	<!-- Loop that shows the home players and their game stats -->
-		<% homePlayers.each do |h|%>
-		<!-- All the variables used in this loop -->
-			<% firstName = h['player']['FirstName']%>
-			<% lastName = h['player']['LastName']%>
-			<% position = h['player']['Position']%>
-			<%# goals = h['stats']['Goals']['#text'].to_i%>
-			<%# assist = h['stats']['Assist']['#text'].to_i%>
-			<%# points = h['stats']['Points']['#text'].to_i%>
-			<%# shots = h['stats']['Shots']['#text'].to_i%>
-	
-		<div>
-			<div><%= firstName%> <%= lastName%> <%= position%></div>
-			<div>Goals: <%#= goals%></div>
-			<div>Assists: <%#= assist%></div> 
-			<div> Points: <%#= points%></div> 
-			<div>Shots: <%#= shots%></div>
+		<table id="awayPlayersTable" >
+			<tr>
+				<th>Player</th>
+				<th>Assists</th>
+				<th>Goals</th>
+				<th>Points</th>
+			</tr>
+			<!-- Loop that shows the away players and their game stats -->
+			<% awayPlayers.each do |a|%>
+			<!-- All the variables used in this loop -->
+				<% firstName = a['player']['FirstName']%>
+				<% lastName = a['player']['LastName']%>
+				<% position = a['player']['Position']%>
+				<% goals = a['stats']['Goals']['#text'].to_i%>
+				<% assist = a['stats']['Assists']['#text'].to_i%>
+				<% points = a['stats']['Points']['#text'].to_i%>
 
+				<tr>
+					<td class="player"><%= firstName.first%>. <%= lastName%> <%= position%></td>
+					<td class="playerStats"><%= assist%></td>
+					<td class="playerStats"><%= goals%></td>
+					<td class="playerStats"><%= points%></td> 
+				</tr>
+			<% end %>
+		</table>
+
+		<div class="font">
+			<%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %>
 		</div>
-		<hr>
-	<% end %>
+
+		<table class="homePlayersTable">
+			<tr>
+				<th>Player</th>
+				<th>Assists</th>
+				<th>Goals</th>
+				<th>Points</th>
+			</tr>
+		<!-- Loop that shows the home players and their game stats -->
+			<% homePlayers.each do |h|%>
+			<!-- All the variables used in this loop -->
+				<% firstName = h['player']['FirstName']%>
+				<% lastName = h['player']['LastName']%>
+				<% position = h['player']['Position']%>
+				<% goals = h['stats']['Goals']['#text'].to_i%>
+				<% assist = h['stats']['Assists']['#text'].to_i%>
+				<% points = h['stats']['Points']['#text'].to_i%>
+			
+				<tr>
+					<td class="player"><%= firstName.first%>. <%= lastName%> <%= position%></td>
+					<td class="playerStats"><%= assist%></td>
+					<td class="playerStats"><%= goals%></td>
+					<td class="playerStats"><%= points%></td> 
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</body>

@@ -1,5 +1,4 @@
 <!-- Page variables -->
-
 <% g = @games %>
 <% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
 <% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
@@ -13,36 +12,35 @@
 <% @homeQuarterTotals = []%>
 
 <body id="bodyBoxscore">
-		<table class="headliner wholeBox">
-			<tr class="header">
-				<th> <!-- left blank on purpose --> </th>
-				<th>1st</th>
-				<th>2nd</th>
-				<th>3rd</th>
-				<th>4th</th>
-				<th>Total</th>
-			</tr>
+	<table class="headliner wholeBox">
+		<tr class="header">
+			<th> <!-- left blank on purpose --> </th>
+			<th>1st</th>
+			<th>2nd</th>
+			<th>3rd</th>
+			<th>4th</th>
+			<th>Total</th>
+		</tr>
 
-			<tr class="awayTotals">
-				<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
-				<td><%= quarterScore[0]['awayScore'] %></td>
-				<td><%= quarterScore[1]['awayScore'] %></td>
-				<td><%= quarterScore[2]['awayScore'] %></td>
-				<td><%= quarterScore[3]['awayScore'] %></td>
-				<td><%= quarterTotal['awayScore'] %></td>
-			</tr>
+		<tr class="awayTotals">
+			<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
+			<td><%= quarterScore[0]['awayScore'] %></td>
+			<td><%= quarterScore[1]['awayScore'] %></td>
+			<td><%= quarterScore[2]['awayScore'] %></td>
+			<td><%= quarterScore[3]['awayScore'] %></td>
+			<td><%= quarterTotal['awayScore'] %></td>
+		</tr>
 
-			<tr class="homeTotals">
-				<td><%= teamCity['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
-				<td><%= quarterScore[0]['homeScore'] %></td>
-				<td><%= quarterScore[1]['homeScore'] %></td>
-				<td><%= quarterScore[2]['homeScore'] %></td>
-				<td><%= quarterScore[3]['homeScore'] %></td>
-				<td><%= quarterTotal['homeScore'] %></td>
-			</tr>
-		</table>
+		<tr class="homeTotals">
+			<td><%= teamCity['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
+			<td><%= quarterScore[0]['homeScore'] %></td>
+			<td><%= quarterScore[1]['homeScore'] %></td>
+			<td><%= quarterScore[2]['homeScore'] %></td>
+			<td><%= quarterScore[3]['homeScore'] %></td>
+			<td><%= quarterTotal['homeScore'] %></td>
+		</tr>
+	</table>
 	
-
 	<div id="statsBox">
 		<div class="font">
 			<%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %>
@@ -95,29 +93,29 @@
 				<th>PTS</th>
 			</tr>
 
-				<% homePlayers.each do |h|%>
-					<% firstName = h['player']['FirstName']%>
-					<% lastName = h['player']['LastName']%>
-					<% position = h['player']['Position']%>
-					<% fg2PtMade = h['stats']['Fg2PtMade']['#text'].to_i%>
-					<% fg2PtAtt = h['stats']['Fg2PtAtt']['#text'].to_i%>
-					<% fg3PtMade = h['stats']['Fg3PtMade']['#text'].to_i%>
-					<% fg3PtAtt = h['stats']['Fg3PtAtt']['#text'].to_i%>
-					<% ftMade = h['stats']['FtMade']['#text'].to_i%>
-					<% ftAtt = h['stats']['FtAtt']['#text'].to_i%>
-					<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
-					<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
-					<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
+			<% homePlayers.each do |h|%>
+				<% firstName = h['player']['FirstName']%>
+				<% lastName = h['player']['LastName']%>
+				<% position = h['player']['Position']%>
+				<% fg2PtMade = h['stats']['Fg2PtMade']['#text'].to_i%>
+				<% fg2PtAtt = h['stats']['Fg2PtAtt']['#text'].to_i%>
+				<% fg3PtMade = h['stats']['Fg3PtMade']['#text'].to_i%>
+				<% fg3PtAtt = h['stats']['Fg3PtAtt']['#text'].to_i%>
+				<% ftMade = h['stats']['FtMade']['#text'].to_i%>
+				<% ftAtt = h['stats']['FtAtt']['#text'].to_i%>
+				<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+				<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
+				<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
 
-					<tr>
-						<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
-						<td class="playerStats"><%=fgMade %> - <%= fgAtt%></td>
-						<td class="playerStats"><%= fg2PtMade%> - <%= fg2PtAtt%></td> 
-						<td class="playerStats"><%= fg3PtMade%> - <%= fg3PtAtt%></td> 
-						<td class="playerStats"><%= ftMade%> - <%= ftAtt%></div>
-						<td class="playerStats"><%= points%></td>
-					</tr>
-				<% end %>
+				<tr>
+					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
+					<td class="playerStats"><%=fgMade %> - <%= fgAtt%></td>
+					<td class="playerStats"><%= fg2PtMade%> - <%= fg2PtAtt%></td> 
+					<td class="playerStats"><%= fg3PtMade%> - <%= fg3PtAtt%></td> 
+					<td class="playerStats"><%= ftMade%> - <%= ftAtt%></div>
+					<td class="playerStats"><%= points%></td>
+				</tr>
+			<% end %>
 		</table>
 	</div>
 </body>
