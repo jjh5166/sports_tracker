@@ -1,14 +1,7 @@
+// ------- Uni Page styling -------
+
 #bodyBoxscore{
 	background-color: lightgrey;
-}
-
-#awayPlayersTable {
-	width: 98%;
-	margin: 10px 1%;
-}
-#homePlayersTable {
-	width: 98%;
-	margin: 10px 1%;
 }
 
 #statsBox {
@@ -18,21 +11,39 @@
 	width: 90%;
 	background-color: white;
 }
+
 .headliner {
-	margin: 0 auto;
+	margin: 20px auto;
 	text-align: center;
 	border: 1px solid black;
 	padding: 20px;
 	width: 90%;
+	height: 120px;
 	background-color: white;
 }
 
 .player {
-width: 200px;
+	width: 200px;
 }
 
 .playerStats {
-width: 200px;
+	width: 200px;
+}
+
+.quarterScore {
+	display: inline-block;
+	width: 300px;
+	text-align: center;
+	font-size: 14px;
+}
+.homeAway {
+	font-size: 12px;
+}
+.teamCity {
+	font-size: 32px;
+}
+.teamName {
+	font-size: 22px;
 }
 
 tr:nth-child(even) {
@@ -45,32 +56,48 @@ table, th, td {
 	border-collapse: collapse;
     // border: 1px solid black;
 }
-.homeScore{
-	display: inline-block;
-	font-size: 40px;
-}
-.awayScore{
-	display: inline-block;
-	font-size: 40px;
-}
 
+// ------ Away Team --------
 
-.quarterScore {
-	display: inline-block;
-	width: 300px;
-	text-align: center;
-	border: 1px solid red;
-}
-
-
-#homeTeam {
-	border: 2px solid red;
-	width: 200px;
-	display: inline-block;
+#awayPlayersTable {
+	width: 98%;
+	margin: 10px 1%;
 }
 
 #awayTeam{
-	border: 2px solid red;
+	position: absolute;
+	top: 130px;
+	left: 250px;
 	width: 200px;
 	display: inline-block;
 }
+
+.awayScore{
+	display: inline-block;
+	font-size: 40px;
+	line-height: 120px;
+}
+
+// ------ Home Team --------
+
+#homePlayersTable {
+	width: 98%;
+	margin: 10px 1%;
+}
+
+#homeTeam {
+	position: absolute;
+	top: 130px;
+	right: 250px;
+	width: 200px;
+	display: inline-block;
+}
+
+.homeScore{
+	display: inline-block;
+	font-size: 40px;
+	line-height: 120px;
+}
+
+
+
