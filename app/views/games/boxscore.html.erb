@@ -6,17 +6,14 @@
 		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json})",  :class => "pic_image",:id => p.id%>
 	<% end %>
 
+
+
+</div>
 	<% if current_user %>
 			<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
 		<% else %>
 		    <a class="pointer" id="log_in" onclick="login()">Login to Add Photos</a>
 	<% end %>
-
-	<% @pics.each do |p|%>
-		<%=image_tag p.image.url(:med), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}')", :class => "pic_image",:id => p.id%>
-	<%end%>
-</div>
-
 
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
