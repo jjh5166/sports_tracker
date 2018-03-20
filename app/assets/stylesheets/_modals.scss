@@ -7,9 +7,24 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 5px;
-	width: 600px;
+	width: 43%;
 	max-width: 100%;
-	height: 400px;
+	height: 50%;
+	max-height: 100%;
+	background-color: black;
+	border: 2px solid;
+	z-index: 200;
+}
+
+.modal2 {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 5px;
+	width: 43%;
+	max-width: 100%;
+	height: 50%;
 	max-height: 100%;
 	background-color: black;
 	border: 2px solid;
@@ -26,16 +41,7 @@
 	background: rgba(0, 0, 0, 0.7);
 	display: none;
 }
-#modal-overlay-pic {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background: rgba(0, 0, 0, 0.7);
-	display: none;
-}
+
 .close {
 	position: absolute;
 	right: 0px;
@@ -46,43 +52,55 @@
 }
 
 
-.modal2 {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border-radius: 5px;
-	width: 600px;
-	max-width: 100%;
-	height: 400px;
-	max-height: 100%;
-	background-color: black;
-	border: 2px solid;
-	z-index: 200;
-}
-// sign in modal styling
 
+// sign in modal styling
 .signin-box {
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 60%;
-	border-radius: 5px;
-	padding: 10px;
+	width: 100%;
+	border-radius: 5px; // padding: 10px;
 	border: 1px solid #5F5F5F;
-    box-shadow:0 2px 10px #5F5F5F;
- 	background-color: white;
+	box-shadow: 0 8px 12px black;
+	background-color: lightgrey;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 18px;
+	font-family: $font-stack;
+	color: #2F4F4F;
+	line-height: 8vh;
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #2F4F4F;
+		font-family: $font-stack;
+	}
+}
+// sign up modal styling
+
+.signup-box {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #5F5F5F;
+    box-shadow:0 8px 12px black;
+ 	background-color: lightgrey;
  	margin: 0 auto;
  	text-align: center;
- 	font-size: 18px;
- 	color: #25292E;
- 	line-height: 30px;
+	font-size: 18px;
+	font-family: $font-stack;
+ 	color: #2F4F4F;
+ 	line-height: 8vh;
 
  	a {
  		text-decoration: none;
  		text-transform: uppercase;
- 		color: #25292E;
+		color: #2F4F4F;
+		font-family: $font-stack;
  	}
 
 }

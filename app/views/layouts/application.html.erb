@@ -39,58 +39,51 @@
 <div id="modal-overlay">
     <div class="modal">
       <button class="close" id="close" onclick="Close()">X</button>
-        <div class="centerer">
+        
             <div class="signin-box">
               <h1 class="modal-titles">Login</h1>
               <%= form_for(:user, :url => session_path(:user)) do |f| %>
-                <div class="centerer">Username or Email</div>
                 <div> <%= f.text_field :login, autofocus: true, autocomplete: "email", placeholder: "Username or Email"  %></div>
-                <div>Password</div>
                 <div> <%= f.password_field :password, autocomplete: "off", placeholder: "Password"  %></div>
                 <div><%= f.check_box :remember_me%>
                      <%= f.label :remember_me %></div>
-                <div onclick="Close()"><%= f.submit 'Sign in' %></div>
+                <%= f.submit 'Sign in', onclick: "Close();" %>
                 <div class="signin-links"><%= link_to "Forgot your password?", new_password_path(:user) %></div>
               <% end %>
             </div>
-        </div>
     </div>
 </div>
 <!-- Sign up modal -->
 <div id="modal-overlay2">
     <div class="modal2">
       <button class="close2" id="close2" onclick="Close2()">X</button>
-        <div class="centerer">
-            <div class="signin-box">
+        
+            <div class="signup-box">
               <h1 class="modal-titles">Sign Up</h1>
                 <%= form_for(:user, :url => registration_path(:user)) do |f| %>
 
                   <div class="field">
-                  <%=f.label :username %> <br/>
-                  <%= f.text_field :username, autofocus: true %></div>
-
-                  <div class="field">
-                  <%= f.label :email %><br />
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  <%= f.text_field :username, autofocus: true, placeholder: "Username" %>
                   </div>
 
                   <div class="field">
-                  <%= f.label :password %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+                  </div>
+
+                  <div class="field">
                     <% if @minimum_password_length %>
                       <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %><br />
-                  <%= f.password_field :password, autocomplete: "off" %>
+                    <% end %>
+                  <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
                   </div>
 
                   <div class="field">
-                  <%= f.label :password_confirmation %><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
                   </div>
 
-              <div onclick="Close2()"><%= f.submit 'Sign up' %></div>
+              <%= f.submit 'Sign up', onclick: "Close();" %>
               <% end %>
             </div>
-        </div>
     </div>
 </div>
 
