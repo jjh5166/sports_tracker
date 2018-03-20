@@ -15,27 +15,25 @@
 <body id="bodyBoxscore">
 
 <div class="headliner">
-<div> Away Team </div>
+<div id="awayTeam">
+<div></div>
 
-<div>City: <%= teamCity['awayTeam']['City'] %></div>
-<div>Team: <%= teamName['awayTeam']['Name'] %></div>
-<div>Abb:<%= abb['awayTeam']['Abbreviation'] %></div>
-<div>PTS: <%= pts['awayScore'] %></div>
-<div>Away QTR Score</div>
+<div><%= teamCity['awayTeam']['City'] %></div>
+<div><%= teamName['awayTeam']['Name'] %></div>
+<div> Away </div>
+</div>
+<div class="awayScore">
+	<%= pts['awayScore'] %> 
+</div>
 
-
+<div class="quarterScore">
 <%= abb['awayTeam']['Abbreviation']%> -
 <% quarterScore.each do |q|%>
 	<%= q['awayScore'] %>
 	<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
 <% end %>
-
 <%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%>
-
-
-
-<div>Home QTR Score</div>
-
+<br/>
 <%= abb['homeTeam']['Abbreviation']%> -
 <% quarterScore.each do |q|%>
 	<%= q['homeScore'] %>
@@ -43,14 +41,20 @@
 <% end %>
 
 <%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%>
-<div> Home Team </div>
-<br/>
-<div>City: <%= g['game']['homeTeam']['City'] %></div>
-<div>Team: <%= g['game']['homeTeam']['Name'] %></div>
-<div>Abb: <%= g['game']['homeTeam']['Abbreviation'] %></div>
-<div>PTS: <%= g['quarterSummary']['quarterTotals']['homeScore'] %></div>
 </div>
 
+<div class="homeScore">
+	<%= g['quarterSummary']['quarterTotals']['homeScore'] %> 
+</div>
+
+
+<div id="homeTeam">
+<div> </div>
+<div><%= g['game']['homeTeam']['City'] %></div>
+<div><%= g['game']['homeTeam']['Name'] %></div>
+<div> Home </div>
+</div>
+</div>
 <div id="statsBox">
 <div>Team: <%= teamName['awayTeam']['Name'] %></div>
 <table id="awayPlayersTable" >

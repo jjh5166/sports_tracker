@@ -20,6 +20,7 @@
 }
 .headliner {
 	margin: 0 auto;
+	text-align: center;
 	border: 1px solid black;
 	padding: 20px;
 	width: 90%;
@@ -43,4 +44,33 @@ table, th, td {
 	padding: 10px;
 	border-collapse: collapse;
     // border: 1px solid black;
+}
+.homeScore{
+	display: inline-block;
+	font-size: 40px;
+}
+.awayScore{
+	display: inline-block;
+	font-size: 40px;
+}
+
+
+.quarterScore {
+	display: inline-block;
+	width: 300px;
+	text-align: center;
+	border: 1px solid red;
+}
+
+
+#homeTeam {
+	border: 2px solid red;
+	width: 200px;
+	display: inline-block;
+}
+
+#awayTeam{
+	border: 2px solid red;
+	width: 200px;
+	display: inline-block;
 }
