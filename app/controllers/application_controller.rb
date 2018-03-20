@@ -11,13 +11,23 @@ class ApplicationController < ActionController::Base
 #### DEVISE ####
 
   #To permit additional devise params
+  before_action :store_user_location!, if: :storable_location?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+  end
+
+  def store_user_location!
+    # :user is the scope we are authenticating
+    store_location_for(:user, request.fullpath)
+  end
+
   # Overwriting the sign_in redirect path method
   def after_sign_in_path_for(resource_or_scope)
-    root_path
+    stored_location_for(resource_or_scope) || super
   end
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
@@ -25,8 +35,10 @@ class ApplicationController < ActionController::Base
   end
    # Overwriting the sign_up redirect path method
   def after_sign_up_path_for(resource_or_scope)
-    root_path
+    stored_location_for(resource_or_scope) || super
   end
+
+  
 
 
   protected
