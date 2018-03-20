@@ -25,3 +25,4 @@
 *.password
 /public/system/pictures/*
 /results/*
+.DS_Store

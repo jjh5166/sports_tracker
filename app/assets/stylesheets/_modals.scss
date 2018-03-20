@@ -169,18 +169,16 @@
 #pic_show{
     position: relative;
     margin: 0;
-    position: relative; left: 50%;
-    transform: translateX(-50%);
     margin-top: 5%;
 }
 .modal_pic{
-    width: 80%;
-    height: 80%;
-    outline: 2px solid purple;
-    margin: 0;
-    left: 11%;
- top: 13%;
- position: relative
+  width: 80%;
+  height: 80%;
+  outline: 2px solid purple;
+  margin: 0;
+  left: 11%;
+ 	top: 13%;
+ 	position: absolute;
 }
 .close3 {
     position: absolute;
@@ -190,10 +188,10 @@
     z-index: 1;
 }
 #pic_des{
-    text-align: center;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+  text-align: center;
+  position: relative;
+	margin: 0;
+	color: white;
 }
 
 #modal-overlay-pic {
@@ -205,4 +203,7 @@
     z-index: 1;
     background: rgba(0, 0, 0, 0.7);
     display: none;
+}
+#comment_link{
+	display: none;
 }
