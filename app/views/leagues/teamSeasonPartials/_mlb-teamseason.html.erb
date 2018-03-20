@@ -1,68 +1,93 @@
-<%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %> Schedule 
+<h1 class="season_title">
+<%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %> Schedule
 <br>
 <%= @games[0]['game']['date'][0..3] %> Season
+<br>
+</h1>	
+<!-- Drop down to select the season -->
+<div class="selector">
+	<button onclick="myFunction()" class="dropbtn">Select a Season</button>
+	<div class="selector-content" id="dropdwn">
+		<%= link_to '2017 Regular Season', leagues_teamseason_path(params[:league], '2017-regular')%>
+		<%= link_to '2016 Regular Season', leagues_teamseason_path(params[:league], '2016-regular')%>
+	</div>
+</div>
 
-<% @games.each do |g| %>
-	<div class=box>
+
+<table class="division_box">
+	<tr>
+		<th>Date</th>
+		<th>Game</th>
+		<th>Result</th>
+	</tr>
+	<% @games.each do |g| %>
 		<% gameid = (g['game']['date']).tr("-","") %>
 		<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
 		<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
-		<a class=font href='/<%= params[:league] %>/boxscore/<%= gameid %>-<%= gameawayt %>-<%= gamehomet %>'>
-		<!-- Rendering the date for the game -->
-			<p>
-				<% gameid %>
-				<% year = gameid  [0..3] %>
-				<% month = gameid [4..5] %>
-				<% day = gameid [6..7] %>	
+		<% total = ((gameid)+ '-' +(gameawayt)+ '-' +(gamehomet)) %>
+				<!-- Rendering the date for the game -->
+		<% gameid %>
+		<% year = gameid  [0..3] %>
+		<% month = gameid [4..5] %>
+		<% day = gameid [6..7] %>
 				<!-- If statement to render month instead of string representing month as a number -->
+		<tr>
+			<td class="font">
 				<% if month == '01' %>
 					<%= "Jan." %>
-				<% elsif month == '02' %>
-					<%= "Feb." %>
-				<% elsif month == '03' %>
-					<%= "Mar." %>
-				<% elsif month == '04' %>
-					<%= "Apr." %>
-				<% elsif month == '05' %>
-					<%= "May" %>
-				<% elsif month == '06' %>
-					<%= "Jun." %>
-				<% elsif month == '07' %>
-					<%= "Jul." %>
-				<% elsif month == '08' %>
-					<%= "Aug." %>
-				<% elsif month == '09' %>
-					<%= "Sep." %>
-				<% elsif month == '10' %>
-					<%= "Oct." %>
-				<% elsif month == '11' %>
-					<%= "Nov." %>
-				<% elsif month == '12' %>
-					<%= "Dec." %>
+					<% elsif month == '02' %>
+						<%= "Feb." %>
+					<% elsif month == '03' %>
+						<%= "Mar." %>
+					<% elsif month == '04' %>
+						<%= "Apr." %>
+					<% elsif month == '05' %>
+						<%= "May" %>
+					<% elsif month == '06' %>
+						<%= "Jun." %>
+					<% elsif month == '07' %>
+						<%= "Jul." %>
+					<% elsif month == '08' %>
+						<%= "Aug." %>
+					<% elsif month == '09' %>
+						<%= "Sep." %>
+					<% elsif month == '10' %>
+						<%= "Oct." %>
+					<% elsif month == '11' %>
+						<%= "Nov." %>
+					<% elsif month == '12' %>
+						<%= "Dec." %>
 				<% end %>
 				<%= day %>,
 				<%= year %>
-			</p>
-		</a>	
-		<!-- Showing away at home team -->
-		<p class=team>
-			<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
-		</p>
-		<p class='where'>
-			at
-		</p>
-		<p class=team>
-			<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
-		</p>			
-		<!-- using points scored to determine Win or Loss -->
-		<% if  (g['stats']['RunsFor']['#text']).to_i > (g['stats']['RunsAgainst']['#text']).to_i %>
-			<p class=w >
-				<%= "W " %><%= (g['stats']['RunsFor']['#text']) %>-<%= (g['stats']['RunsAgainst']['#text'])%>
-			</p>
-			<% else %> 
-			<p class=l>	
-				<%= "L "%><%= (g['stats']['RunsAgainst']['#text'])%> - <%= (g['stats']['RunsFor']['#text']) %>
-			</p>
-		<% end %>		
-	</div>
-<%end%>
+			</td>
+					<!-- Showing opponent either away at home team -->
+			<td class="font">
+				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
+					<p class="where">@</p> <%= g['game']['homeTeam']['Name'] %>
+				<% else %>
+					<p class="where">vs.</p> <%= g['game']['awayTeam']['Name'] %>
+				<% end %>
+			</td>
+
+			<!-- Showing away vs home -->
+			<!--
+			<td class="font">
+				<%#= g['game']['awayTeam']['City'] %> <%#= g['game']['awayTeam']['Name'] %>
+				<p class="where">at</p>
+				<%#= g['game']['homeTeam']['City'] %> <%#= g['game']['homeTeam']['Name'] %>
+			</td>
+
+			 -->
+				<!-- using points scored to determine Win or Loss -->
+			<% if  (g['stats']['RunsFor']['#text']).to_i > (g['stats']['RunsAgainst']['#text']).to_i %>
+				<% scorestring =  "W " + (g['stats']['RunsFor']['#text']) + '-'  +(g['stats']['RunsAgainst']['#text']) %>
+				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%>
+				</td>
+			<% else %>
+				<% scorestring =  "L " + (g['stats']['RunsAgainst']['#text'])+ '-' + (g['stats']['RunsFor']['#text']) %>
+				<td ><%= link_to scorestring, boxscore_path(params[:league], params[:season], total), class: "l"%></td>
+			<% end %>
+		</tr>
+	<%end%>
+</table>

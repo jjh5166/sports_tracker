@@ -4,15 +4,18 @@ class GamesController < ApplicationController
 
 	end
 
-	def season
-	  	@games = $msf.msf_get_data('nba', '2016-2017-regular', 'full_game_schedule', 'json')["fullgameschedule"]["gameentry"]
-	end
-
-	def scoreboard
-		@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'scoreboard', 'json', 'fordate' => params[:date])['scoreboard']['gameScore']
-	end
-
 	def boxscore
-		@games = $msf.msf_get_data(params[:league], '2016-2017-regular', 'game_boxscore', 'json', 'gameid' => params[:gameid])['gameboxscore']
+		@games = $msf.msf_get_data(params[:league], params[:season], 'game_boxscore', 'json', 'gameid' => params[:gameid])['gameboxscore']
+		@pics = Picture.where(game_id: params[:gameid]).reverse
+
+
+		@comments = {}
+
+		@pics.first(8).each do |h|
+			@comments[h.id] = []
+			Comment.where(picture_id: h.id).each do |c|
+				@comments[h.id].push(c.content)
+			end
+		end
 	end
 end

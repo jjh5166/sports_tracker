@@ -1,0 +1,21 @@
+// Place all the styles related to the pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.InputBox{
+  width: 400px;
+  height: 600px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.form_field{
+  position: relative;
+  margin: auto;
+}
+#comment_box{
+  color:white;
+}
+.pics_container{
+  width: 612px;
+}

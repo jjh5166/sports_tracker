@@ -1,5 +1,21 @@
 <!-- Renders the partial files from their corresponding files -->
+<% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
 
+<div class="pics_container">
+<% @pics.first(8).each do |p|%>
+	<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json})",  :class => "pic_image",:id => p.id%>
+
+<% if current_user %>
+		<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
+<% else %>
+    <a class="pointer" id="log_in" onclick="login()">Login to Add Photos</a>
+<% end %>
+
+<% @pics.each do |p|%>
+	<%=image_tag p.image.url(:med), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}')", :class => "pic_image",:id => p.id%>
+
+<%end%>
+</div>
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
 <% elsif params[:league] == "nfl" %>
@@ -10,3 +26,50 @@
 	<%= render :file => "/games/boxScorePartials/_mlb-boxscore.html.erb" %>
 <% end %>
 
+
+<div id="modal-overlay-pic">
+    <div class="modal_pic">
+      <button class="close3" onclick="Close_pic()">X</button>
+
+					<img id="pic_show">
+					<br>
+					<p id="pic_des"></p>
+					<a id="comment_link" href=" ">Add Comment</a>
+					<div id="comment_box">
+
+      		</div>
+		</div>
+
+    </div>
+<script>
+
+let modalOverlayPic = document.getElementById('modal-overlay-pic');
+let pic_show = document.getElementById('pic_show');
+let pic_des = document.getElementById('pic_des');
+let comment_link = document.getElementById("comment_link")
+let comments = document.getElementById('comment_box')
+
+
+function display_pic(pic_url, pic_desc, pic_id, pic_comments){
+    modalOverlayPic.style.display = 'block';
+		pic_selected = pic_url;
+		pic_selected_des = pic_desc;
+		pic_show.src = pic_selected;
+		pic_des.innerHTML = pic_selected_des;
+		let clink = "/pictures/"+ pic_id +"/comments/new"
+		comment_link.setAttribute("href",clink);
+		// console.log(pic_comments[0]);
+		for (var i=0; i<pic_comments.length; i++){
+			let textnode = document.createTextNode(pic_comments[i])
+		comments.appendChild(textnode)}
+}
+
+function Close_pic() {
+
+    modalOverlayPic.style.display = 'none';
+		while (comments.firstChild) {
+    comments.removeChild(comments.firstChild);
+		}
+}
+
+</script>

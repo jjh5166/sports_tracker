@@ -1,15 +1,35 @@
-<div class="division_grid">
+
+<!-- Drop down to select the season -->
+<div class="selector">
+	<button onclick="myFunction()" class="dropbtn">Select a Season</button>
+	<div class="selector-content" id="dropdwn">
+	    <%= link_to '2016-2017 Regular Season', leagues_season_path(params[:league], '2016-2017-regular')%>
+	    <%= link_to '2015-2016 Regular Season', leagues_season_path(params[:league], '2015-2016-regular')%>
+	    <%= link_to '2014-2015 Regular Season', leagues_season_path(params[:league], '2014-2015-regular')%>
+	    <%= link_to '2013-2014 Regular Season', leagues_season_path(params[:league], '2013-2014-regular')%>
+	    <%= link_to '2012-2013 Regular Season', leagues_season_path(params[:league], '2012-2013-regular')%>
+	    <%= link_to '2011-2012 Regular Season', leagues_season_path(params[:league], '2011-2012-regular')%>
+	    <%= link_to '2010-2011 Regular Season', leagues_season_path(params[:league], '2010-2011-regular')%>
+	    <%= link_to '2009-2010 Regular Season', leagues_season_path(params[:league], '2009-2010-regular')%>
+	    <%= link_to '2008-2009 Regular Season', leagues_season_path(params[:league], '2008-2009-regular')%>
+	    <%= link_to '2007-2008 Regular Season', leagues_season_path(params[:league], '2007-2008-regular')%>
+	</div>
+</div>
+
+<br>
+
+
 	<%@divisions.each do |d|%>
 		<table class="division_box">
 			<tr><th><%=d["@name"].sub(/^.*\//,'')%></th>
-				<th>Wins</th>
-				<th>Losses</th>
-				<th>OT Losses</th>
+				<th>W</th>
+				<th>L</th>
+				<th>OTL</th>
 				<th>PTS</th>
 			</tr>
 			<%d["teamentry"].each do |t|%>
 				<tr>
-					<td ><a href='/<%= params[:league] %>/schedule/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
+					<td ><a href='/<%= params[:league] %>/<%=params[:season]%>/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
 					<td class="teamStats"><%=t["stats"]["stats"]["Wins"]["#text"]%></td>
 					<td class="teamStats"><%=t["stats"]["stats"]["Losses"]["#text"]%></td>
 					<td class="teamStats"><%=t["stats"]["stats"]["OvertimeLosses"]["#text"]%></td>
@@ -18,5 +38,5 @@
 			<%end%>
 		</table>
 	<%end%>
-</div>
+
 

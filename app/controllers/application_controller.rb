@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  require 'uri'
   require 'date'
   USERNAME = open('lib/assets/.username').first.chomp
   PASSWORD = open('lib/assets/.password').first.chomp
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
 
   protected
-  
+
 	#Permitting specific params for devise
 	def configure_permitted_parameters
  		devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])

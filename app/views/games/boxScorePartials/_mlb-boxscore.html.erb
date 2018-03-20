@@ -1,3 +1,55 @@
-<h1>Baseball partial</h1>
 
-<%= @games %>
+<% g = @games %>
+<% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
+<% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
+<% inningScore = g['inningSummary']['inning']%>
+<% inningTotal = g['inningSummary']['inningTotals']%>
+<% teamCity = g['game']%>
+<% teamName = g['game']%>
+<% abb = g['game']%>
+<% @awayQuarterTotals = []%>
+<% @homeQuarterTotals = []%>
+
+	<table class="headliner wholeBox">
+			<tr class="header">
+				<th> <!-- left blank on purpose --> </th>
+				<th>1st</th>
+				<th>2nd</th>
+				<th>3rd</th>
+				<th>4th</th>
+				<th>5th</th>
+				<th>6th</th>
+				<th>7th</th>
+				<th>8th</th>
+				<th>9th</th>
+				<th>Total</th>
+			</tr>
+
+			<tr class="awayTotals">
+				<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
+				<td><%= inningScore[0]['awayScore'] %></td>
+				<td><%= inningScore[1]['awayScore'] %></td>
+				<td><%= inningScore[2]['awayScore'] %></td>
+				<td><%= inningScore[3]['awayScore'] %></td>
+				<td><%= inningScore[4]['awayScore'] %></td>
+				<td><%= inningScore[5]['awayScore'] %></td>
+				<td><%= inningScore[6]['awayScore'] %></td>
+				<td><%= inningScore[7]['awayScore'] %></td>
+				<td><%= inningScore[8]['awayScore'] %></td>
+				<td><%= inningTotal['awayScore'] %></td>
+			</tr>
+
+			<tr class="homeTotals">
+				<td><%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
+				<td><%= inningScore[0]['homeScore'] %></td>
+				<td><%= inningScore[1]['homeScore'] %></td>
+				<td><%= inningScore[2]['homeScore'] %></td>
+				<td><%= inningScore[3]['homeScore'] %></td>
+				<td><%= inningScore[4]['homeScore'] %></td>
+				<td><%= inningScore[5]['homeScore'] %></td>
+				<td><%= inningScore[6]['homeScore'] %></td>
+				<td><%= inningScore[7]['homeScore'] %></td>
+				<td><%= inningScore[8]['homeScore'] %></td>
+				<td><%= inningTotal['homeScore'] %></td>
+			</tr>
+		</table>

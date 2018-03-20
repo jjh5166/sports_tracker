@@ -1,0 +1,33 @@
+
+<!-- Drop down to select the season -->
+<div class="selector">
+	<button onclick="myFunction()" class="dropbtn">Select a Season</button>
+	<div class="selector-content" id="dropdwn">
+	    <%= link_to '2016-2017 Regular Season', leagues_season_path(params[:league], '2016-2017-regular')%>
+	    <%= link_to '2015-2016 Regular Season', leagues_season_path(params[:league], '2015-2016-regular')%>
+	</div>
+</div>
+
+<br>
+
+
+<%@divisions.each do |d|%>
+	<table class="division_box">
+	<tr>
+		<th>
+			<%=d["@name"].sub(/^.*\//,'')%>
+			<th>W</th>
+			<th>L</th>
+			<th>PCT</th>
+		</th>
+	</tr>
+		<%d["teamentry"].each do |t|%>
+			<tr>
+				<td><a href='/<%= params[:league] %>/<%=params[:season]%>/<%= t["team"]["Abbreviation"] %>'</a><%=t["team"]["City"]%> <%= t["team"]["Name"]%></td>
+				<td class="teamStats"><%=t["stats"]["Wins"]["#text"]%></td>
+				<td class="teamStats"><%=t["stats"]["Losses"]["#text"]%></td>
+				<td class="teamStats"><%=t["stats"]["WinPct"]["#text"]%></td>
+			</tr>
+		<%end%>
+	</table>
+<%end%>
