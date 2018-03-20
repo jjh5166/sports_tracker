@@ -1,6 +1,11 @@
 
+.headliner .wholeBox{
+  width: 50%;
+  display: block-inline;
+}
+
 .season_title{
-  position: relative;
+  // position: relative;
   text-align: center;
   font-family: $font-stack;
 }
@@ -8,7 +13,7 @@
 .division_box {
   outline: 2px solid grey;
   height: 95%;
-  width: 95%;
+  width: 75%;
   margin: 10px auto;
 }
 
@@ -51,15 +56,16 @@ td a {
 .selector {
   float: right;
   margin-bottom: 40px;
+  margin-right: 14%;
 }
-
+// display set to none so the .show can reveal on show
 .selector-content {
   display: none;
   position: absolute;
   background-color: lightgrey;
   min-width: 160px;
   z-index: 1;
-  right: 5px;
+  right: 10%;
 }
 
 .selector-content a {
@@ -72,6 +78,7 @@ td a {
 
 .selector-content a:hover {
   background-color: lightcoral;
+  color: white;
 }
 
 // click on to display on dropdown-content

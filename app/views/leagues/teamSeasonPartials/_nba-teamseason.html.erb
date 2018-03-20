@@ -1,3 +1,5 @@
+
+
 <h1 class="season_title">
 	<%= @games[0]['team']['City'] %> <%= @games[0]['team']['Name'] %>
 	<br>
@@ -19,6 +21,7 @@
 		<th>Date</th>
 		<th>Game</th>
 		<th>Result</th>
+		<!-- <th>Hi Scorer</th> -->
 	</tr>
 	<% @games.each do |g| %>
 		<% gameid = (g['game']['date']).tr("-","") %>
@@ -67,9 +70,9 @@
 
 			<td class="font">
 				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
-					<p class="where">@</p><%= g['game']['homeTeam']['Name'] %>
+					<p class="where">@</p> <%= g['game']['homeTeam']['Name'] %>
 				<% else %>
-					<p class="where">vs.</p><%= g['game']['awayTeam']['Name'] %>
+					<p class="where">vs.</p> <%= g['game']['awayTeam']['Name'] %>
 				<% end %>
 			</td>
 <!--
@@ -88,6 +91,17 @@
 				<% scorestring =  "L " + (g['stats']['PtsAgainst']['#text'])+ '-' + (g['stats']['Pts']['#text']) %>
 				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total),class: "l"%></td>	
 			<% end %>
+
+			<!-- Hi Scorer column -->
+			<%# @stats.each do |s| %>
+				<%# fg2PtMade = s['awayTeam']['awayPlayers']['playerEntry']['stats']['Fg2PtMade']['#text'].to_i%>
+				<%# fg3PtMade = a['awayTeam']['awayPlayers']['playerEntry']['stats']['Fg3PtMade']['#text'].to_i%>
+				<%# ftMade = a['awayTeam']['awayPlayers']['playerEntry']['stats']['FtMade']['#text'].to_i%>
+				<%# points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
+			<%#= points %>
+			<%# end %>
+
+			<!-- <td></td> -->
 		</tr>
 	<%end%>
 </table>

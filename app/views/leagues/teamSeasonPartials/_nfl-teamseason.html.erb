@@ -67,9 +67,9 @@
 
 			<td class="font">
 				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
-					<p class="where">@</p><%= g['game']['homeTeam']['Name'] %>
+					<p class="where">@</p> <%= g['game']['homeTeam']['Name'] %>
 				<% else %>
-					<p class="where">vs.</p><%= g['game']['awayTeam']['Name'] %>
+					<p class="where">vs.</p> <%= g['game']['awayTeam']['Name'] %>
 				<% end %>
 			</td>
 

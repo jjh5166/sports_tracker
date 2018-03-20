@@ -3,48 +3,39 @@
 <% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
 <% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
 <% periodScore = g['periodSummary']['period']%>
+<% periodTotal = g['periodSummary']['periodTotals']%>
 <% teamCity = g['game']%>
 <% teamName = g['game']%>
 <% abb = g['game']%>
 <% pts = g['periodSummary']['periodTotals']%> 
 
 
-<h1>Boxscore</h1>
+	<table class="headliner wholeBox">
+		<tr class="header">
+			<th> <!-- left blank on purpose --> </th>
+			<th>1st</th>
+			<th>2nd</th>
+			<th>3rd</th>
+			<th>Total</th>
+		</tr>
 
-<div>Away QTR Score</div>
+		<tr class="awayTotals">
+			<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
+			<td><%= periodScore[0]['awayScore'] %></td>
+			<td><%= periodScore[1]['awayScore'] %></td>
+			<td><%= periodScore[2]['awayScore'] %></td>
+			<td><%= periodTotal['awayScore'] %></td>
+		</tr>
 
-<%= abb['awayTeam']['Abbreviation']%> -
-<% periodScore.each do |q|%>
-	<%= q['awayScore'] %>
+		<tr class="homeTotals">
+			<td><%= teamCity['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
+			<td><%= periodScore[0]['homeScore'] %></td>
+			<td><%= periodScore[1]['homeScore'] %></td>
+			<td><%= periodScore[2]['homeScore'] %></td>
+			<td><%= periodTotal['homeScore'] %></td>
+		</tr>
+	</table>
 
-<% end %>
-<!-- Prints the away team total score -->
-<%= pts['awayScore'] %>
-
-<!-- Loop that stores the QTR totals for the home team -->
-<div>Home QTR Score</div>
-
-<%= abb['homeTeam']['Abbreviation']%> -
-<% periodScore.each do |q|%>
-	<%= q['homeScore'] %>
-
-<% end %>
-
-<!-- Prints the home team total score -->
-<%= pts['homeScore'] %>
-
-<hr>
-<!-- Team info -->
-<div> Away Team </div>
-<br/>
-<div>City: <%= teamCity['awayTeam']['City'] %></div>
-<div>Team: <%= teamName['awayTeam']['Name'] %></div>
-<div>Abb:<%= abb['awayTeam']['Abbreviation'] %></div>
-<div>PTS: <%= pts['awayScore'] %></div>
-
-<hr>
-
-	<br/>
 	<!-- Loop that shows the away players and their game stats -->
 	<% awayPlayers.each do |a|%>
 	<!-- All the variables used in this loop -->
@@ -62,22 +53,11 @@
 			<div>Assists: <%#= assist%></div> 
 			<div>Points: <%#= points%></div> 
 			<div>Shots: <%#= shots%></div>
-
 		</div>
 		<hr>
 	<% end %>
 <hr>
 
-<!-- Team info -->		
-<div> Home Team </div>
-<br/>
-<div>City: <%= g['game']['homeTeam']['City'] %></div>
-<div>Team: <%= g['game']['homeTeam']['Name'] %></div>
-<div>Abb: <%= g['game']['homeTeam']['Abbreviation'] %></div>
-<div>PTS: <%= pts['homeScore'] %></div>
-
-<hr>
-	<br/>
 	<!-- Loop that shows the home players and their game stats -->
 		<% homePlayers.each do |h|%>
 		<!-- All the variables used in this loop -->
