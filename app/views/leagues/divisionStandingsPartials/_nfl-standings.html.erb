@@ -16,8 +16,8 @@
 	<%@divisions.each do |d|%>
 		<table class="division_box">
 			<tr><th><%=d["@name"].sub(/^.*\//,'')%></th>
-				<th>Wins</th>
-				<th>Losses</th>
+				<th>W</th>
+				<th>L</th>
 				<th>PCT</th>
 				</tr>
 			<%d["teamentry"].each do |t|%>

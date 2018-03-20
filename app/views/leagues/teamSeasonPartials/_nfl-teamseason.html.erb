@@ -34,7 +34,7 @@
 				<% day = gameid [6..7] %>	
 				<!-- If statement to render month instead of string representing onth as a number -->
 				<tr>
-					<td>
+					<td class="font">
 				<% if month == '01' %>
 					<%= "Jan." %>
 				<% elsif month == '02' %>
@@ -64,11 +64,22 @@
 				<%= year %>
 		</td>
 		<!-- Showing away vs home team -->
-		<td>
-			<%= g['game']['awayTeam']['City'] %> <%= g['game']['awayTeam']['Name'] %>
-			<%= "at" %>
-			<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+
+			<td class="font">
+				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
+					<p class="where">@</p><%= g['game']['homeTeam']['Name'] %>
+				<% else %>
+					<p class="where">vs.</p><%= g['game']['awayTeam']['Name'] %>
+				<% end %>
+			</td>
+
+			<!--
+		<td class="font">
+			<%#= g['game']['awayTeam']['City'] %> <%#= g['game']['awayTeam']['Name'] %>
+			<p class="where">at</p>
+			<%#= g['game']['homeTeam']['City'] %> <%#= g['game']['homeTeam']['Name'] %>
 		</td>
+	-->
 		<!-- using points scored to determine Win or Loss -->
 		<% if  (g['stats']['PointsFor']['#text']).to_i > (g['stats']['PointsAgainst']['#text']).to_i %>
 				<% scorestring =  "W " + (g['stats']['PointsFor']['#text']) + '-'  +(g['stats']['PointsAgainst']['#text']) %>
@@ -76,7 +87,7 @@
 		<% else %> 
 			
 				<% scorestring =  "L " + (g['stats']['PointsAgainst']['#text'])+ '-' + (g['stats']['PointsFor']['#text']) %>
-				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%></td>
+				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total), class: "l"%></td>
 		<% end %>
 	</tr>
 <% end %>
