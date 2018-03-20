@@ -1,10 +1,11 @@
-<h1>Testing</h1>
+
 <!-- Page variables -->
 
 <% g = @games %>
 <% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
 <% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
 <% quarterScore = g['quarterSummary']['quarter']%>
+<% quarterTotal = g['quarterSummary']['quarterTotals']%>
 <% teamCity = g['game']%>
 <% teamName = g['game']%>
 <% abb = g['game']%>
@@ -12,52 +13,34 @@
 <% @awayQuarterTotals = []%>
 <% @homeQuarterTotals = []%>
 
-<hr>
+<table class="headliner wholeBox">
+	<tr class="header">
+		<th> <!-- left blank on purpose --> </th>
+		<th>1st</th>
+		<th>2nd</th>
+		<th>3rd</th>
+		<th>4th</th>
+		<th>Total</th>
+	</tr>
 
-<div class='matchupDisplay'>
-	<%= teamCity['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %> at	<%= g['game']['homeTeam']['City'] %> <%= g['game']['homeTeam']['Name'] %>
+	<tr class="awayTotals">
+		<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
+		<td><%= quarterScore[0]['awayScore'] %></td>
+		<td><%= quarterScore[1]['awayScore'] %></td>
+		<td><%= quarterScore[2]['awayScore'] %></td>
+		<td><%= quarterScore[3]['awayScore'] %></td>
+		<td><%= quarterTotal['awayScore'] %></td>
+	</tr>
 
-</div>
-
-<div class='totalScore'>
-	<%= pts['awayScore'] %>	<%= pts['homeScore'] %>
-</div>
-
-<hr>
-
-<h1>Boxscore</h1>
-
-<!-- <div>Away QTR Score</div> -->
-
-<%= abb['awayTeam']['Abbreviation']%> -
-<% quarterScore.each do |q|%>
-	<%= q['awayScore'] %>
-	<% @awayQuarterTotals.push(q['awayScore'].to_i) %>
-<% end %>
-
-<%= @awayQuarterTotals.inject(0) {|sum, i|  sum + i }%>
-
-<br/>
-<!-- <div>Home QTR Score</div> -->
-
-<%= abb['homeTeam']['Abbreviation']%> -
-<% quarterScore.each do |q|%>
-	<%= q['homeScore'] %>
-	<% @homeQuarterTotals.push(q['homeScore'].to_i) %>
-<% end %>
-
-<%= @homeQuarterTotals.inject(0) {|sum, i|  sum + i }%>
-
- <h1> test </h1>
-
-
- 	<%# awayPlayers.find {|x| x[:stats][:PassAttempts][:'#text'] > 0} %>
- 	<%#= x %>
- 	<%# end %>
+	<tr class="homeTotals">
+		<td><%= teamCity['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
+		<td><%= quarterScore[0]['homeScore'] %></td>
+		<td><%= quarterScore[1]['homeScore'] %></td>
+		<td><%= quarterScore[2]['homeScore'] %></td>
+		<td><%= quarterScore[3]['homeScore'] %></td>
+		<td><%= quarterTotal['homeScore'] %></td>
+	</tr>
+</table>
 
 
 
-
-<%# @awayPlayers .select{|p| ['stats']["passattempt"]["#text"] >0} %>
-<%#= p %>
-<%# end %>
