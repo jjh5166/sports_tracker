@@ -55,15 +55,9 @@
 		pic_des.innerHTML = pic_selected_des;
 		let clink = "/pictures/"+ pic_id +"/comments/new"
 		comment_link.setAttribute("href",clink);
-		display_comments(pic_comments);
-		// for (var i=0; i<pic_comments.length; i++){
-		// 	let cmm = document.createElement("p");
-		// 	let brk = document.createElement("br");
-		// 	let textnode = document.createTextNode(pic_comments[0][i]+ ": " + pic_comments[1][i]);
-		// 	cmm.appendChild(textnode);
-		// 	comments.appendChild(cmm);
-		// 	comments.appendChild(brk);
-		// }
+		if(pic_comments[0][0] != null){
+			display_comments(pic_comments);
+		}
 	}
 	function display_comments(comments){
 		for (var i=0; i<comments.length; i++){
