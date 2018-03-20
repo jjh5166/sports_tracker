@@ -1,6 +1,11 @@
 <!-- Renders the partial files from their corresponding files -->
 <% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
-<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
+<% if current_user %>
+		<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
+<% else %>
+    <%= link_to 'Login to Add Photos', onclick: "login();"%>
+<% end %>
+
 <% @pics.each do |p|%>
 	<%=image_tag p.image.url(:med), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}')", :class => "pic_image",:id => p.id%>
 <%end%>
@@ -14,7 +19,7 @@
 	<%= render :file => "/games/boxScorePartials/_mlb-boxscore.html.erb" %>
 <% end %>
 
-
+<%# Picture Modal %>
 <div id="modal-overlay-pic">
     <div class="modal_pic">
       <button class="close3" onclick="Close_pic()">X</button>
@@ -28,12 +33,36 @@
       </div>
 
     </div>
+
+<%# Sign in Modal %>
+<div id="modal-overlay">
+    <div class="modal">
+      <button class="close" id="close" onclick="Close()">X</button>
+        
+            <div class="signin-box">
+              <h1 class="modal-titles">Login</h1>
+              <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                <div> <%= f.text_field :login, autofocus: true, autocomplete: "email", placeholder: "Username or Email"  %></div>
+                <div> <%= f.password_field :password, autocomplete: "off", placeholder: "Password"  %></div>
+                <div><%= f.check_box :remember_me%>
+                     <%= f.label :remember_me %></div>
+                <%= f.submit 'Sign in', onclick: "Close();" %>
+                <div class="signin-links"><%= link_to "Forgot your password?", new_password_path(:user) %></div>
+              <% end %>
+            </div>
+    </div>
+</div>
+
 <script>
 
 let modalOverlayPic = document.getElementById('modal-overlay-pic');
 let pic_show = document.getElementById('pic_show');
 let pic_des = document.getElementById('pic_des');
 let pic_selected = false;
+// Sign In Modal Below
+let modal = document.getElementById('log_in');
+let close = document.getElementById('close');
+let modalOverlay = document.getElementById('modal-overlay');
 
 
   function display_pic(pic_id, pic_desc){
@@ -49,4 +78,20 @@ let pic_selected = false;
     modalOverlayPic.style.display = 'none';
   }
 
+
+// Modal JavaScript script
+  function login(){
+    modalOverlay.style.display = 'block';
+}
+
+  function Close() {
+
+    modalOverlay.style.display = 'none';
+  }
+
 </script>
+
+
+
+
+
