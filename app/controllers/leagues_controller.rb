@@ -1,7 +1,7 @@
 class LeaguesController < ApplicationController
 
   def index
-
+    render :layout => false
   end
 
   def show
@@ -15,6 +15,7 @@ class LeaguesController < ApplicationController
   def teamseason
   	# gamelog
   	@games = $msf.msf_get_data(params[:league], params[:season], 'team_gamelogs', 'json', 'team' => params[:Abbreviation])['teamgamelogs']['gamelogs']
+    #@stats = $msf.msf_get_data(params[:league], params[:season], 'game_boxscore', 'json', 'gameid' => params[:gameid])['gameboxscore']
   end
 
 end
