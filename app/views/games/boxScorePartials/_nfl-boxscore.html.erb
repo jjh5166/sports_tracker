@@ -66,42 +66,38 @@
 				<th>TD</th>
 				<th>INT</th>
 			</tr>
-			<%#= awayTeams['awayTeamStats']['PassAttempts']['#text']%>
-			<%# awayTeams do |a|%>
-				<% passAttempts = awayTeams['awayTeamStats']['PassAttempts']['#text'].to_i%>
-				<% passCompletions = awayTeams['awayTeamStats']['PassCompletions']['#text'].to_i%>
-				<% passYds = awayTeams['awayTeamStats']['PassNetYards']['#text'].to_i%>
-				<% passAvg = awayTeams['awayTeamStats']['PassAvg']['#text']%>
-				<% passTD = awayTeams['awayTeamStats']['PassTD']['#text'].to_i%>
-				<% passINT = awayTeams['awayTeamStats']['PassInt']['#text'].to_i%>
-				<tr>
-					<td class="playerStats"><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
-					<td class="playerStats"><%= passCompletions %>/<%= passAttempts %></td> 
-					<td class="playerStats"><%= passYds %></td> 
-					<td class="playerStats"><%= passAvg %></td>
-					<td class="playerStats"><%= passTD %></td>
-					<td class="playerStats"><%= passINT %></td>
-					
-				 </tr>
-			<%# end %>
-			<%# homeTeams.each do |h|%>
-				<% passAttempts = homeTeams['homeTeamStats']['PassAttempts']['#text'].to_i%>
-				<% passCompletions = homeTeams['homeTeamStats']['PassCompletions']['#text'].to_i%>
-				<% passYds = homeTeams['homeTeamStats']['PassNetYards']['#text'].to_i%>
-				<% passAvg = homeTeams['homeTeamStats']['PassAvg']['#text']%>
-				<% passTD = homeTeams['homeTeamStats']['PassTD']['#text'].to_i%>
-				<% passINT = homeTeams['homeTeamStats']['PassInt']['#text'].to_i%>
-				<tr>
-					<td class="playerStats"><%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
-					<td class="playerStats"><%= passCompletions %>/<%= passAttempts %></td> 
-					<td class="playerStats"><%= passYds %></td> 
-					<td class="playerStats"><%= passAvg %></td>
-					<td class="playerStats"><%= passTD %></td>
-					<td class="playerStats"><%= passINT %></td> 
-					 
-				 </tr>
+			<% passAttempts = awayTeams['awayTeamStats']['PassAttempts']['#text'].to_i%>
+			<% passCompletions = awayTeams['awayTeamStats']['PassCompletions']['#text'].to_i%>
+			<% passYds = awayTeams['awayTeamStats']['PassNetYards']['#text'].to_i%>
+			<% passAvg = awayTeams['awayTeamStats']['PassAvg']['#text']%>
+			<% passTD = awayTeams['awayTeamStats']['PassTD']['#text'].to_i%>
+			<% passINT = awayTeams['awayTeamStats']['PassInt']['#text'].to_i%>
+			<tr>
+				<td class="playerStats"><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
+				<td class="playerStats"><%= passCompletions %>/<%= passAttempts %></td> 
+				<td class="playerStats"><%= passYds %></td> 
+				<td class="playerStats"><%= passAvg %></td>
+				<td class="playerStats"><%= passTD %></td>
+				<td class="playerStats"><%= passINT %></td>
+				
+			 </tr>
+			<% passAttempts = homeTeams['homeTeamStats']['PassAttempts']['#text'].to_i%>
+			<% passCompletions = homeTeams['homeTeamStats']['PassCompletions']['#text'].to_i%>
+			<% passYds = homeTeams['homeTeamStats']['PassNetYards']['#text'].to_i%>
+			<% passAvg = homeTeams['homeTeamStats']['PassAvg']['#text']%>
+			<% passTD = homeTeams['homeTeamStats']['PassTD']['#text'].to_i%>
+			<% passINT = homeTeams['homeTeamStats']['PassInt']['#text'].to_i%>
+			<tr>
+				<td class="playerStats"><%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
+				<td class="playerStats"><%= passCompletions %>/<%= passAttempts %></td> 
+				<td class="playerStats"><%= passYds %></td> 
+				<td class="playerStats"><%= passAvg %></td>
+				<td class="playerStats"><%= passTD %></td>
+				<td class="playerStats"><%= passINT %></td> 
+				 
+			 </tr>
 
-			<tr></tr>
+			<tr><!-- left blank on purpose --></tr>
 			<tr>
 				<th>Rushing</th>
 				<th>Attempts</th>
@@ -110,33 +106,32 @@
 				<th>TD</th>
 				<th>FUM</th>
 			</tr>
-				<% rushAttempts = awayTeams['awayTeamStats']['RushAttempts']['#text'].to_i%>
-				<% rushYds = awayTeams['awayTeamStats']['RushYards']['#text'].to_i%>
-				<% rushAvg = awayTeams['awayTeamStats']['RushAverage']['#text']%>
-				<% rushTD = awayTeams['awayTeamStats']['RushTD']['#text'].to_i%>
-				<% fumbles = awayTeams['awayTeamStats']['Fumbles']['#text'].to_i%>
-				<tr>
-					<td class="playerStats"><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
-					<td class="playerStats"><%= rushAttempts %></td> 
-					<td class="playerStats"><%= rushYds %></td> 
-					<td class="playerStats"><%= rushAvg %></td>
-					<td class="playerStats"><%= rushTD %></td>
-					<td class="playerStats"><%= fumbles %></td>
-				</tr>
-				<tr>
-				<% rushAttempts = homeTeams['homeTeamStats']['RushAttempts']['#text'].to_i%>
-				<% rushYds = homeTeams['homeTeamStats']['RushYards']['#text'].to_i%>
-				<% rushAvg = homeTeams['homeTeamStats']['RushAverage']['#text']%>
-				<% rushTD = homeTeams['homeTeamStats']['RushTD']['#text'].to_i%>
-				<% fumbles = homeTeams['homeTeamStats']['Fumbles']['#text'].to_i%>
-					<td class="playerStats"><%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
-					<td class="playerStats"><%= rushAttempts %></td> 
-					<td class="playerStats"><%= rushYds %></td> 
-					<td class="playerStats"><%= rushAvg %></td>
-					<td class="playerStats"><%= rushTD %></td>
-					<td class="playerStats"><%= fumbles %></td>
-				</tr>
-			<%# end %>
+			<% rushAttempts = awayTeams['awayTeamStats']['RushAttempts']['#text'].to_i%>
+			<% rushYds = awayTeams['awayTeamStats']['RushYards']['#text'].to_i%>
+			<% rushAvg = awayTeams['awayTeamStats']['RushAverage']['#text']%>
+			<% rushTD = awayTeams['awayTeamStats']['RushTD']['#text'].to_i%>
+			<% fumbles = awayTeams['awayTeamStats']['Fumbles']['#text'].to_i%>
+			<tr>
+				<td class="playerStats"><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
+				<td class="playerStats"><%= rushAttempts %></td> 
+				<td class="playerStats"><%= rushYds %></td> 
+				<td class="playerStats"><%= rushAvg %></td>
+				<td class="playerStats"><%= rushTD %></td>
+				<td class="playerStats"><%= fumbles %></td>
+			</tr>
+			<tr>
+			<% rushAttempts = homeTeams['homeTeamStats']['RushAttempts']['#text'].to_i%>
+			<% rushYds = homeTeams['homeTeamStats']['RushYards']['#text'].to_i%>
+			<% rushAvg = homeTeams['homeTeamStats']['RushAverage']['#text']%>
+			<% rushTD = homeTeams['homeTeamStats']['RushTD']['#text'].to_i%>
+			<% fumbles = homeTeams['homeTeamStats']['Fumbles']['#text'].to_i%>
+				<td class="playerStats"><%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
+				<td class="playerStats"><%= rushAttempts %></td> 
+				<td class="playerStats"><%= rushYds %></td> 
+				<td class="playerStats"><%= rushAvg %></td>
+				<td class="playerStats"><%= rushTD %></td>
+				<td class="playerStats"><%= fumbles %></td>
+			</tr>
 		</table>
 	</div>
 </body>
