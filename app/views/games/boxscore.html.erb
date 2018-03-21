@@ -6,7 +6,7 @@
 		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p].to_json})",  :class => "pic_image", :id => p.id%>
 
 	<% end %>
-
+<%#=@comments%>
 	<% if current_user %>
 			<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
 		<% else %>
@@ -30,7 +30,7 @@
 <div id="modal-overlay-pic">
     <div class="modal_pic">
       <button class="close3" onclick="Close_pic()">X</button>
-      			<div class="picture-box">
+      	<div class="picture-box">
 					<img id="pic_show">
 					<div id="pic_des"></div>
 					<% if user_signed_in? %>
@@ -40,7 +40,6 @@
 					<% else %>
 						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
 					<%end%>
-
 				</div>
 				<div class="commentLabel">Comments</div>
 				<div class="comment-box">
@@ -66,9 +65,6 @@
 					</div>
 				</div>
 
-					
-			
-					
 	</div>
 </div>
 
@@ -79,28 +75,40 @@
 	let pic_show = document.getElementById('pic_show');
 	let pic_des = document.getElementById('pic_des');
 	let comment_link = document.getElementById("comment_link")
-	let comments = document.getElementById('comment_box')
+	let comments_box = document.getElementById('comment_box')
 
 
 	function display_pic(pic_url, pic_desc, pic_id, pic_comments){
-	    modalOverlayPic.style.display = 'block';
+	  modalOverlayPic.style.display = 'block';
 		pic_selected = pic_url;
 		pic_selected_des = pic_desc;
 		pic_show.src = pic_selected;
 		pic_des.innerHTML = pic_selected_des;
 		let clink = "/pictures/"+ pic_id +"/comments/new"
 		comment_link.setAttribute("href",clink);
-			// console.log(pic_comments[0]);
-		for (var i=0; i<pic_comments.length; i++){
-			let textnode = document.createTextNode(pic_comments[i])
-			comments.appendChild(textnode)
+		if(pic_comments[0][0] != null){
+			display_comments(pic_comments);
 		}
 	}
-
+	function display_comments(comments){
+		for (var i=0; i<comments.length; i++){
+			let cmm = document.createElement("p");
+			let brk = document.createElement("br");
+			let auser = document.createElement("a");
+			let ulink = '/profile/'+ comments[0][i]
+			auser.setAttribute('href', ulink);
+			auser.innerHTML = comments[0][i]
+			let cnode = document.createTextNode(": " + comments[1][i]);
+			cmm.appendChild(cnode);
+			comments_box.appendChild(auser);
+			comments_box.appendChild(cmm);
+			comments_box.appendChild(brk);
+		}
+	}
 	function Close_pic() {
 	    modalOverlayPic.style.display = 'none';
-		while (comments.firstChild) {
-	    	comments.removeChild(comments.firstChild);
+		while (comments_box.firstChild) {
+	    	comments_box.removeChild(comments_box.firstChild);
 		}
 	}
 </script>
