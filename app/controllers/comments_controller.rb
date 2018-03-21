@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
   def new
 
     @comment = Comment.new
-    @userid = current_user.id
     @comments = Comment.where(picture_id: params[:picture_id])
+    
   end
   def create
     @comment = Comment.new(comment_params)

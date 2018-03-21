@@ -3,7 +3,8 @@
 
 <div class="pics_container">
 	<% @pics.first(8).each do |p|%>
-		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json})",  :class => "pic_image",:id => p.id%>
+		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p].to_json})",  :class => "pic_image", :id => p.id%>
+
 	<% end %>
 
 	<% if current_user %>
@@ -29,17 +30,50 @@
 <div id="modal-overlay-pic">
     <div class="modal_pic">
       <button class="close3" onclick="Close_pic()">X</button>
+      			<div class="picture-box">
 					<img id="pic_show">
-					<br>
-					<p id="pic_des"></p>
-					<a id="comment_link" href=" ">Add Comment</a>
+					<div id="pic_des"></div>
+					<% if user_signed_in? %>
+						<textarea></textarea>
+						<br/>
+						<a id="comment_link" href=" ">Add Comment</a>
+					<% else %>
+						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
+					<%end%>
+
+				</div>
+				<div class="commentLabel">Comments</div>
+				<div class="comment-box">
+
 					<div id="comment_box">
-						
+<p class="comment"><span>Zack:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices suscipit nisi tincidunt scelerisque. Fusce efficitur erat at leo rhoncus auctor. Vivamus ut suscipit augue. Nam placerat tempor mauris, tempor pharetra ipsum dictum id. Vestibulum nec sem sed enim aliquam euismod in ullamcorper magna. Pellentesque est justo, blandit nec sagittis a, condimentum at ante. Morbi in dapibus nisi. Suspendisse sollicitudin vulputate commodo. Aenean ut est eu lacus egestas venenatis. Sed pharetra, leo auctor consectetur tempus, ante sapien porttitor diam, a ullamcorper ligula ante ac metus. Curabitur nec pretium lacus.</p>
+
+<p class="comment"> <span>John:</span> Nullam ac nibh eu sem pretium accumsan. Praesent non nibh quis augue volutpat mattis sagittis vel nibh. Maecenas posuere ex quis risus faucibus, at vehicula lectus consequat. Morbi quis laoreet tortor. Pellentesque egestas varius orci, a condimentum sapien. Pellentesque maximus augue id sollicitudin dictum. Quisque eget placerat justo, id elementum turpis.</p>
+
+<p class="comment"><span>Andrew:</span> Nulla facilisi. Mauris ante tortor, lobortis id mi ac, viverra varius nunc. Pellentesque tincidunt placerat mauris nec feugiat. Praesent sed lorem sit amet justo scelerisque volutpat. Sed id leo tortor. In non fringilla velit. Quisque viverra ac dolor quis egestas. Proin mollis tortor sem, et vestibulum sapien bibendum quis. Phasellus ullamcorper in ipsum ut rhoncus. Donec fermentum, lacus et elementum consequat, eros lacus bibendum purus, nec facilisis odio mi a tellus. Ut eros elit, imperdiet ut varius non, vehicula et dolor. Curabitur ultricies mi vel dui volutpat cursus et at dolor. Donec in tortor vitae sem suscipit rutrum quis vitae lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras venenatis varius risus sed ultrices. Praesent pretium condimentum dui ac cursus.</p>
+
+<p class="comment"><span>Brandon:</span>Cras hendrerit, arcu non vestibulum faucibus, mi magna sodales erat, non facilisis lectus tortor ut dui. Ut nec sapien vehicula mi tempor viverra in ut tortor. Nullam sit amet orci feugiat, malesuada justo at, ultricies tellus. Duis non dui vel quam placerat tempor finibus id turpis. Mauris id ligula sed massa accumsan porttitor. Proin ante est, luctus nec nisi vitae, congue euismod leo. Nam commodo, metus eget scelerisque luctus, tellus nisi dapibus augue, eu lacinia libero tortor eu odio. Etiam pellentesque felis nec erat vestibulum, quis congue erat convallis.</p>
+
+<p class="comment"><span>John:</span>Nullam vel leo laoreet, convallis quam id, lacinia dolor. Curabitur rutrum magna nec risus luctus volutpat. Integer ligula quam, tempor ut sagittis at, venenatis sed mauris. In tincidunt mauris leo, eget ullamcorper orci pharetra nec. Ut euismod volutpat justo, sed viverra nunc ultrices non. Nullam faucibus laoreet euismod. Duis in finibus arcu. Duis consequat nibh at dolor pellentesque condimentum.</p>
+
+
+
+<p class="comment"><span>Brandon:</span>Ut et consectetur sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer nisl nulla, pharetra a ultrices a, ultrices a velit. Nulla pulvinar sed libero eget ultrices. Nam pharetra, nunc id tempus efficitur, ligula ex volutpat nisl, id pharetra nibh nunc a orci. Nunc lobortis suscipit tortor a commodo. Phasellus libero purus, elementum et malesuada at, sagittis in erat. Quisque a tortor sit amet quam placerat posuere vitae id metus. Donec blandit, erat ut ultrices venenatis, ante enim tempus quam, a mattis purus arcu ac augue. Mauris commodo, arcu a volutpat blandit, ligula massa fringilla erat, quis finibus tortor turpis vitae erat. Morbi ultrices mattis porttitor. Duis sit amet elementum massa, ac facilisis sapien.</p>
+
+<p class="comment"><span>Zack:</span>Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean elementum leo quam, ut ultrices risus vehicula quis. Pellentesque vestibulum viverra sem. Phasellus imperdiet semper tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Vivamus eleifend velit justo, ac sagittis lectus tempus quis. Phasellus tempor odio nec diam viverra sodales. Integer scelerisque elit a ullamcorper efficitur. Sed malesuada varius dolor, sed mattis lorem pharetra vitae. Morbi placerat felis non tellus malesuada ultricies. Donec semper est risus, a vestibulum felis vulputate ac.</p>
+
+
 					</div>
+				</div>
+
+					
+			
+					
 	</div>
 </div>
 
 <script>
+	
 
 	let modalOverlayPic = document.getElementById('modal-overlay-pic');
 	let pic_show = document.getElementById('pic_show');
