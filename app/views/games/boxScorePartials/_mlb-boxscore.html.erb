@@ -7,11 +7,31 @@
 <% teamCity = g['game']%>
 <% teamName = g['game']%>
 <% abb = g['game']%>
-<% @awayQuarterTotals = []%>
-<% @homeQuarterTotals = []%>
 
-	<table class="headliner wholeBox">
-			<tr class="header">
+
+
+<body id="bodyBoxscore">
+	<div class="headliner">
+		<div class="font" id="Team">
+			<div class="teamCity"><%= teamCity['awayTeam']['City'] %></div>
+			<div class="teamName"><%= teamName['awayTeam']['Name'] %></div>
+			<div class="homeAway"> Away </div>
+			<div class="Score"><%= inningTotal['awayScore'] %> </div>
+		</div>
+
+		<p class="font l"> FINAL</p>
+
+		<div class="font" id="Team">
+			<div class="teamCity"><%= g['game']['homeTeam']['City'] %></div>
+			<div class="teamName"><%= g['game']['homeTeam']['Name'] %></div>
+			<div class="homeAway"> Home </div>
+			<div class="Score"><%= g['inningSummary']['inningTotals']['homeScore'] %></div>
+		</div>
+	</div>
+
+	<div>
+		<table class="headliner" id="baseballScoreBoard">
+			<tr>
 				<th> <!-- left blank on purpose --> </th>
 				<th>1st</th>
 				<th>2nd</th>
@@ -24,32 +44,78 @@
 				<th>9th</th>
 				<th>Total</th>
 			</tr>
-
-			<tr class="awayTotals">
-				<td><%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %></td>
-				<td><%= inningScore[0]['awayScore'] %></td>
-				<td><%= inningScore[1]['awayScore'] %></td>
-				<td><%= inningScore[2]['awayScore'] %></td>
-				<td><%= inningScore[3]['awayScore'] %></td>
-				<td><%= inningScore[4]['awayScore'] %></td>
-				<td><%= inningScore[5]['awayScore'] %></td>
-				<td><%= inningScore[6]['awayScore'] %></td>
-				<td><%= inningScore[7]['awayScore'] %></td>
-				<td><%= inningScore[8]['awayScore'] %></td>
-				<td><%= inningTotal['awayScore'] %></td>
+			<tr>
+				<td><%= abb['awayTeam']['Abbreviation']%></td>
+					<% inningScore.each do |q|%>
+						<td><%= q['awayScore'] %></td>
+					<% end %>
+				<td><%= inningTotal['awayScore']%></td>
 			</tr>
-
-			<tr class="homeTotals">
-				<td><%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %></td>
-				<td><%= inningScore[0]['homeScore'] %></td>
-				<td><%= inningScore[1]['homeScore'] %></td>
-				<td><%= inningScore[2]['homeScore'] %></td>
-				<td><%= inningScore[3]['homeScore'] %></td>
-				<td><%= inningScore[4]['homeScore'] %></td>
-				<td><%= inningScore[5]['homeScore'] %></td>
-				<td><%= inningScore[6]['homeScore'] %></td>
-				<td><%= inningScore[7]['homeScore'] %></td>
-				<td><%= inningScore[8]['homeScore'] %></td>
-				<td><%= inningTotal['homeScore'] %></td>
+			<tr>
+				<td><%= abb['homeTeam']['Abbreviation']%></td>
+					<% inningScore.each do |q|%>
+						<td><%= q['homeScore'] %></td>
+					<% end %>
+				<td><%= inningTotal['homeScore']%></td>
 			</tr>
 		</table>
+	</div>
+<!-- Build a stats box here -->
+	<div id="statsBox">
+		<div class="font">
+			<%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %>
+		</div>
+
+		<table id="awayPlayersTable">
+			<tr>
+				<th>Player</th>
+				<th>H-AB</th>
+				<th>R</th>
+				<th>HR</th>
+			</tr>
+			<% awayPlayers.each do |a|%>
+				<% firstName = a['player']['FirstName']%>
+				<% lastName = a['player']['LastName']%>
+				<% position = a['player']['Position']%>
+				<% atBats = a['stats']['AtBats']['#text'].to_i%>
+				<% runs = a['stats']['Runs']['#text'].to_i%>
+				<% hits = a['stats']['Hits']['#text'].to_i%>
+				<% homeruns = a['stats']['Homeruns']['#text'].to_i%>
+				<tr>
+					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
+					<td class="playerStats"><%= hits %> - <%= atBats %></td>
+					<td class="playerStats"><%= runs %></td>
+					<td class="playerStats"><%= homeruns %></td>
+				 </tr>
+			<% end %>
+		</table>
+
+		<div class="font">
+				<%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %>
+		</div>
+
+		<table id="homePlayersTable">
+			<tr>
+				<th>Player</th>
+				<th>H-AB</th>
+				<th>R</th>
+				<th>HR</th>
+			</tr>
+			<% homePlayers.each do |a|%>
+				<% firstName = a['player']['FirstName']%>
+				<% lastName = a['player']['LastName']%>
+				<% position = a['player']['Position']%>
+				<% atBats = a['stats']['AtBats']['#text'].to_i%>
+				<% runs = a['stats']['Runs']['#text'].to_i%>
+				<% hits = a['stats']['Hits']['#text'].to_i%>
+				<% homeruns = a['stats']['Homeruns']['#text'].to_i%>
+				<tr>
+					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
+					<td class="playerStats"><%= hits %> - <%= atBats %></td>
+					<td class="playerStats"><%= runs %></td>
+					<td class="playerStats"><%= homeruns %></td>
+				 </tr>
+			<% end %>
+		</table>
+	</div>
+</body>	

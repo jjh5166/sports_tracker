@@ -4,21 +4,22 @@
 	background-color: lightgrey;
 }
 
+.headliner {
+	margin: 20px auto;
+	text-align: center;
+	border: 1px solid black;
+	padding: 20px 5px;
+	width: 90%;
+	height: 120px;
+	background-color: white;
+	dislay: block;
+}
+
 #statsBox {
 	margin: 0 auto;
 	border: 1px solid black;
 	padding: 20px;
 	width: 90%;
-	background-color: white;
-}
-
-.headliner {
-	margin: 20px auto;
-	text-align: center;
-	border: 1px solid black;
-	padding: 20px;
-	width: 90%;
-	height: 120px;
 	background-color: white;
 }
 
@@ -32,18 +33,26 @@
 
 .quarterScore {
 	display: inline-block;
-	width: 300px;
+	width: 35%;
 	text-align: center;
-	font-size: 14px;
+	font-size: 10px;
 }
+
+// Team name and total score 
 .homeAway {
 	font-size: 12px;
 }
 .teamCity {
-	font-size: 32px;
+	font-size: 24px;
 }
 .teamName {
-	font-size: 22px;
+	font-size: 18px;
+}
+.Score{
+	display: inline-block;
+	font-size: 18px;
+	// line-height: 120px;
+	// margin-left: 10%;
 }
 
 tr:nth-child(even) {
@@ -52,31 +61,24 @@ tr:nth-child(even) {
 
 table, th, td {
 	text-align: left;
-	padding: 10px;
+	// padding: 10px;
 	border-collapse: collapse;
     // border: 1px solid black;
 }
 
 // ------ Away Team --------
-
+// --Away teams stats table
 #awayPlayersTable {
 	width: 98%;
 	margin: 10px 1%;
 }
 
-#awayTeam{
-	// position: absolute;
-	// top: 130px;
-	// left: 250px;
-	// left: 15%;
-	width: 200px;
-	display: inline-block;
-}
-
 .awayScore{
 	display: inline-block;
-	font-size: 40px;
-	line-height: 120px;
+	font-size: 14px;
+	// line-height: 120px;
+	// margin-right: 1%;
+	// margin-left: -10%;
 }
 
 // ------ Home Team --------
@@ -86,20 +88,41 @@ table, th, td {
 	margin: 10px 1%;
 }
 
-#homeTeam {
+#Team {
 	// position: absolute;
 	// top: 130px;
 	// right: 250px;
 	// right: 15%;
-	width: 200px;
+	width: 15%;
 	display: inline-block;
+	color: grey;
+	// margin-left: 1%;
 }
 
-.homeScore{
-	display: inline-block;
-	font-size: 40px;
-	line-height: 120px;
+// Baseball scoreboard
+#baseballScoreBoard{
+	width: 91%;
+	padding: 20px 5px;
 }
 
+// Hockey scorebaord
+.hockeyScore{
+	display: inline-block;
+	// width: 30%;
+	text-align: center;
+	font-size: 10px;
+}
+#hockeyScoreBoard{
+	width: 20%;
+}
 
-
+// Football Scoreboard
+.footballScore{
+	display: inline-block;
+	// width: 35%;
+	text-align: center;
+	font-size: 10px;
+}
+#footballScoreBoard{
+	width: 20%;
+}
