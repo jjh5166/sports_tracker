@@ -4,16 +4,19 @@
 	<% @pics.first(8).each do |p|%>
 		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, #{current_user.id})",  :class => "pic_image", :id => p.id%>
 
+
 	<% end %>
 <%#=@comments%>
+
+</div>
+
 	<% if current_user %>
-			<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
+			<div class="pic_button"><%=link_to 'Add Photo', new_pic_path(:url => Base64.encode64(url))%></div>
 		<% else %>
 		    <a class="pointer" id="log_in" onclick="login()">Login to Add Photos</a>
 	<% end %>
 
 </div>
-
 
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>

@@ -3,5 +3,9 @@
 <%=image_tag @pic.image.url(:large)%>
 <%= @pic.description%>
 
+<% if current_user %>
+			<%= link_to 'Edit Picture', edit_picture_path %>
+		<% else %>
+		    
+	<% end %>
 
-<%= link_to 'Edit Picture', edit_picture_path %>
