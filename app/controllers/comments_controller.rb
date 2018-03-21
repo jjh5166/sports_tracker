@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
       if @comment.save
         flash[:notice] = 'Comment Saved'
-        redirect_to '/'
+        redirect_to request.referer
       else
         flash[:notice] = 'Comment Not Saved'
         redirect_to new_picture_comment_path
