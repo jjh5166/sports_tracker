@@ -1,15 +1,14 @@
 <% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
-
+<%if @pics[0] %>
 <div class="pics_container">
-	<% @pics.first(8).each do |p|%>
+	<% @pics.first(10).each do |p|%>
 		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, '#{@user_id}')",  :class => "pic_image", :id => p.id%>
 
 
 	<% end %>
-<%#=@comments%>
-
 </div>
 
+<%end%>
 	<% if current_user %>
 			<div class="pic_button"><%=link_to 'Add Photo', new_pic_path(:url => Base64.encode64(url))%></div>
 		<% else %>
@@ -38,7 +37,7 @@
 					 <img id="pic_show">
 					 <p id="pic_des"></p>
 				</div>
-					
+
 				</div>
 				<div class="commentLabel">Comments</div>
 				<div class="comment-box">
