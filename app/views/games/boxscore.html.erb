@@ -2,7 +2,7 @@
 
 <div class="pics_container">
 	<% @pics.first(8).each do |p|%>
-		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, #{current_user.id})",  :class => "pic_image", :id => p.id%>
+		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, '#{@user_id}')",  :class => "pic_image", :id => p.id%>
 
 
 	<% end %>
@@ -11,9 +11,9 @@
 </div>
 
 	<% if current_user %>
-			<div class="pic_button"><%=link_to 'Add Photo', new_pic_path(:url => Base64.encode64(url))%></div>
+			<div class="pic_button"><%=link_to 'Share a Photo', new_pic_path(:url => Base64.encode64(url))%></div>
 		<% else %>
-		    <a class="pointer" id="log_in" onclick="login()">Login to Add Photos</a>
+		    <div class="pic_button"><a class="pointer" id="log_in" onclick="login()">Login to Share Photos</a></div>
 	<% end %>
 
 </div>
@@ -31,18 +31,18 @@
 
 <div id="modal-overlay-pic">
     <div class="modal_pic">
-      <button class="close3" onclick="Close_pic()">X</button>
+			<%= submit_tag "X", :type => 'button', :class => "close3", :onclick => "Close_modal('#{@user_id}')"%>
+      <!-- <button class="close3" onclick="Close_modal()">X</button> -->
       	<div class="picture-box" id="pic_box">
-					<img id="pic_show">
-					<div id="pic_des"></div>
-					<% if user_signed_in? %>
-						<div id="comment_form_location"></div>
-					<% else %>
-						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
-					<%end%>
+      		<div class="styling">
+					 <img id="pic_show">
+					 <p id="pic_des"></p>
+				</div>
+					
 				</div>
 				<div class="commentLabel">Comments</div>
 				<div class="comment-box">
+
 
 					<div id="comment_box">
 
@@ -50,6 +50,11 @@
 
 					</div>
 				</div>
+					<% if user_signed_in? %>
+						<div id="comment_form_location"></div>
+					<% else %>
+						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
+					<%end%>
 
 	</div>
 </div>
@@ -74,8 +79,9 @@
 		pic_des.innerHTML = pic_selected_des;
 		if(pic_comments[0][0] != null){
 			display_comments(pic_comments);
-			create_comment_form(pic_id, user_id);
 		}
+		if(user_id != 'NO_USER'){
+		create_comment_form(pic_id, user_id);}
 	}
 	function display_comments(comments){
 		for (var i=0; i<comments[0].length; i++){
@@ -93,13 +99,20 @@
 			comments_box.appendChild(brk);
 		}
 	}
+	function Close_modal(user_id){
+		Close_pic();
+		if(user_id != 'NO_USER'){
+		Close_comments();}
+	}
 	function Close_pic() {
-	    modalOverlayPic.style.display = 'none';
+		modalOverlayPic.style.display = 'none';
+	}
+	function Close_comments(){
 		while (comments_box.firstChild) {
-	    	comments_box.removeChild(comments_box.firstChild);
+				comments_box.removeChild(comments_box.firstChild);
 		}
 		while (formlocation.firstChild) {
-	    	formlocation.removeChild(formlocation.firstChild);
+				formlocation.removeChild(formlocation.firstChild);
 		}
 	}
 	function create_comment_form(pic_id, user_id){
