@@ -5,10 +5,10 @@
 		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, #{current_user.id})",  :class => "pic_image", :id => p.id%>
 
 
-</div>
-
 	<% end %>
 <%#=@comments%>
+
+</div>
 
 	<% if current_user %>
 			<div class="pic_button"><%=link_to 'Add Photo', new_pic_path(:url => Base64.encode64(url))%></div>
