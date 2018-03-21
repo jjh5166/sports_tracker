@@ -79,6 +79,7 @@
 	function display_comments(comments){
 		for (var i=0; i<comments.length; i++){
 			let cmm = document.createElement("p");
+			cmm.class = "comment"
 			let brk = document.createElement("br");
 			let auser = document.createElement("a");
 			let ulink = '/profile/'+ comments[0][i]
