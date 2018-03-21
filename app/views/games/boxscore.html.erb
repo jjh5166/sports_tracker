@@ -1,4 +1,3 @@
-<!-- Renders the partial files from their corresponding files -->
 <% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
 
 <div class="pics_container">
@@ -70,8 +69,6 @@
 		pic_selected_des = pic_desc;
 		pic_show.src = pic_selected;
 		pic_des.innerHTML = pic_selected_des;
-		// let clink = "/pictures/"+ pic_id +"/comments/new"
-		// comment_link.setAttribute("href",clink);
 		if(pic_comments[0][0] != null){
 			display_comments(pic_comments);
 			create_comment_form(pic_id, user_id);
@@ -114,7 +111,6 @@
 		auth_field.value = AUTH_TOKEN
 		f.appendChild(auth_field)
 
-// need to pass user_id thru js
 		let cm_user_id = document.createElement("input");
 		cm_user_id.type = "hidden"
 		cm_user_id.value = user_id
@@ -142,11 +138,4 @@
 
 		formlocation.appendChild(f);
 	}
-// 	<form class="new_comment" id="new_comment" action="/pictures/36/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
-// <input type="hidden" name="authenticity_token" value="a5L9qC70iL1pfhHJ6QrDMOxGWZK9ctuADMu1k5gd6lf4cWyJ7M9dIxI2JOogLwuRncVx4gG0AJllfAPLMeDXFQ==">
-// <input value="2" type="hidden" name="comment[user_id]" id="comment_user_id">
-// <input value="36" type="hidden" name="comment[picture_id]" id="comment_picture_id">
-// <textarea maxlength="150" required="required" name="comment[content]" id="comment_content"></textarea>
-// <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
-// </form>
 </script>
