@@ -176,9 +176,9 @@
     outline: 2px solid purple;
     background-color: lightgrey;
     position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .close3 {
     position: absolute;
@@ -189,7 +189,7 @@
 }
 
 .close3:hover {
-	border: 1px solid black;
+    border: 1px solid black;
 }
 
 #modal-overlay-pic {
