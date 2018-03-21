@@ -31,9 +31,22 @@
   background-color: white;
   margin: 3% auto;
   text-align: center;
+  font-family: $font-stack;
 }
 
 .pic_image{
   cursor: pointer;
   padding: 2%;
+}
+
+.pic_show{
+  width: 40%;
+  padding: 10px;
+  border: 1px solid;
+  // box-shadow: 2.5px 5px #939E81;
+  background-color: white;
+  margin: 3% auto;
+  text-align: center;
+  font-size: 16px;
+  font-family: $font-stack;
 }

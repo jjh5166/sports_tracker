@@ -6,7 +6,7 @@ root to: 'leagues#index'
 resources :pictures do
   resources :comments
 end
-get '/users/:username', to:"users#profile", as:"user_profile"
+get '/profile/:username', to:"users#profile", as:"user_profile"
 
 get '/:league/:season/boxscore/:gameid/newpic', to: 'pictures#new', as: "new_pic"
 

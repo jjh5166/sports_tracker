@@ -1,7 +1,6 @@
-<h1>Picture show page</h1>
-
-<%=image_tag @pic.image.url(:large)%>
-<%= @pic.description%>
+<div class="pic_show"><h2>Selected Photo</h2><br>
+<%=image_tag @pic.image.url(:large)%><br>
+<p>Description: <%= @pic.description%></p><br>
 
 <% if current_user %>
 			<%= link_to 'Edit Picture', edit_picture_path %>
@@ -9,3 +8,4 @@
 		    
 	<% end %>
 
+</div>
