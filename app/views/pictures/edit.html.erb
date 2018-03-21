@@ -2,11 +2,11 @@
 
     <%= form_for @pic do |f| %>
         <p>Description:</p><br>
-        <%= f.text_area :description %><br>
+        <%= f.text_area :description, class: "desc_field" %><br>
         <br>
-        <%= f.file_field :image%>
+        <%= f.file_field :image, class: "add_pic"%>
         <br>
-        <%= f.submit %>
+        <div class="pic-submit"><%= f.submit %></div>
 
     <%end%>
 <br>
