@@ -21,16 +21,15 @@
 }
 
 .add_pic {
-
+  margin: 5px;
   padding: 10px;
 }
 
 .pic-submit {
-
-  input[type="submit"] {
-    padding: 5px;
+  margin: 20px;
+    input[type="submit"] {
+      padding: 5px;
   }
-  
 
 }
 
@@ -69,4 +68,8 @@
   text-align: center;
   font-size: 16px;
   font-family: $font-stack;
+
+  form {
+    height: 300px;
+  }
 }
