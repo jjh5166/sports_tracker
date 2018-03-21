@@ -1,10 +1,11 @@
-<h1> <%=@user.username%>'s Profile Page</h1>
+<div class="user_title"><h1> <%=@user.username%>'s Profile</h1>
+    <%= link_to 'Edit Profile', edit_user_registration_path %>
+</div>
 
-
-<div class="user_pics">
+<div class="user_pics"><h2>Posted Photos</h2><br>
   <%@pics.each do |p|%>
-  <%= link_to picture_path(p.id) do %>
-  	<%image_tag p.image.url(:med)%>
-  <%end%>
+      <%= link_to picture_path(p.id) do %>
+  	  <%image_tag p.image.url(:box)%>
+    <%end%>
   <%end%>
 </div>

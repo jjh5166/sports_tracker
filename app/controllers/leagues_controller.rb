@@ -10,6 +10,7 @@ class LeaguesController < ApplicationController
 
   def season
     @divisions = $msf.msf_get_data(params[:league],params[:season], 'division_team_standings', 'json')["divisionteamstandings"]["division"]
+   
   end
 
   def teamseason

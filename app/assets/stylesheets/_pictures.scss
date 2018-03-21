@@ -15,5 +15,25 @@
 }
 
 .pics_container{
-  width: 612px;
+   width: 90%;
+   padding: 1%;
+   border: 1px solid;
+   background-color: white;
+   margin: 3% auto;
+   text-align: center;
+   
+}
+
+.pic_button{
+  width: 20%;
+  padding: 2%;
+  border: 1px solid;
+  background-color: white;
+  margin: 3% auto;
+  text-align: center;
+}
+
+.pic_image{
+  cursor: pointer;
+  padding: 2%;
 }

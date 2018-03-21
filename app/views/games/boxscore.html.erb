@@ -2,18 +2,21 @@
 
 <div class="pics_container">
 	<% @pics.first(8).each do |p|%>
-		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, #{current_user.id})",  :class => "pic_image", :id => p.id%>
+		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, '#{@user_id}')",  :class => "pic_image", :id => p.id%>
+
 
 	<% end %>
 <%#=@comments%>
+
+</div>
+
 	<% if current_user %>
-			<%=link_to 'Add Pic', new_pic_path(:url => Base64.encode64(url))%>
+			<div class="pic_button"><%=link_to 'Add Photo', new_pic_path(:url => Base64.encode64(url))%></div>
 		<% else %>
 		    <a class="pointer" id="log_in" onclick="login()">Login to Add Photos</a>
 	<% end %>
 
 </div>
-
 
 <% if params[:league] == "nba" %>
 	<%= render :file => "/games/boxScorePartials/_nba-boxscore.html.erb" %>
@@ -28,7 +31,8 @@
 
 <div id="modal-overlay-pic">
     <div class="modal_pic">
-      <button class="close3" onclick="Close_pic()">X</button>
+			<%= submit_tag "X", :type => 'button', :class => "close3", :onclick => "Close_modal('#{@user_id}')"%>
+      <!-- <button class="close3" onclick="Close_modal()">X</button> -->
       	<div class="picture-box" id="pic_box">
       		<div class="styling">
 					 <img id="pic_show">
@@ -73,8 +77,9 @@
 		pic_des.innerHTML = pic_selected_des;
 		if(pic_comments[0][0] != null){
 			display_comments(pic_comments);
-			create_comment_form(pic_id, user_id);
 		}
+		if(user_id != 'NO_USER'){
+		create_comment_form(pic_id, user_id);}
 	}
 	function display_comments(comments){
 		for (var i=0; i<comments[0].length; i++){
@@ -92,13 +97,20 @@
 			comments_box.appendChild(brk);
 		}
 	}
+	function Close_modal(user_id){
+		Close_pic();
+		if(user_id != 'NO_USER'){
+		Close_comments();}
+	}
 	function Close_pic() {
-	    modalOverlayPic.style.display = 'none';
+		modalOverlayPic.style.display = 'none';
+	}
+	function Close_comments(){
 		while (comments_box.firstChild) {
-	    	comments_box.removeChild(comments_box.firstChild);
+				comments_box.removeChild(comments_box.firstChild);
 		}
 		while (formlocation.firstChild) {
-	    	formlocation.removeChild(formlocation.firstChild);
+				formlocation.removeChild(formlocation.firstChild);
 		}
 	}
 	function create_comment_form(pic_id, user_id){
