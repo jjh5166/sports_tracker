@@ -98,4 +98,16 @@
 	    	comments_box.removeChild(comments_box.firstChild);
 		}
 	}
+	function create_comment_form(pic_id){
+		let f = document.createElement("form");
+		let form_action = "/pictures/"+ pic_id +"/comments"
+		f.setAttribute('method',"post");
+		f.setAttribute('action', form_action);
+	}
+// 	<form class="new_comment" id="new_comment" action="/pictures/36/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="a5L9qC70iL1pfhHJ6QrDMOxGWZK9ctuADMu1k5gd6lf4cWyJ7M9dIxI2JOogLwuRncVx4gG0AJllfAPLMeDXFQ==">
+// <input value="2" type="hidden" name="comment[user_id]" id="comment_user_id">
+// <input value="36" type="hidden" name="comment[picture_id]" id="comment_picture_id">
+// <textarea maxlength="150" required="required" name="comment[content]" id="comment_content"></textarea>
+// <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
+// </form>
 </script>
