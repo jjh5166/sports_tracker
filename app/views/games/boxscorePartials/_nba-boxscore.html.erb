@@ -10,61 +10,53 @@
 <% pts = g['quarterSummary']['quarterTotals']%> 
 
 <body id="bodyBoxscore">
+	<div class="headliner">
+		<div class="font" id="Team">
+			<div class="teamCity"><%= teamCity['awayTeam']['City'] %></div>
+			<div class="teamName"><%= teamName['awayTeam']['Name'] %></div>
+			<div class="homeAway"> Away </div>
+			<div class="Score"><%= quarterTotal['awayScore'] %></div>
+		</div>
 
+		<div class="footballScore" id="footballScoreBoard">
+			<table>
+				<tr>
+					<th></th>
+					<th>1st</th>
+					<th>2nd</th>
+					<th>3rd</th>
+					<th>4th</th>
+					<th>Total</th>
+				</tr>
+				<tr>
+					<td><%= abb['awayTeam']['Abbreviation']%></td>
+						<% quarterScore.each do |q|%>
+							<td><%= q['awayScore'] %></td>
+						<% end %>
+					<td><%= quarterTotal['awayScore']%></td>
+				</tr>
 
-<div class="headliner">
-	<div id="awayTeam">
-		<div class="teamCity"><%= teamCity['awayTeam']['City'] %></div>
-		<div class="teamName"><%= teamName['awayTeam']['Name'] %></div>
-		<div class="homeAway"> Away </div>
+				<tr>
+					<td><%= abb['homeTeam']['Abbreviation']%></td>
+						<% quarterScore.each do |q|%>
+							<td><%= q['homeScore'] %></td>
+						<% end %>
+					<td><%= quarterTotal['homeScore']%></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="font" id="Team">
+			<div class="teamCity"><%= g['game']['homeTeam']['City'] %></div>
+			<div class="teamName"><%= g['game']['homeTeam']['Name'] %></div>
+			<div class="homeAway"> Home </div>
+			<div class="Score"><%= quarterTotal['homeScore'] %></div>
+		</div>
 	</div>
 
-	<div class="awayScore">
-		<%= pts['awayScore'] %> 
-	</div>
-
-	<div class="quarterScore">
-		<table>
-			<tr>
-				<th></th>
-				<th>1st</th>
-				<th>2nd</th>
-				<th>3rd</th>
-				<th>4th</th>
-				<th>Total</th>
-			</tr>
-			<tr>
-				<td><%= abb['awayTeam']['Abbreviation']%></td>
-					<% quarterScore.each do |q|%>
-						<td><%= q['awayScore'] %></td>
-					<% end %>
-				<td><%= quarterTotal['awayScore']%></td>
-			</tr>
-
-			<tr>
-				<td><%= abb['homeTeam']['Abbreviation']%></td>
-					<% quarterScore.each do |q|%>
-						<td><%= q['homeScore'] %></td>
-					<% end %>
-				<td><%= quarterTotal['homeScore']%></td>
-			</tr>
-		</table>
-	</div>
-
-	<div class="homeScore">
-		<%= g['quarterSummary']['quarterTotals']['homeScore'] %> 
-	</div>
-
-
-	<div id="homeTeam">
-		<div class="teamCity"><%= g['game']['homeTeam']['City'] %></div>
-		<div class="teamName"><%= g['game']['homeTeam']['Name'] %></div>
-		<div class="homeAway"> Home </div>
-	</div>
-	
 	<div id="statsBox">
 		<div class="font">
-			<%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %>
+			<%=teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %>
 		</div>
 
 		<table id="awayPlayersTable" >
@@ -91,12 +83,12 @@
 				<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
 				<tr>
 					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
-					<td class="playerStats"><%=fgMade %> - <%= fgAtt%></td>
+					<td class="playerStats"><%= fgMade %> - <%= fgAtt%></td>
 					<td class="playerStats"><%= fg2PtMade%> - <%= fg2PtAtt%></td> 
 					<td class="playerStats"><%= fg3PtMade%> - <%= fg3PtAtt%></td> 
-					<td class="playerStats"><%= ftMade%> - <%= ftAtt%></div>
+					<td class="playerStats"><%= ftMade%> - <%= ftAtt%></td>
 					<td class="playerStats"><%= points%></td>
-				</tr>
+				 </tr>
 			<% end %>
 		</table>
 
@@ -113,7 +105,6 @@
 				<th>FT</th>
 				<th>PTS</th>
 			</tr>
-
 			<% homePlayers.each do |h|%>
 				<% firstName = h['player']['FirstName']%>
 				<% lastName = h['player']['LastName']%>
@@ -127,13 +118,12 @@
 				<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
 				<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
 				<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
-
 				<tr>
 					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
 					<td class="playerStats"><%=fgMade %> - <%= fgAtt%></td>
 					<td class="playerStats"><%= fg2PtMade%> - <%= fg2PtAtt%></td> 
 					<td class="playerStats"><%= fg3PtMade%> - <%= fg3PtAtt%></td> 
-					<td class="playerStats"><%= ftMade%> - <%= ftAtt%></div>
+					<td class="playerStats"><%= ftMade%> - <%= ftAtt%></td>
 					<td class="playerStats"><%= points%></td>
 				</tr>
 			<% end %>
