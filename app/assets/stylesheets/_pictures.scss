@@ -14,6 +14,26 @@
   margin: auto;
 }
 
+.desc_field {
+  resize: none;
+  width: 400px;
+  height: 100px;
+}
+
+.add_pic {
+
+  padding: 10px;
+}
+
+.pic-submit {
+
+  input[type="submit"] {
+    padding: 5px;
+  }
+  
+
+}
+
 .pics_container{
    width: 90%;
    padding: 1%;

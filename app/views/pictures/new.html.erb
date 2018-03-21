@@ -6,9 +6,9 @@
 <%= f.hidden_field :user_id, :value => @userid, :required => true %>
 <%= f.hidden_field :game_id, :value => @gameid, :required => true %>
 <%= hidden_field_tag :url, params[:url].to_s %>
-<div class="form_field"><p>Description:</p><br><%= f.text_area :description %></div><br>
-<div class="form_field"><%= f.file_field :image, :required => true%></div><br>
-<%= f.submit %>
+<div class="form_field"><p>Description:</p><br><%= f.text_area :description, class: "desc_field" %></div><br>
+<div class="form_field"><%= f.file_field :image, :required => true, class: "add_pic"%></div><br>
+<div class="pic-submit"><%= f.submit %></div>
 <% end %>
 
 
