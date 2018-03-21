@@ -34,16 +34,15 @@
 			<%= submit_tag "X", :type => 'button', :class => "close3", :onclick => "Close_modal('#{@user_id}')"%>
       <!-- <button class="close3" onclick="Close_modal()">X</button> -->
       	<div class="picture-box" id="pic_box">
-					<img id="pic_show">
-					<div id="pic_des"></div>
-					<% if user_signed_in? %>
-						<div id="comment_form_location"></div>
-					<% else %>
-						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
-					<%end%>
+      		<div class="styling">
+					 <img id="pic_show">
+					 <p id="pic_des"></p>
+				</div>
+					
 				</div>
 				<div class="commentLabel">Comments</div>
 				<div class="comment-box">
+
 
 					<div id="comment_box">
 
@@ -51,6 +50,11 @@
 
 					</div>
 				</div>
+					<% if user_signed_in? %>
+						<div id="comment_form_location"></div>
+					<% else %>
+						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
+					<%end%>
 
 	</div>
 </div>
