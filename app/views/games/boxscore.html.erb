@@ -30,8 +30,10 @@
     <div class="modal_pic">
       <button class="close3" onclick="Close_pic()">X</button>
       	<div class="picture-box" id="pic_box">
-					<img id="pic_show">
-					<div id="pic_des"></div>
+      		<div class="styling">
+					 <img id="pic_show">
+					 <p id="pic_des"></p>
+				</div>
 					<% if user_signed_in? %>
 						<div id="comment_form_location"></div>
 					<% else %>
