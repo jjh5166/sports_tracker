@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 #Built-in devise methods
+  #....
 	# user_signed_in?
 	# current_user
 	# user_session
@@ -8,8 +9,8 @@ class UsersController < ApplicationController
 		@user = User.find_by_id(current_user.id)
 		@pics = Picture.where(user_id: current_user.id)
 		
-	end
-
+  end
+  
 	def create
     build_resource(sign_up_params)
 
@@ -31,4 +32,6 @@ class UsersController < ApplicationController
       respond_with resource
     end
   end
+
+  
 end
