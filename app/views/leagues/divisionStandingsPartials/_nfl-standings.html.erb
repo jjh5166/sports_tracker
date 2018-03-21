@@ -3,9 +3,13 @@
 <div class="selector">
 	<button onclick="myFunction()" class="dropbtn">Select a Season</button>
 	<div class="selector-content" id="dropdwn">
+	    <%#= link_to '2017 Playoffs', leagues_season_path(params[:league], '2018-playoff')%>
 	    <%= link_to '2017 Regular Season', leagues_season_path(params[:league], '2017-regular')%>
-	    <%= link_to '2016 Regular Season', leagues_season_path(params[:league], '2016-regular')%>
-	    <%= link_to '2015 Regular Season', leagues_season_path(params[:league], '2015-regular')%>
+	    <%#= link_to '2016 Playoffs', leagues_season_path(params[:league], '2017-playoff')%>
+	    <%= link_to '2016 Regular Season', leagues_season_path(params[:league], '2016-2017-regular')%>
+	    <%#= link_to '2015 Playoffs', leagues_season_path(params[:league], '2016-playoffs')%>
+	    <%= link_to '2015 Regular Season', leagues_season_path(params[:league], '2015-2016-regular')%>
+	    <%#= link_to '2014 Playoffs', leagues_season_path(params[:league], '2015-playoff')%>
 	    <%= link_to '2014 Regular Season', leagues_season_path(params[:league], '2014-regular')%>
 	</div>
 </div>

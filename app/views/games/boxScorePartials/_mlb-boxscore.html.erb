@@ -1,7 +1,9 @@
 
 <% g = @games %>
 <% awayPlayers = g['awayTeam']['awayPlayers']['playerEntry']%>
+<% awayTeam = g['awayTeam']['awayTeamStats']%>
 <% homePlayers = g['homeTeam']['homePlayers']['playerEntry']%>
+<% homeTeam = g['homeTeam']['homeTeamStats']%>
 <% inningScore = g['inningSummary']['inning']%>
 <% inningTotal = g['inningSummary']['inningTotals']%>
 <% teamCity = g['game']%>
@@ -43,6 +45,8 @@
 				<th>8th</th>
 				<th>9th</th>
 				<th>Total</th>
+				<th>H</th>
+				<th>E</th>
 			</tr>
 			<tr>
 				<td><%= abb['awayTeam']['Abbreviation']%></td>
@@ -50,6 +54,8 @@
 						<td><%= q['awayScore'] %></td>
 					<% end %>
 				<td><%= inningTotal['awayScore']%></td>
+				<td><%= awayTeam['Hits']['#text']%></td>
+				<td><%= awayTeam['Errors']['#text']%></td>
 			</tr>
 			<tr>
 				<td><%= abb['homeTeam']['Abbreviation']%></td>
@@ -57,15 +63,17 @@
 						<td><%= q['homeScore'] %></td>
 					<% end %>
 				<td><%= inningTotal['homeScore']%></td>
+				<td><%= homeTeam['Hits']['#text']%></td>
+				<td><%= homeTeam['Errors']['#text']%></td>
 			</tr>
 		</table>
 	</div>
-<!-- Build a stats box here -->
+
 	<div id="statsBox">
-		<div class="font">
+		<div class="font" id="text">
 			<%= teamName['awayTeam']['City'] %> <%= teamName['awayTeam']['Name'] %>
 		</div>
-
+			<!-- Table shows batting stats -->
 		<table id="awayPlayersTable">
 			<tr>
 				<th>Player</th>
@@ -90,10 +98,10 @@
 			<% end %>
 		</table>
 
-		<div class="font">
+		<div class="font" id="text">
 				<%= teamName['homeTeam']['City'] %> <%= teamName['homeTeam']['Name'] %>
 		</div>
-
+			<!-- Table shows batting stats -->
 		<table id="homePlayersTable">
 			<tr>
 				<th>Player</th>
