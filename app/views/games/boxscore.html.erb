@@ -1,9 +1,8 @@
-<!-- Renders the partial files from their corresponding files -->
 <% url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
 
 <div class="pics_container">
 	<% @pics.first(8).each do |p|%>
-		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json})",  :class => "pic_image", :id => p.id%>
+		<%=image_tag p.image.url(:box), :onclick => "display_pic('#{p.image.url(:large)}', '#{p.description}', '#{p.id}', #{@comments[p.id].to_json}, #{current_user.id})",  :class => "pic_image", :id => p.id%>
 
 	<% end %>
 <%#=@comments%>
@@ -30,13 +29,11 @@
 <div id="modal-overlay-pic">
     <div class="modal_pic">
       <button class="close3" onclick="Close_pic()">X</button>
-      	<div class="picture-box">
+      	<div class="picture-box" id="pic_box">
 					<img id="pic_show">
 					<div id="pic_des"></div>
 					<% if user_signed_in? %>
-						<textarea></textarea>
-						<br/>
-						<a id="comment_link" href=" ">Add Comment</a>
+						<div id="comment_form_location"></div>
 					<% else %>
 						<a class="pointer" id="log_in" onclick="login()" style="line-height: 150px;">Login to Comment</a>
 					<%end%>
@@ -62,25 +59,26 @@
 	let pic_des = document.getElementById('pic_des');
 	let comment_link = document.getElementById("comment_link")
 	let comments_box = document.getElementById('comment_box')
+	let formlocation = document.getElementById('comment_form_location')
 
 
-	function display_pic(pic_url, pic_desc, pic_id, pic_comments){
+
+	function display_pic(pic_url, pic_desc, pic_id, pic_comments, user_id){
 	  modalOverlayPic.style.display = 'block';
 		pic_selected = pic_url;
 		pic_selected_des = pic_desc;
 		pic_show.src = pic_selected;
 		pic_des.innerHTML = pic_selected_des;
-		let clink = "/pictures/"+ pic_id +"/comments/new"
-		comment_link.setAttribute("href",clink);
 		if(pic_comments[0][0] != null){
 			display_comments(pic_comments);
+			create_comment_form(pic_id, user_id);
 		}
 	}
 	function display_comments(comments){
-		for (var i=0; i<comments.length; i++){
+		for (var i=0; i<comments[0].length; i++){
+			let brk = document.createElement("br");
 			let cmm = document.createElement("p");
 			cmm.class = "comment"
-			let brk = document.createElement("br");
 			let auser = document.createElement("a");
 			let ulink = '/profile/'+ comments[0][i]
 			auser.setAttribute('href', ulink);
@@ -97,17 +95,47 @@
 		while (comments_box.firstChild) {
 	    	comments_box.removeChild(comments_box.firstChild);
 		}
+		while (formlocation.firstChild) {
+	    	formlocation.removeChild(formlocation.firstChild);
+		}
 	}
-	function create_comment_form(pic_id){
+	function create_comment_form(pic_id, user_id){
 		let f = document.createElement("form");
 		let form_action = "/pictures/"+ pic_id +"/comments"
 		f.setAttribute('method',"post");
 		f.setAttribute('action', form_action);
+
+		let auth_field = document.createElement("input")
+		auth_field.name = "authenticity_token"
+		auth_field.type = "hidden"
+		auth_field.value = AUTH_TOKEN
+		f.appendChild(auth_field)
+
+		let cm_user_id = document.createElement("input");
+		cm_user_id.type = "hidden"
+		cm_user_id.value = user_id
+		cm_user_id.name = "comment[user_id]"
+		f.appendChild(cm_user_id)
+
+		let cm_pic_id = document.createElement("input");
+		cm_pic_id.type = "hidden"
+		cm_pic_id.value = pic_id
+		cm_pic_id.name = "comment[picture_id]"
+		f.appendChild(cm_pic_id)
+
+		let cm_content = document.createElement("textarea");
+		cm_content.maxlength = "150"
+		cm_content.required = "required"
+		cm_content.name = "comment[content]"
+		f.appendChild(cm_content)
+
+		let submit = document.createElement("input");
+		submit.type = "submit";
+		submit.value = "Create Comment";
+		f.appendChild(submit)
+
+
+
+		formlocation.appendChild(f);
 	}
-// 	<form class="new_comment" id="new_comment" action="/pictures/36/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="a5L9qC70iL1pfhHJ6QrDMOxGWZK9ctuADMu1k5gd6lf4cWyJ7M9dIxI2JOogLwuRncVx4gG0AJllfAPLMeDXFQ==">
-// <input value="2" type="hidden" name="comment[user_id]" id="comment_user_id">
-// <input value="36" type="hidden" name="comment[picture_id]" id="comment_picture_id">
-// <textarea maxlength="150" required="required" name="comment[content]" id="comment_content"></textarea>
-// <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
-// </form>
 </script>
