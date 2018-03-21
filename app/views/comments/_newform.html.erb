@@ -1,6 +1,6 @@
 <div class="InputBox" id="addcm">
-<%= form_for @comment, url:(picture_comments_path) do |f| %>
-<%= f.hidden_field :user_id, :value => @userid %>
+<%= form_for :comment, url:(picture_comments_path) do |f| %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 <%= f.hidden_field :picture_id, :value => params[:picture_id] %>
 <%= f.text_area :content, maxlength: 150, :required => true %>
 <%= f.submit %>
