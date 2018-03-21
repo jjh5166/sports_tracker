@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource_or_scope) || super
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    root_path
+  end
+
   
 
 
