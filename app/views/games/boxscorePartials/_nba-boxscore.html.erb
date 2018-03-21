@@ -79,8 +79,8 @@
 				<% ftMade = a['stats']['FtMade']['#text'].to_i%>
 				<% ftAtt = a['stats']['FtAtt']['#text'].to_i%>
 				<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
-				<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
-				<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
+				<% fgMade = fg2PtMade + fg3PtMade %>
+				<% fgAtt = fg2PtAtt + fg3PtAtt %>
 				<tr>
 					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
 					<td class="playerStats"><%= fgMade %> - <%= fgAtt%></td>
@@ -116,8 +116,8 @@
 				<% ftMade = h['stats']['FtMade']['#text'].to_i%>
 				<% ftAtt = h['stats']['FtAtt']['#text'].to_i%>
 				<% points = (ftMade + (fg2PtMade * 2) + (fg3PtMade * 3 )) %>
-				<% fgMade = ftMade + fg2PtMade + fg3PtMade %>
-				<% fgAtt = ftAtt + fg2PtAtt + fg3PtAtt %>
+				<% fgMade = fg2PtMade + fg3PtMade %>
+				<% fgAtt = fg2PtAtt + fg3PtAtt %>
 				<tr>
 					<td class="player"><%= firstName.first %>. <%= lastName%> <%= position%></td>
 					<td class="playerStats"><%=fgMade %> - <%= fgAtt%></td>
