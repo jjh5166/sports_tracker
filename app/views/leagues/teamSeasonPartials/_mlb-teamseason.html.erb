@@ -25,12 +25,12 @@
 		<% gameawayt = (g['game']['awayTeam']['Abbreviation']).to_s %>
 		<% gamehomet = (g['game']['homeTeam']['Abbreviation']).to_s %>
 		<% total = ((gameid)+ '-' +(gameawayt)+ '-' +(gamehomet)) %>
-				<!-- Rendering the date for the game -->
+		<!-- Rendering the date for the game -->
 		<% gameid %>
 		<% year = gameid  [0..3] %>
 		<% month = gameid [4..5] %>
 		<% day = gameid [6..7] %>
-				<!-- If statement to render month instead of string representing month as a number -->
+		<!-- If statement to render month instead of string representing month as a number -->
 		<tr>
 			<td class="font">
 				<% if month == '01' %>
@@ -61,7 +61,7 @@
 				<%= day %>,
 				<%= year %>
 			</td>
-					<!-- Showing opponent either away at home team -->
+			<!-- Showing opponent either away at home team -->
 			<td class="font">
 				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
 					<p class="where">@</p> <% opponentlinka = g['game']['homeTeam']['Name'] %>
@@ -71,17 +71,7 @@
 					<%= link_to opponentlinkh, leagues_teamseason_path(params[:league],params[:season], gameawayt) %>
 				<% end %>
 			</td>
-
-			<!-- Showing away vs home -->
-			<!--
-			<td class="font">
-				<%#= g['game']['awayTeam']['City'] %> <%#= g['game']['awayTeam']['Name'] %>
-				<p class="where">at</p>
-				<%#= g['game']['homeTeam']['City'] %> <%#= g['game']['homeTeam']['Name'] %>
-			</td>
-
-			 -->
-				<!-- using points scored to determine Win or Loss -->
+			<!-- using points scored to determine Win or Loss -->
 			<% if  (g['stats']['RunsFor']['#text']).to_i > (g['stats']['RunsAgainst']['#text']).to_i %>
 				<% scorestring =  "W " + (g['stats']['RunsFor']['#text']) + '-'  +(g['stats']['RunsAgainst']['#text']) %>
 				<td><%= link_to scorestring, boxscore_path(params[:league], params[:season], total)%>
