@@ -172,13 +172,13 @@
 
 .modal_pic{
     width: 70%;
-    height: 75%;
+    height: 575px;
     outline: 2px solid purple;
     background-color: lightgrey;
     position: fixed;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .close3 {
     position: absolute;
@@ -189,7 +189,7 @@
 }
 
 .close3:hover {
-	border: 1px solid black;
+    border: 1px solid black;
 }
 
 #modal-overlay-pic {
@@ -223,18 +223,27 @@
 }
 
 #pic_show {
-    width: 99.5%;
+    // max-width: 99.5%;
     display: block;
+    // height: 40vh;
+    height: auto; 
+    width: auto;
+    margin: 0 auto;
+    min-width: 50%;
+    max-width: 400px; 
+    max-height: 325px;
 }
 
+
+
 #pic_des {
-  text-align: center;
-	padding: 3% 0;
-  border: 1px solid black;
-  border-right: none;
-  font-size: 18px;
-  width: 99.3%;
-  background-color: white;
+  	text-align: center;
+  	padding: 3% 0;
+  	border: 1px solid black;
+  	border-right: none;
+  	font-size: 18px;
+  	width: 99.3%;
+  	background-color: white;
 }
 
 .commentLabel {
