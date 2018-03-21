@@ -253,7 +253,8 @@
 	position: absolute;
 	text-decoration: underline;
 	top:0; 
-	right: 23%;
+	right: 0;
+	margin-right: 15%;
 	font-weight: bolder;
 }
 .comment {
@@ -273,5 +274,35 @@
 
 	span{
 		font-weight: bolder;
+	}
+}
+#comment_box {
+	a {
+		text-transform: capitalize;
+		font-size: 14px;
+	}
+	p{
+		font-size: 14px;
+	}
+}
+#comment_form_location {
+	clear: both;
+	text-align: right;
+	margin-right: 2%;
+
+	input[type="submit"] {
+		padding: 2px;
+		margin: 2%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+	textarea{
+		border-radius: 2px;
+		width: 34.7%;
+		height: 70px;
+		resize: none;
+		border: 1px solid black;
 	}
 }
