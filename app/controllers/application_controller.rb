@@ -38,6 +38,9 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource_or_scope) || super
   end
 
+  def after_update_path_for(resource)
+    redirect_to user_profile_path(:username => current_user.username)
+  end
 
   protected
 
@@ -47,6 +50,7 @@ class ApplicationController < ActionController::Base
  		devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password, :password_confirmation])
  		devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
 	end
+   
 
 
 end
