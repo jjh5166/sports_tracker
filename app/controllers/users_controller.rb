@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 	def profile
 		@user = User.find_by_id(current_user.id)
 		@pics = Picture.where(user_id: current_user.id)
+		
 	end
+
 
 end

@@ -24,6 +24,7 @@
     <a class="pointer" id="log_in" onclick="login()">Login</a>
     <a class="pointer" id="sign_up" onclick="signup()">Sign Up</a>
     <% else %>
+    <%= link_to "Profile", user_profile_path(:username => current_user.username)%>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     <% end %>
 
