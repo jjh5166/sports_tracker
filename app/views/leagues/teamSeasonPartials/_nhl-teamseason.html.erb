@@ -71,9 +71,11 @@
 				<!-- Showing away vs home team -->
 			<td class="font">
 				<% if (g['team']['Name']).to_s == g['game']['awayTeam']['Name'] %>
-					<p class="where">@</p> <%= g['game']['homeTeam']['Name'] %>
+					<p class="where">@</p> <% opponentlinka = g['game']['homeTeam']['Name'] %>
+					<%= link_to opponentlinka, leagues_teamseason_path(params[:league],params[:season], gamehomet) %>
 				<% else %>
-					<p class="where">vs.</p> <%= g['game']['awayTeam']['Name'] %>
+					<p class="where">vs.</p> <% opponentlinkh =  g['game']['awayTeam']['Name'] %>
+					<%= link_to opponentlinkh, leagues_teamseason_path(params[:league],params[:season], gameawayt) %>
 				<% end %>
 			</td>
 
