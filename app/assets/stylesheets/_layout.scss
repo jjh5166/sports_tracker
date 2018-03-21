@@ -1,0 +1,29 @@
+.notice {
+	background: orange;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	margin:0;
+	animation-name: flash;
+	animation-duration: 4s;
+	visibility: hidden;
+	width: 100%;
+}
+.alert {
+	background: orange;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	margin:0;
+	animation-name: flash;
+	animation-duration: 4s;
+	visibility: hidden;
+	width: 100%;
+}
+
+@keyframes flash {
+	0% { opacity:0; visibility: visible;}
+	25% { opacity:1;}
+	50% { opacity:.1; }
+	100% { opacity:1; visibility: hidden;}
+}
