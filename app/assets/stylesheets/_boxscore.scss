@@ -94,6 +94,7 @@ table, th, td {
 	// right: 250px;
 	// right: 15%;
 	width: 15%;
+	padding: 15px;
 	display: inline-block;
 	color: grey;
 	// margin-left: 1%;
@@ -113,7 +114,11 @@ table, th, td {
 	font-size: 10px;
 }
 #hockeyScoreBoard{
-	width: 20%;
+	width: 30%;
+	
+	table{
+		margin: 0 auto;
+	}
 }
 
 // Football Scoreboard
@@ -124,7 +129,11 @@ table, th, td {
 	font-size: 10px;
 }
 #footballScoreBoard{
-	width: 20%;
+	width: 30%;
+	
+	table{
+		margin: 0 auto;
+	}
 }
 // team text in stat sheet
 #text {
