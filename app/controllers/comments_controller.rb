@@ -11,8 +11,8 @@ class CommentsController < ApplicationController
         flash[:notice] = 'Comment Saved'
         redirect_to request.referer
       else
-        flash[:notice] = 'Comment Not Saved'
-        redirect_to new_picture_comment_path
+        flash[:notice] = 'Comment was not Saved'
+        redirect_to request.referer
       end
   end
   def edit
@@ -22,10 +22,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by_id(params[:id])
     if @comment.update(comment_params)
       flash[:notice] = 'Comment updated'
-      redirect_to blogs_path
+      redirect_to request.referer
     else
       flash[:notice] = 'Comment was not Saved'
-      redirect_to edit_blog_comment_path
+      redirect_to request.referer
     end
   end
   def destroy
