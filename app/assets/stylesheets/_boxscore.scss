@@ -48,6 +48,9 @@
 .teamName {
 	font-size: 18px;
 }
+.scoreWin {
+	color: red;
+}
 .Score{
 	display: inline-block;
 	font-size: 18px;
@@ -97,6 +100,7 @@ table, th, td {
 	padding: 15px;
 	display: inline-block;
 	color: grey;
+	line-height: 20px;
 	// margin-left: 1%;
 }
 
