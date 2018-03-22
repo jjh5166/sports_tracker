@@ -197,7 +197,7 @@
     width: 70%;
     height: 575px;
     outline: 2px solid purple;
-    background-color: lightgrey;
+    background-color: $main-background;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -208,7 +208,7 @@
     position: absolute;
     padding: 3px;
     right: 0;
-    background: rgba(0,0,0,0);
+    background: $main-background;
     color: black;
 }
 
