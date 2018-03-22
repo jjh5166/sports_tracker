@@ -17,6 +17,18 @@
 		<%end%>
 	</div>
 </div>
+<%= form_for :comment, :url => picture_comments_path(@pic.id)  do |f|%>
+<%= f.text_area :content,  maxlength: 150, :required => true %>
+<%= f.hidden_field :user_id, :value => current_user.id%>
+<%= f.hidden_field :picture_id, :value => @pic.id %>
+<%= f.submit %>
+<% end %>
+<form method="post" action="/pictures/36/comments">
+<input name="authenticity_token" type="hidden" value="oluRTfXlpMELI1V5tNo/7N5I9ywAxlROQSF0nGl7TwgqNrF1yjUzQ+bCh6nUKYG26z5DMHMYDgN/096jwhOf6Q==">
+<input type="hidden" value="1" name="comment[user_id]">
+<input type="hidden" value="36" name="comment[picture_id]">
+<textarea required="" name="comment[content]" placeholder="Type Comment Here..."></textarea>
+<input type="submit" value="Create Comment"></form>
 
 
 </div>
