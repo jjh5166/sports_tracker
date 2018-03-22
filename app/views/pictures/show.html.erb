@@ -2,10 +2,9 @@
 <%=image_tag @pic.image.url(:large)%><br>
 <p>Description: <%= @pic.description%></p><br>
 
-<% if current_user %>
+<% if current_user.id == @pic.user_id %>
 			<%= link_to 'Edit Picture', edit_picture_path %>
 		<% else %>
-		    
-	<% end %>
+<% end %>
 
 </div>
