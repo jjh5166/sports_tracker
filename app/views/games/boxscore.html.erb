@@ -84,7 +84,8 @@
 	}
 	function display_comments(comments){
 		for (var i=0; i<comments[0].length; i++){
-			let brk = document.createElement("br");
+			let div = document.createElement("div")
+			let brk = document.createElement("hr");
 			let cmm = document.createElement("p");
 			cmm.class = "comment"
 			let auser = document.createElement("a");
@@ -93,9 +94,10 @@
 			auser.innerHTML = comments[0][i]
 			let cnode = document.createTextNode(": " + comments[1][i]);
 			cmm.appendChild(cnode);
-			comments_box.appendChild(auser);
-			comments_box.appendChild(cmm);
-			comments_box.appendChild(brk);
+			comments_box.appendChild(div).appendChild(auser);
+			comments_box.appendChild(div).appendChild(cmm);
+			comments_box.appendChild(div).appendChild(brk);
+			
 		}
 	}
 	function Close_modal(user_id){
