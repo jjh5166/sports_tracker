@@ -44,11 +44,15 @@
 
 .close {
 	position: absolute;
-	right: 0px;
-	background-color: black;
-	border-radius: 5px;
-	color: white;
+    padding: 3px;
+    margin: 2px;
+    right: 0;
+    background: rgba(0,0,0,.1);
+    color: black;
 	z-index: 1;
+}
+.close:hover {
+    border: 1px solid black;
 }
 
 
@@ -104,6 +108,11 @@
  	}
 
 }
+.login-submit {
+    input[type="submit"] {
+      padding:5px 20px;
+  }
+}
 // all sign in links
 .signin-links{
 	text-decoration: underline;
@@ -127,11 +136,15 @@
 
 .close2 {
 	position: absolute;
-	right: 0px;
-	background-color: black;
-	border-radius: 5px;
-	color: white;
+    padding: 3px;
+    margin: 2px;
+    right: 0;
+    background: rgba(0,0,0,.1);
+    color: black;
 	z-index: 1;
+}
+.close2:hover {
+    border: 1px solid black;
 }
 
 .modal-titles{
@@ -159,7 +172,21 @@
  		text-transform: uppercase;
  		color: #25292E;
  	}
+ 	input[type="submit"] {
+		padding: 5px;
+		margin: 0 2% 2%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background-color: rgba(255,255,255,1);
+		border: .5px solid black;
+	}
 
+}
+.signup-submit {
+    input[type="submit"] {
+      padding:5px 20px;
+  }
 }
 
 .back-button{
@@ -184,6 +211,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
 }
 .close3 {
     position: absolute;
@@ -206,6 +234,7 @@
     z-index: 1;
     background: rgba(0, 0, 0, 0.7);
     display: none;
+
 }
 
 .picture-box {

@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_tag "var AUTH_TOKEN = '#{form_authenticity_token}';" if protect_against_forgery? %>
   </head>
-<body class="layout-body">
+<body class="layout-body" id="noScroll">
 <header>
 
 
@@ -49,7 +49,7 @@
                 <div> <%= f.password_field :password, autocomplete: "off", placeholder: "Password"  %></div>
                 <div><%= f.check_box :remember_me%>
                      <%= f.label :remember_me %></div>
-                <%= f.submit 'Sign in', onclick: "Close();" %>
+                <div class="login-submit"><%= f.submit 'Sign in', onclick: "Close();" %></div>
                 <div class="signin-links"><%= link_to "Forgot your password?", new_password_path(:user) %></div>
               <% end %>
             </div>
@@ -83,7 +83,7 @@
                   <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
                   </div>
 
-              <%= f.submit 'Sign up', onclick: "Close();" %>
+              <div class="signup-submit"><%= f.submit 'Sign up', onclick: "Close();" %></div>
               <% end %>
             </div>
     </div>
@@ -99,26 +99,31 @@ let modal = document.getElementById('log_in');
 let close = document.getElementById('close');
 let modal2 = document.getElementById('sign_up');
 let close2 = document.getElementById('close2');
+let noScroll = document.getElementById('noScroll')
+
 
 let modalOverlay = document.getElementById('modal-overlay');
 
   function login(){
     modalOverlay.style.display = 'block';
+    noScroll.style.overflow = "hidden";
 }
 
   function Close() {
     modalOverlay.style.display = 'none';
+    noScroll.style.overflow = "visible";
   }
 
 let modalOverlay2 = document.getElementById('modal-overlay2');
 
    function signup(){
     modalOverlay2.style.display = 'block';
+    noScroll.style.overflow = "hidden";
 }
 
   function Close2() {
-
     modalOverlay2.style.display = 'none';
+    noScroll.style.overflow = "visible";
   }
 
 
