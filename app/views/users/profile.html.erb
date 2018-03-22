@@ -1,5 +1,7 @@
 <div class="user_title"><h1> <%=@user.username%>'s Profile</h1>
+	<% if current_user.username == @user.username %>
     <%= link_to 'Edit Profile', edit_user_registration_path %>
+    <% end %>
 </div>
 
 <div class="user_pics"><h2>Posted Photos</h2><br>
