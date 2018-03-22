@@ -1,10 +1,22 @@
 <div class="pic_show"><h2>Selected Photo</h2><br>
 <%=image_tag @pic.image.url(:large)%><br>
-<p>Description: <%= @pic.description%></p><br>
 <% if user_signed_in? %>
 <% if current_user.id == @pic.user_id %>
 			<%= link_to 'Edit Picture', edit_picture_path %>
 		<% else %>
 <% end %>
 <% end %>
+<p id="pic_des"><%= @pic.description%></p><br>
+<div >
+	<div id="comment_box">
+		<% @comments.each do |c|%>
+		<div><%= link_to User.find_by_id(c.user_id).username, user_profile_path(User.find_by_id(c.user_id).username)%>
+			<p>: <%=c.content%></p>
+			<hr>
+		</div>
+		<%end%>
+	</div>
+</div>
+
+
 </div>
