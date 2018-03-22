@@ -258,8 +258,8 @@
 	position: absolute;
 	text-decoration: underline;
 	top:0; 
-	right: 0;
-	margin-right: 15%;
+	right: 15%;
+	// margin-right: 15%;
 	font-weight: bolder;
 }
 .comment {
@@ -267,11 +267,11 @@
 }
 .comment-box {
 	text-align: left;
-	padding: 1% 2%;
+	padding: 3px;
 	border: 1px solid black;
 	border-radius: 2px;
 	margin: 2% 2% 1%;
-	width: 30%;
+	width: 34%;
 	float: right;
 	overflow: scroll;
 	height: 400px;
@@ -282,13 +282,27 @@
 	}
 }
 #comment_box {
+	div {
+		padding: 5px;
+	}
+
+	hr {
+		margin-top: 10px;
+		border: 0;
+    	height: 0;
+    	border-top: 1px solid rgba(0, 0, 0, 0.1);
+    	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	}
+
 	a {
 		text-transform: capitalize;
 		font-size: 14px;
 	}
+
 	p{
+		display: inline;
 		font-size: 14px;
-		padding: 5px 0;
+		line-height: 25px;
 	}
 }
 #comment_form_location {
@@ -298,7 +312,7 @@
 
 	input[type="submit"] {
 		padding: 5px;
-		margin: 1% 2%;
+		margin: 0 2% 2%;
 		position: absolute;
 		bottom: 0;
 		right: 0;
@@ -308,7 +322,7 @@
 
 	textarea{
 		border-radius: 2px;
-		width: 34.7%;
+		width: 35.4%;
 		height: 70px;
 		resize: none;
 		border: 1px solid black;
