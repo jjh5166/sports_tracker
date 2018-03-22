@@ -10,9 +10,9 @@
 
 <%end%>
 	<% if current_user %>
-			<div class="pic_button"><%=link_to 'Share a Photo', new_pic_path(:url => Base64.encode64(url))%></div>
+			<div class="share"><%=link_to 'Share a Photo', new_pic_path(:url => Base64.encode64(url))%></div>
 		<% else %>
-		    <div class="pic_button"><a class="pointer" id="log_in" onclick="login()">Login to Share Photos</a></div>
+		    <div class="share"><a class="pointer" id="log_in" onclick="login()">Login to <br/> Share Photos</a></div>
 	<% end %>
 
 </div>

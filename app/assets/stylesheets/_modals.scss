@@ -262,6 +262,7 @@
 
 
 #pic_des {
+	font-family: $font-stack;
   	text-align: center;
   	padding: 1% 0;
   	border: 1px solid black;
@@ -276,7 +277,7 @@
 
 .commentLabel {
 	position: absolute;
-	text-decoration: underline;
+	font-family: $font-stack;
 	top:0; 
 	right: 15%;
 	// margin-right: 15%;
@@ -302,6 +303,7 @@
 	}
 }
 #comment_box {
+	font-family: $font-stack;
 	div {
 		padding: 5px;
 	}
@@ -329,7 +331,7 @@
 	clear: both;
 	text-align: right;
 	margin-right: 2%;
-
+	font-family: $font-stack;
 	input[type="submit"] {
 		padding: 5px;
 		margin: 0 2% 2%;
@@ -341,6 +343,7 @@
 	}
 
 	textarea{
+
 		border-radius: 2px;
 		width: 35.4%;
 		height: 70px;
