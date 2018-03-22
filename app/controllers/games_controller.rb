@@ -16,7 +16,7 @@ class GamesController < ApplicationController
 
 		@comments = {}
 
-		@pics.first(8).each do |h|
+		@pics.first(10).each do |h|
 			@comments[h.id] = [[],[]]
 			Comment.where(picture_id: h.id).each do |c|
 				@comments[h.id].last.push(c.content)
