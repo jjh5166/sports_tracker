@@ -67,7 +67,7 @@
 	let comment_link = document.getElementById("comment_link")
 	let comments_box = document.getElementById('comment_box')
 	let formlocation = document.getElementById('comment_form_location')
-	let noScroll = document.getElementById('noScroll')
+
 
 
 	function display_pic(pic_url, pic_desc, pic_id, pic_comments, user_id){
@@ -82,6 +82,7 @@
 		}
 		if(user_id != 'NO_USER'){
 		create_comment_form(pic_id, user_id);}
+
 	}
 	function display_comments(comments){
 		for (var i=0; i<comments[0].length; i++){
