@@ -99,7 +99,7 @@
 			comments_box.appendChild(div).appendChild(auser);
 			comments_box.appendChild(div).appendChild(cmm);
 			comments_box.appendChild(div).appendChild(brk);
-			
+
 		}
 	}
 	function Close_modal(user_id){
@@ -147,6 +147,7 @@
 		cm_content.maxlength = "150"
 		cm_content.required = "required"
 		cm_content.name = "comment[content]"
+		cm_content.placeholder = "Type Comment Here..."
 		f.appendChild(cm_content)
 
 		let submit = document.createElement("input");

@@ -6,6 +6,8 @@ class PicturesController < ApplicationController
   end
   def show
     @pic = Picture.find_by_id(params[:id])
+    @comments = Comment.where(picture_id: params[:id])
+    
   end
   def create
     pic = Picture.new(pic_params)
