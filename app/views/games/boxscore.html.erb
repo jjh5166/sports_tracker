@@ -67,11 +67,12 @@
 	let comment_link = document.getElementById("comment_link")
 	let comments_box = document.getElementById('comment_box')
 	let formlocation = document.getElementById('comment_form_location')
-
+	let noScroll = document.getElementById('noScroll')
 
 
 	function display_pic(pic_url, pic_desc, pic_id, pic_comments, user_id){
 	  modalOverlayPic.style.display = 'block';
+	  noScroll.style.overflow = "hidden";
 		pic_selected = pic_url;
 		pic_selected_des = pic_desc;
 		pic_show.src = pic_selected;
@@ -107,6 +108,7 @@
 	}
 	function Close_pic() {
 		modalOverlayPic.style.display = 'none';
+		noScroll.style.overflow = "visible";
 	}
 	function Close_comments(){
 		while (comments_box.firstChild) {
