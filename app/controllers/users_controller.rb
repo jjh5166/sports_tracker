@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 	# user_session
 	def profile
 		@user = User.where(username: params[:username])[0]
-		@pics = Picture.where(user_id: current_user.id).reverse
+		@pics = Picture.where(user_id: @user.id).reverse
 
 	end
 end
