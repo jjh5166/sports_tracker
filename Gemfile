@@ -8,7 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #Paperclip for uploading images
-gem "paperclip", "~> 5.2.1"
+gem "paperclip", :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 #AWS s3 for storing images.
 gem "aws-sdk", "<2.0"
 #Use Devise for Users
