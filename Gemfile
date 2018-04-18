@@ -9,6 +9,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #Paperclip for uploading images
 gem "paperclip", "~> 5.2.1"
+#AWS s3 for storing images.
+gem "aws-sdk", "<2.0"
 #Use Devise for Users
 gem 'devise'
 gem 'rails', '~> 5.1.5'
@@ -43,6 +45,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
 end
 
 group :development do

@@ -2,7 +2,7 @@
 
   <h2>Upload New Photo</h2><br>
 
-<%= form_for @pic do |f| %>
+<%= form_for (@pic, multipart: true) do |f| %>
 <%= f.hidden_field :user_id, :value => @userid, :required => true %>
 <%= f.hidden_field :game_id, :value => @gameid, :required => true %>
 <%= hidden_field_tag :url, params[:url].to_s %>
