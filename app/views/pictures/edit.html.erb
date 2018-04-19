@@ -1,6 +1,6 @@
 <div class="pic_show"><h2>Edit Photo</h2><br>
 
-    <%= form_for @pic do |f| %>
+    <%= form_for (@pic, multipart: true) do |f| %>
         <p>Description:</p><br>
         <%= f.text_area :description, class: "desc_field" %><br>
         <br>
