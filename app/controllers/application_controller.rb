@@ -3,8 +3,14 @@ class ApplicationController < ActionController::Base
   require 'uri'
   require 'date'
   $msf = MySportsFeeds.new(version="1.2", true)
-  $msf.authenticate( ENV.fetch('USERNAME'), ENV.fetch('PASSWORD'))
 
+  if Rails.env.development?
+    USERNAME = open('lib/assets/.username').first.chomp
+    PASSWORD = open('lib/assets/.password').first.chomp
+    $msf.authenticate(USERNAME, PASSWORD)
+  else
+    $msf.authenticate( ENV.fetch('USERNAME'), ENV.fetch('PASSWORD'))
+  end
 
 #### DEVISE ####
 
@@ -15,7 +21,7 @@ class ApplicationController < ActionController::Base
   private
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end
 
   def store_user_location!
@@ -48,7 +54,7 @@ class ApplicationController < ActionController::Base
  		devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password, :password_confirmation])
  		devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
 	end
-   
+
 
 
 end
